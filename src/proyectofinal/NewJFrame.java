@@ -6,11 +6,14 @@
 package proyectofinal;
 
 import Clases.Persona;
+import DataBase.Dba;
 import java.awt.Color;
 import proyectofinal.Main;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -25,8 +28,7 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
-        Main.ListUssers.add(new Persona("PruebaAdmi", "123456789", 44,1, "Wilmer", "Wilmerzuniga.ant@gmail.com", "Hombre", "Si"));
-
+        Cargar();
     }
 
     /**
@@ -49,6 +51,7 @@ public class NewJFrame extends javax.swing.JFrame {
         OlvideContraseña_Label_Login = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(550, 5));
         setResizable(false);
 
         Login.setBackground(new java.awt.Color(233, 239, 192));
@@ -172,14 +175,20 @@ public class NewJFrame extends javax.swing.JFrame {
 
         for (int i = 0; i < Main.ListUssers.size(); i++) {
             if (TF_Usuario_Login.getText().equals(Main.ListUssers.get(i).getUsuario()) && TF_Contraseña_Login.getText().equals(Main.ListUssers.get(i).getContraseña())) {
+                Main.Uactual = Main.ListUssers.get(i);
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
                         new Main().setVisible(true);
+                        
                     }
                 });
+                            System.out.println(i);
+
                 dispose();
             } else {
-                if (i <= Main.ListUssers.size()) {
+                System.out.println(i);
+
+                if (i == Main.ListUssers.size()) {
                     JOptionPane.showMessageDialog(null, "Ingrese un usuario y contraseña correctos");
 
                 }
@@ -224,10 +233,35 @@ public class NewJFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NewJFrame().setVisible(true);
+                //setLocationRelativeTo();
             }
         });
     }
 
+    public void Cargar() {
+        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\Usuarios1.accdb");
+        db.conectar();
+        try {
+            db.query.execute("select Usuario,Contraseña,Edad,Nombre,Correo,Genero,Administrador, Id from Usuarios");
+            ResultSet rs = db.query.getResultSet();
+
+            while (rs.next()) {
+
+                Main.ListUssers.add(new Persona(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(8), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+//                System.out.println(rs.getString(1)
+//                        + "--" + rs.getString(2) + "--"
+//                        + rs.getInt(3) + "--"
+//                        + rs.getString(4) + "--"
+//                        + rs.getString(5) + "--"
+//                        + rs.getString(6) + "--"
+//                        + rs.getString(7) + "--"
+//                        + rs.getInt(8));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Botonl_Ingresar_Login;
     private javax.swing.JLabel Label_Contraseña_Login;
