@@ -172,26 +172,32 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_Botonl_Ingresar_LoginMouseEntered
 
     private void Botonl_Ingresar_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Botonl_Ingresar_LoginActionPerformed
+                    //System.out.println(Main.ListUssers.size());
 
         for (int i = 0; i < Main.ListUssers.size(); i++) {
-            if (TF_Usuario_Login.getText().equals(Main.ListUssers.get(i).getUsuario()) && TF_Contraseña_Login.getText().equals(Main.ListUssers.get(i).getContraseña())) {
+            if (TF_Usuario_Login.getText().equals(Main.ListUssers.get(i).getUsuario()) && TF_Contraseña_Login.getText().equals(Main.ListUssers.get(i).getContraseña()) && Main.ListUssers.get(i).getAdministrador().equals("Si")) {
                 Main.Uactual = Main.ListUssers.get(i);
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
                         new Main().setVisible(true);
-                        
+
                     }
                 });
-                            System.out.println(i);
+                dispose();
+            } else if (TF_Usuario_Login.getText().equals(Main.ListUssers.get(i).getUsuario()) && TF_Contraseña_Login.getText().equals(Main.ListUssers.get(i).getContraseña())) {
+               // UsserDis.Uactual = Main.ListUssers.get(i);
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        new UsserDis().setVisible(true);
 
+                    }
+                });
                 dispose();
             } else {
-                System.out.println(i);
-
-                if (i == Main.ListUssers.size()) {
+                if (i == Main.ListUssers.size()-1) {
                     JOptionPane.showMessageDialog(null, "Ingrese un usuario y contraseña correctos");
-
                 }
+                
             }
 
         }

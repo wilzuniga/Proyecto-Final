@@ -439,6 +439,11 @@ public class Main extends javax.swing.JFrame {
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ToDoIcon.png"))); // NOI18N
         jLabel23.setText("T o - D o");
         jLabel23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel23MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 130, 40));
 
         jSeparator3.setBackground(new java.awt.Color(78, 148, 79));
@@ -459,20 +464,21 @@ public class Main extends javax.swing.JFrame {
         ListarPane_AdminTools_MW.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 23, -1, -1));
 
         TablaListar.setBackground(new java.awt.Color(233, 239, 192));
+        TablaListar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         TablaListar.setForeground(new java.awt.Color(78, 148, 79));
         TablaListar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre", "Usuario"
+                "Nombre", "Usuario", "Id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -499,20 +505,21 @@ public class Main extends javax.swing.JFrame {
         EliminarPane_AdminTools_MW.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 23, -1, -1));
 
         TABLAELIMINAR.setBackground(new java.awt.Color(233, 239, 192));
+        TABLAELIMINAR.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
         TABLAELIMINAR.setForeground(new java.awt.Color(78, 148, 79));
         TABLAELIMINAR.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre", "Usuario"
+                "Nombre", "Usuario", "Id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -790,13 +797,13 @@ public class Main extends javax.swing.JFrame {
         CorreoInfo.setText(Uactual.getCorreo());
         IdInfo.setText("" + Uactual.getID());
         GeneroInfo.setText(Uactual.getGenero());
-        
+
         InformacionUsuarioFra.setModal(true);
         InformacionUsuarioFra.pack();
         InformacionUsuarioFra.setLocationRelativeTo(this);
         InformacionUsuarioFra.setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_InfoCuenta_AdminTools_MWActionPerformed
 
     private void CrearUsuario_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearUsuario_AdminTools_MWActionPerformed
@@ -922,6 +929,14 @@ public class Main extends javax.swing.JFrame {
         modeloTABLEListar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ToDo().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jLabel23MouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -983,7 +998,7 @@ public class Main extends javax.swing.JFrame {
         listPersona.setRowCount(0);
 
         for (Persona ListUsser : ListUssers) {
-            Object[] row = {ListUsser, ListUsser.getUsuario()};
+            Object[] row = {ListUsser, ListUsser.getUsuario(), ListUsser.getID()};
             listPersona.addRow(row);
         }
         TablaListar.setModel(listPersona);
@@ -994,7 +1009,7 @@ public class Main extends javax.swing.JFrame {
         DefaultTableModel listPersona = (DefaultTableModel) TABLAELIMINAR.getModel();
         listPersona.setRowCount(0);
         for (Persona ListUsser : ListUssers) {
-            Object[] row = {ListUsser, ListUsser.getUsuario()};
+            Object[] row = {ListUsser, ListUsser.getUsuario(), ListUsser.getID()};
             listPersona.addRow(row);
         }
         TABLAELIMINAR.setModel(listPersona);
