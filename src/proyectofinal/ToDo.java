@@ -5,6 +5,9 @@
  */
 package proyectofinal;
 
+import Clases.Persona;
+import java.util.ArrayList;
+
 /**
  *
  * @author wilme
@@ -31,19 +34,25 @@ public class ToDo extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         PANELLATERAL = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        CrearUsuario_AdminTools_MW = new javax.swing.JButton();
+        CrearTareasBoton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        ModificarUsuario_AdminTools_MW = new javax.swing.JButton();
+        MiDiaTareasBoton = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        ListarUsuarios_AdminTools_MW = new javax.swing.JButton();
+        ModificarTareasBoton = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
-        ModificarUsuario_AdminTools_MW1 = new javax.swing.JButton();
+        TareasCompletasTareasBoton = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
+        TareasImportantesTareasBoton = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        TareasMediasTareasBoton = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
+        TareasPendientesTareasBoton = new javax.swing.JButton();
+        jPanel11 = new javax.swing.JPanel();
+        TareasMundanasTareasBoton = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(233, 239, 192));
@@ -62,20 +71,6 @@ public class ToDo extends javax.swing.JFrame {
         jLabel23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PANELLATERAL.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 130, 40));
 
-        jScrollPane1.setBackground(new java.awt.Color(131, 189, 117));
-
-        jList1.setBackground(new java.awt.Color(131, 189, 117));
-        jList1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jList1.setForeground(new java.awt.Color(78, 148, 79));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
-
-        PANELLATERAL.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 220, 210));
-
         jSeparator1.setBackground(new java.awt.Color(78, 148, 79));
         jSeparator1.setForeground(new java.awt.Color(78, 148, 79));
         PANELLATERAL.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 220, 20));
@@ -84,19 +79,19 @@ public class ToDo extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(78, 148, 79));
         PANELLATERAL.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 220, 20));
 
-        CrearUsuario_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
-        CrearUsuario_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        CrearUsuario_AdminTools_MW.setForeground(new java.awt.Color(233, 239, 192));
-        CrearUsuario_AdminTools_MW.setText("Crear Lista de Tareas");
-        CrearUsuario_AdminTools_MW.setBorder(null);
-        CrearUsuario_AdminTools_MW.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        CrearUsuario_AdminTools_MW.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        CrearUsuario_AdminTools_MW.addActionListener(new java.awt.event.ActionListener() {
+        CrearTareasBoton.setBackground(new java.awt.Color(78, 148, 79));
+        CrearTareasBoton.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearTareasBoton.setForeground(new java.awt.Color(233, 239, 192));
+        CrearTareasBoton.setText("Crear Tarea");
+        CrearTareasBoton.setBorder(null);
+        CrearTareasBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CrearTareasBoton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        CrearTareasBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CrearUsuario_AdminTools_MWActionPerformed(evt);
+                CrearTareasBotonActionPerformed(evt);
             }
         });
-        PANELLATERAL.add(CrearUsuario_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 190, 31));
+        PANELLATERAL.add(CrearTareasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 190, 31));
 
         jPanel5.setBackground(new java.awt.Color(78, 148, 79));
 
@@ -113,19 +108,19 @@ public class ToDo extends javax.swing.JFrame {
 
         PANELLATERAL.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 100, 31));
 
-        ModificarUsuario_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
-        ModificarUsuario_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        ModificarUsuario_AdminTools_MW.setForeground(new java.awt.Color(233, 239, 192));
-        ModificarUsuario_AdminTools_MW.setText("Mi dia");
-        ModificarUsuario_AdminTools_MW.setBorder(null);
-        ModificarUsuario_AdminTools_MW.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ModificarUsuario_AdminTools_MW.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ModificarUsuario_AdminTools_MW.addActionListener(new java.awt.event.ActionListener() {
+        MiDiaTareasBoton.setBackground(new java.awt.Color(78, 148, 79));
+        MiDiaTareasBoton.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        MiDiaTareasBoton.setForeground(new java.awt.Color(233, 239, 192));
+        MiDiaTareasBoton.setText("Mi dia");
+        MiDiaTareasBoton.setBorder(null);
+        MiDiaTareasBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MiDiaTareasBoton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MiDiaTareasBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModificarUsuario_AdminTools_MWActionPerformed(evt);
+                MiDiaTareasBotonActionPerformed(evt);
             }
         });
-        PANELLATERAL.add(ModificarUsuario_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 190, 31));
+        PANELLATERAL.add(MiDiaTareasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 190, 31));
 
         jPanel7.setBackground(new java.awt.Color(78, 148, 79));
 
@@ -142,19 +137,19 @@ public class ToDo extends javax.swing.JFrame {
 
         PANELLATERAL.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 100, 31));
 
-        ListarUsuarios_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
-        ListarUsuarios_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        ListarUsuarios_AdminTools_MW.setForeground(new java.awt.Color(233, 239, 192));
-        ListarUsuarios_AdminTools_MW.setText("Agregar Tarea");
-        ListarUsuarios_AdminTools_MW.setBorder(null);
-        ListarUsuarios_AdminTools_MW.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ListarUsuarios_AdminTools_MW.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ListarUsuarios_AdminTools_MW.addActionListener(new java.awt.event.ActionListener() {
+        ModificarTareasBoton.setBackground(new java.awt.Color(78, 148, 79));
+        ModificarTareasBoton.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        ModificarTareasBoton.setForeground(new java.awt.Color(233, 239, 192));
+        ModificarTareasBoton.setText("Modificar  Tarea");
+        ModificarTareasBoton.setBorder(null);
+        ModificarTareasBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ModificarTareasBoton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ModificarTareasBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ListarUsuarios_AdminTools_MWActionPerformed(evt);
+                ModificarTareasBotonActionPerformed(evt);
             }
         });
-        PANELLATERAL.add(ListarUsuarios_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, 31));
+        PANELLATERAL.add(ModificarTareasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, 31));
 
         jPanel8.setBackground(new java.awt.Color(78, 148, 79));
 
@@ -171,19 +166,19 @@ public class ToDo extends javax.swing.JFrame {
 
         PANELLATERAL.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 100, 31));
 
-        ModificarUsuario_AdminTools_MW1.setBackground(new java.awt.Color(78, 148, 79));
-        ModificarUsuario_AdminTools_MW1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        ModificarUsuario_AdminTools_MW1.setForeground(new java.awt.Color(233, 239, 192));
-        ModificarUsuario_AdminTools_MW1.setText("Tareas Completadas");
-        ModificarUsuario_AdminTools_MW1.setBorder(null);
-        ModificarUsuario_AdminTools_MW1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ModificarUsuario_AdminTools_MW1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ModificarUsuario_AdminTools_MW1.addActionListener(new java.awt.event.ActionListener() {
+        TareasCompletasTareasBoton.setBackground(new java.awt.Color(78, 148, 79));
+        TareasCompletasTareasBoton.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        TareasCompletasTareasBoton.setForeground(new java.awt.Color(233, 239, 192));
+        TareasCompletasTareasBoton.setText("Tareas Completadas");
+        TareasCompletasTareasBoton.setBorder(null);
+        TareasCompletasTareasBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TareasCompletasTareasBoton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TareasCompletasTareasBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModificarUsuario_AdminTools_MW1ActionPerformed(evt);
+                TareasCompletasTareasBotonActionPerformed(evt);
             }
         });
-        PANELLATERAL.add(ModificarUsuario_AdminTools_MW1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 190, 31));
+        PANELLATERAL.add(TareasCompletasTareasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 190, 31));
 
         jPanel9.setBackground(new java.awt.Color(78, 148, 79));
 
@@ -208,17 +203,133 @@ public class ToDo extends javax.swing.JFrame {
         jLabel24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PANELLATERAL.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 130, 40));
 
+        TareasImportantesTareasBoton.setBackground(new java.awt.Color(78, 148, 79));
+        TareasImportantesTareasBoton.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        TareasImportantesTareasBoton.setForeground(new java.awt.Color(233, 239, 192));
+        TareasImportantesTareasBoton.setText("Tareas Importantes");
+        TareasImportantesTareasBoton.setBorder(null);
+        TareasImportantesTareasBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TareasImportantesTareasBoton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TareasImportantesTareasBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TareasImportantesTareasBotonActionPerformed(evt);
+            }
+        });
+        PANELLATERAL.add(TareasImportantesTareasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 190, 31));
+
+        jPanel6.setBackground(new java.awt.Color(78, 148, 79));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 31, Short.MAX_VALUE)
+        );
+
+        PANELLATERAL.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 100, 31));
+
+        TareasMediasTareasBoton.setBackground(new java.awt.Color(78, 148, 79));
+        TareasMediasTareasBoton.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        TareasMediasTareasBoton.setForeground(new java.awt.Color(233, 239, 192));
+        TareasMediasTareasBoton.setText("Tareas Medias");
+        TareasMediasTareasBoton.setBorder(null);
+        TareasMediasTareasBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TareasMediasTareasBoton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TareasMediasTareasBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TareasMediasTareasBotonActionPerformed(evt);
+            }
+        });
+        PANELLATERAL.add(TareasMediasTareasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 190, 31));
+
+        jPanel10.setBackground(new java.awt.Color(78, 148, 79));
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 31, Short.MAX_VALUE)
+        );
+
+        PANELLATERAL.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 100, 31));
+
+        TareasPendientesTareasBoton.setBackground(new java.awt.Color(78, 148, 79));
+        TareasPendientesTareasBoton.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        TareasPendientesTareasBoton.setForeground(new java.awt.Color(233, 239, 192));
+        TareasPendientesTareasBoton.setText("Tareas Pendientes");
+        TareasPendientesTareasBoton.setBorder(null);
+        TareasPendientesTareasBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TareasPendientesTareasBoton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TareasPendientesTareasBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TareasPendientesTareasBotonActionPerformed(evt);
+            }
+        });
+        PANELLATERAL.add(TareasPendientesTareasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 190, 31));
+
+        jPanel11.setBackground(new java.awt.Color(78, 148, 79));
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 31, Short.MAX_VALUE)
+        );
+
+        PANELLATERAL.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 100, 31));
+
+        TareasMundanasTareasBoton.setBackground(new java.awt.Color(78, 148, 79));
+        TareasMundanasTareasBoton.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        TareasMundanasTareasBoton.setForeground(new java.awt.Color(233, 239, 192));
+        TareasMundanasTareasBoton.setText("Tareas Mundanas");
+        TareasMundanasTareasBoton.setBorder(null);
+        TareasMundanasTareasBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TareasMundanasTareasBoton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TareasMundanasTareasBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TareasMundanasTareasBotonActionPerformed(evt);
+            }
+        });
+        PANELLATERAL.add(TareasMundanasTareasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 190, 31));
+
+        jPanel12.setBackground(new java.awt.Color(78, 148, 79));
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 31, Short.MAX_VALUE)
+        );
+
+        PANELLATERAL.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 100, 31));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(PANELLATERAL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 825, Short.MAX_VALUE))
+                .addGap(0, 810, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PANELLATERAL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PANELLATERAL, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 610));
@@ -226,21 +337,37 @@ public class ToDo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CrearUsuario_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearUsuario_AdminTools_MWActionPerformed
-       
-    }//GEN-LAST:event_CrearUsuario_AdminTools_MWActionPerformed
+    private void CrearTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearTareasBotonActionPerformed
+             
+    }//GEN-LAST:event_CrearTareasBotonActionPerformed
 
-    private void ModificarUsuario_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarUsuario_AdminTools_MWActionPerformed
+    private void MiDiaTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiDiaTareasBotonActionPerformed
 
-    }//GEN-LAST:event_ModificarUsuario_AdminTools_MWActionPerformed
+    }//GEN-LAST:event_MiDiaTareasBotonActionPerformed
 
-    private void ListarUsuarios_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarUsuarios_AdminTools_MWActionPerformed
+    private void ModificarTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarTareasBotonActionPerformed
 
-    }//GEN-LAST:event_ListarUsuarios_AdminTools_MWActionPerformed
+    }//GEN-LAST:event_ModificarTareasBotonActionPerformed
 
-    private void ModificarUsuario_AdminTools_MW1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarUsuario_AdminTools_MW1ActionPerformed
+    private void TareasCompletasTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TareasCompletasTareasBotonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ModificarUsuario_AdminTools_MW1ActionPerformed
+    }//GEN-LAST:event_TareasCompletasTareasBotonActionPerformed
+
+    private void TareasImportantesTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TareasImportantesTareasBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TareasImportantesTareasBotonActionPerformed
+
+    private void TareasMediasTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TareasMediasTareasBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TareasMediasTareasBotonActionPerformed
+
+    private void TareasPendientesTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TareasPendientesTareasBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TareasPendientesTareasBotonActionPerformed
+
+    private void TareasMundanasTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TareasMundanasTareasBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TareasMundanasTareasBotonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,7 +380,7 @@ public class ToDo extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -276,22 +403,28 @@ public class ToDo extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CrearUsuario_AdminTools_MW;
-    private javax.swing.JButton ListarUsuarios_AdminTools_MW;
-    private javax.swing.JButton ModificarUsuario_AdminTools_MW;
-    private javax.swing.JButton ModificarUsuario_AdminTools_MW1;
+    private javax.swing.JButton CrearTareasBoton;
+    private javax.swing.JButton MiDiaTareasBoton;
+    private javax.swing.JButton ModificarTareasBoton;
     private javax.swing.JPanel PANELLATERAL;
+    private javax.swing.JButton TareasCompletasTareasBoton;
+    private javax.swing.JButton TareasImportantesTareasBoton;
+    private javax.swing.JButton TareasMediasTareasBoton;
+    private javax.swing.JButton TareasMundanasTareasBoton;
+    private javax.swing.JButton TareasPendientesTareasBoton;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
