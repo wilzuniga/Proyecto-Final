@@ -25,8 +25,7 @@ public class UsserDis extends javax.swing.JFrame {
      */
     public UsserDis() {
         initComponents();
-        //iniciarVA();
-        //Nombre_Usuario_Label.setText("Bienvenido " + Uactual.getNombre());
+        Nombre_Usuario_Label.setText("Bienvenido " + NewJFrame.Uactual.getNombre());
     }
 
     /**
@@ -242,6 +241,11 @@ public class UsserDis extends javax.swing.JFrame {
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CloudIcon.png"))); // NOI18N
         jLabel21.setText("C l o u d");
         jLabel21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel21MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 120, 50));
 
         jSeparator2.setBackground(new java.awt.Color(78, 148, 79));
@@ -294,12 +298,12 @@ public class UsserDis extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void InfoCuenta_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoCuenta_AdminTools_MWActionPerformed
-        NombreInfo.setText(Uactual.getNombre());
-        UsuarioInfo.setText(Uactual.getUsuario());
-        EdadInfo.setText("" + Uactual.getEdad());
-        CorreoInfo.setText(Uactual.getCorreo());
-        IdInfo.setText("" + Uactual.getID());
-        GeneroInfo.setText(Uactual.getGenero());
+        NombreInfo.setText(NewJFrame.Uactual.getNombre());
+        UsuarioInfo.setText(NewJFrame.Uactual.getUsuario());
+        EdadInfo.setText("" + NewJFrame.Uactual.getEdad());
+        CorreoInfo.setText(NewJFrame.Uactual.getCorreo());
+        IdInfo.setText("" + NewJFrame.Uactual.getID());
+        GeneroInfo.setText(NewJFrame.Uactual.getGenero());
 
         InformacionUsuarioFra.setModal(true);
         InformacionUsuarioFra.pack();
@@ -311,7 +315,7 @@ public class UsserDis extends javax.swing.JFrame {
 
     private void botonuniversalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonuniversalActionPerformed
         FondoCloudy.setVisible(true);
-        Nombre_Usuario_Label.setText("Bienvenido " + Uactual.getNombre());
+        Nombre_Usuario_Label.setText("Bienvenido " + NewJFrame.Uactual.getNombre());
     }//GEN-LAST:event_botonuniversalActionPerformed
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
@@ -322,6 +326,14 @@ public class UsserDis extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_jLabel23MouseClicked
+
+    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Drive().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jLabel21MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -357,7 +369,6 @@ public class UsserDis extends javax.swing.JFrame {
     }
 
     public static ArrayList<Persona> ListUssers = new ArrayList();
-    public static Persona Uactual;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CorreoInfo;
     private javax.swing.JLabel EdadInfo;

@@ -6,7 +6,23 @@
 package proyectofinal;
 
 import Clases.Persona;
+import Clases.Tarea;
+import DataBase.Dba;
+import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import static proyectofinal.Main.ListUssers;
 
 /**
  *
@@ -19,7 +35,19 @@ public class ToDo extends javax.swing.JFrame {
      */
     public ToDo() {
         initComponents();
+        tabla.getTableHeader().setOpaque(false);
+        tabla.getTableHeader().setBackground(header);
+        Listas.add("121212");
+        Cargar();
+        Listas.remove("121212");
+        Listatareas();
+        modelocombobox();
+        //System.out.println(Listas);
+        //System.out.println(NewJFrame.Uactual.getID());
         setLocationRelativeTo(this);
+        
+//        System.out.println("INICIO" + Inicio);
+//        System.out.println("");
     }
 
     /**
@@ -40,19 +68,33 @@ public class ToDo extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         MiDiaTareasBoton = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        ModificarTareasBoton = new javax.swing.JButton();
+        CrearListasBoton = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         TareasCompletasTareasBoton = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
-        TareasImportantesTareasBoton = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        TareasMediasTareasBoton = new javax.swing.JButton();
-        jPanel10 = new javax.swing.JPanel();
-        TareasPendientesTareasBoton = new javax.swing.JButton();
-        jPanel11 = new javax.swing.JPanel();
-        TareasMundanasTareasBoton = new javax.swing.JButton();
-        jPanel12 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jl_personas = new javax.swing.JList();
+        jPanel2 = new javax.swing.JPanel();
+        NombreLista = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        TareasEliminarTareasBoton1 = new javax.swing.JButton();
+        TareasCompletadasTareasBoton2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        TituloTareaTF = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        CB_Listas = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        TituloListaTF1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(233, 239, 192));
@@ -69,7 +111,7 @@ public class ToDo extends javax.swing.JFrame {
         jLabel23.setForeground(new java.awt.Color(78, 148, 79));
         jLabel23.setText("L i s t a s");
         jLabel23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        PANELLATERAL.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 130, 40));
+        PANELLATERAL.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 130, 40));
 
         jSeparator1.setBackground(new java.awt.Color(78, 148, 79));
         jSeparator1.setForeground(new java.awt.Color(78, 148, 79));
@@ -99,11 +141,11 @@ public class ToDo extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         PANELLATERAL.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 100, 31));
@@ -128,28 +170,28 @@ public class ToDo extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         PANELLATERAL.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 100, 31));
 
-        ModificarTareasBoton.setBackground(new java.awt.Color(78, 148, 79));
-        ModificarTareasBoton.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        ModificarTareasBoton.setForeground(new java.awt.Color(233, 239, 192));
-        ModificarTareasBoton.setText("Modificar  Tarea");
-        ModificarTareasBoton.setBorder(null);
-        ModificarTareasBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ModificarTareasBoton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ModificarTareasBoton.addActionListener(new java.awt.event.ActionListener() {
+        CrearListasBoton.setBackground(new java.awt.Color(78, 148, 79));
+        CrearListasBoton.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearListasBoton.setForeground(new java.awt.Color(233, 239, 192));
+        CrearListasBoton.setText("Crear Lista");
+        CrearListasBoton.setBorder(null);
+        CrearListasBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CrearListasBoton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        CrearListasBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModificarTareasBotonActionPerformed(evt);
+                CrearListasBotonActionPerformed(evt);
             }
         });
-        PANELLATERAL.add(ModificarTareasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, 31));
+        PANELLATERAL.add(CrearListasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, 31));
 
         jPanel8.setBackground(new java.awt.Color(78, 148, 79));
 
@@ -157,11 +199,11 @@ public class ToDo extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         PANELLATERAL.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 100, 31));
@@ -186,11 +228,11 @@ public class ToDo extends javax.swing.JFrame {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         PANELLATERAL.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 100, 31));
@@ -201,123 +243,277 @@ public class ToDo extends javax.swing.JFrame {
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ToDoIcon.png"))); // NOI18N
         jLabel24.setText("T o - D o");
         jLabel24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel24MouseClicked(evt);
+            }
+        });
         PANELLATERAL.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 130, 40));
 
-        TareasImportantesTareasBoton.setBackground(new java.awt.Color(78, 148, 79));
-        TareasImportantesTareasBoton.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        TareasImportantesTareasBoton.setForeground(new java.awt.Color(233, 239, 192));
-        TareasImportantesTareasBoton.setText("Tareas Importantes");
-        TareasImportantesTareasBoton.setBorder(null);
-        TareasImportantesTareasBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        TareasImportantesTareasBoton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TareasImportantesTareasBoton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TareasImportantesTareasBotonActionPerformed(evt);
+        jl_personas.setBackground(new java.awt.Color(247, 246, 220));
+        jl_personas.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        jl_personas.setForeground(new java.awt.Color(78, 148, 79));
+        jl_personas.setModel(new DefaultListModel());
+        jl_personas.setSelectionBackground(new java.awt.Color(78, 148, 79));
+        jl_personas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_personasMouseClicked(evt);
             }
         });
-        PANELLATERAL.add(TareasImportantesTareasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 190, 31));
-
-        jPanel6.setBackground(new java.awt.Color(78, 148, 79));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
-        );
-
-        PANELLATERAL.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 100, 31));
-
-        TareasMediasTareasBoton.setBackground(new java.awt.Color(78, 148, 79));
-        TareasMediasTareasBoton.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        TareasMediasTareasBoton.setForeground(new java.awt.Color(233, 239, 192));
-        TareasMediasTareasBoton.setText("Tareas Medias");
-        TareasMediasTareasBoton.setBorder(null);
-        TareasMediasTareasBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        TareasMediasTareasBoton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TareasMediasTareasBoton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TareasMediasTareasBotonActionPerformed(evt);
+        jl_personas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jl_personasKeyPressed(evt);
             }
         });
-        PANELLATERAL.add(TareasMediasTareasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 190, 31));
+        jScrollPane3.setViewportView(jl_personas);
 
-        jPanel10.setBackground(new java.awt.Color(78, 148, 79));
+        PANELLATERAL.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 220, 240));
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
-        );
+        jPanel2.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PANELLATERAL.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 100, 31));
+        NombreLista.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel2.add(NombreLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
-        TareasPendientesTareasBoton.setBackground(new java.awt.Color(78, 148, 79));
-        TareasPendientesTareasBoton.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        TareasPendientesTareasBoton.setForeground(new java.awt.Color(233, 239, 192));
-        TareasPendientesTareasBoton.setText("Tareas Pendientes");
-        TareasPendientesTareasBoton.setBorder(null);
-        TareasPendientesTareasBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        TareasPendientesTareasBoton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TareasPendientesTareasBoton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TareasPendientesTareasBotonActionPerformed(evt);
+        tabla.setBackground(new java.awt.Color(247, 246, 220));
+        tabla.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre", "Nota", "Fecha"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
         });
-        PANELLATERAL.add(TareasPendientesTareasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 190, 31));
+        tabla.setSelectionBackground(new java.awt.Color(78, 148, 79));
+        jScrollPane1.setViewportView(tabla);
 
-        jPanel11.setBackground(new java.awt.Color(78, 148, 79));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 460));
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
-        );
-
-        PANELLATERAL.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 100, 31));
-
-        TareasMundanasTareasBoton.setBackground(new java.awt.Color(78, 148, 79));
-        TareasMundanasTareasBoton.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        TareasMundanasTareasBoton.setForeground(new java.awt.Color(233, 239, 192));
-        TareasMundanasTareasBoton.setText("Tareas Mundanas");
-        TareasMundanasTareasBoton.setBorder(null);
-        TareasMundanasTareasBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        TareasMundanasTareasBoton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TareasMundanasTareasBoton.addActionListener(new java.awt.event.ActionListener() {
+        TareasEliminarTareasBoton1.setBackground(new java.awt.Color(78, 148, 79));
+        TareasEliminarTareasBoton1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        TareasEliminarTareasBoton1.setForeground(new java.awt.Color(233, 239, 192));
+        TareasEliminarTareasBoton1.setText("                     Eliminar ");
+        TareasEliminarTareasBoton1.setBorder(null);
+        TareasEliminarTareasBoton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TareasEliminarTareasBoton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TareasEliminarTareasBoton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TareasMundanasTareasBotonActionPerformed(evt);
+                TareasEliminarTareasBoton1ActionPerformed(evt);
             }
         });
-        PANELLATERAL.add(TareasMundanasTareasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 190, 31));
+        jPanel2.add(TareasEliminarTareasBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, 190, 40));
 
-        jPanel12.setBackground(new java.awt.Color(78, 148, 79));
+        TareasCompletadasTareasBoton2.setBackground(new java.awt.Color(78, 148, 79));
+        TareasCompletadasTareasBoton2.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        TareasCompletadasTareasBoton2.setForeground(new java.awt.Color(233, 239, 192));
+        TareasCompletadasTareasBoton2.setText("               Completada ");
+        TareasCompletadasTareasBoton2.setBorder(null);
+        TareasCompletadasTareasBoton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TareasCompletadasTareasBoton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TareasCompletadasTareasBoton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TareasCompletadasTareasBoton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(TareasCompletadasTareasBoton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 520, 190, 40));
 
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
-        );
+        jPanel3.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PANELLATERAL.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 100, 31));
+        jLabel1.setBackground(new java.awt.Color(247, 246, 220));
+        jLabel1.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel1.setText("Nueva Tarea");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+
+        jLabel2.setBackground(new java.awt.Color(247, 246, 220));
+        jLabel2.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel2.setText("Titulo Lista");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        jLabel3.setBackground(new java.awt.Color(247, 246, 220));
+        jLabel3.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel3.setText("Fecha ");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
+
+        jLabel4.setBackground(new java.awt.Color(247, 246, 220));
+        jLabel4.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel4.setText("Lista");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 37, -1));
+
+        jLabel6.setBackground(new java.awt.Color(247, 246, 220));
+        jLabel6.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel6.setText("Nota");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 37, -1));
+
+        TituloTareaTF.setBackground(new java.awt.Color(180, 225, 151));
+        TituloTareaTF.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        TituloTareaTF.setForeground(new java.awt.Color(78, 148, 79));
+        TituloTareaTF.setBorder(null);
+        jPanel3.add(TituloTareaTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 220, 30));
+
+        jDateChooser1.setBackground(new java.awt.Color(247, 246, 220));
+        jDateChooser1.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel3.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 98, 30));
+
+        jTextArea1.setBackground(new java.awt.Color(180, 225, 151));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(78, 148, 79));
+        jTextArea1.setRows(5);
+        jTextArea1.setBorder(null);
+        jTextArea1.setSelectionColor(new java.awt.Color(131, 189, 117));
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 220, 150));
+
+        CB_Listas.setBackground(new java.awt.Color(180, 225, 151));
+        CB_Listas.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_Listas.setForeground(new java.awt.Color(78, 148, 79));
+        CB_Listas.setBorder(null);
+        CB_Listas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_ListasItemStateChanged(evt);
+            }
+        });
+        CB_Listas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_ListasActionPerformed(evt);
+            }
+        });
+        jPanel3.add(CB_Listas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 220, 30));
+
+        jLabel5.setBackground(new java.awt.Color(247, 246, 220));
+        jLabel5.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel5.setText("Nueva Lista");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+
+        TituloListaTF1.setBackground(new java.awt.Color(180, 225, 151));
+        TituloListaTF1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        TituloListaTF1.setForeground(new java.awt.Color(78, 148, 79));
+        TituloListaTF1.setBorder(null);
+        jPanel3.add(TituloListaTF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 220, 30));
+
+        jLabel7.setBackground(new java.awt.Color(247, 246, 220));
+        jLabel7.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel7.setText("Titulo tarea");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -325,49 +521,114 @@ public class ToDo extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(PANELLATERAL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 810, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PANELLATERAL, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 610));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CrearTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearTareasBotonActionPerformed
-             
-    }//GEN-LAST:event_CrearTareasBotonActionPerformed
+    private void CB_ListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ListasActionPerformed
 
-    private void MiDiaTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiDiaTareasBotonActionPerformed
+    }//GEN-LAST:event_CB_ListasActionPerformed
 
-    }//GEN-LAST:event_MiDiaTareasBotonActionPerformed
+    private void CB_ListasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_ListasItemStateChanged
 
-    private void ModificarTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarTareasBotonActionPerformed
+    }//GEN-LAST:event_CB_ListasItemStateChanged
 
-    }//GEN-LAST:event_ModificarTareasBotonActionPerformed
+    private void TareasCompletadasTareasBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TareasCompletadasTareasBoton2ActionPerformed
+        //System.out.println(tabla.getValueAt(0, 0));
+        for (int i = 0; i < Final.size(); i++) {
+            if (Final.get(i).getTitulo().equals(tabla.getValueAt(tabla.getSelectedRow(), 0))) {
+                Final.get(i).setRelizada("Si");
+            }
+        }
+    }//GEN-LAST:event_TareasCompletadasTareasBoton2ActionPerformed
+
+    private void TareasEliminarTareasBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TareasEliminarTareasBoton1ActionPerformed
+        //System.out.println(Tasks);
+        for (int i = 0; i < Final.size(); i++) {
+            if (Final.get(i).getTitulo().equals(tabla.getValueAt(tabla.getSelectedRow(), 0))) {
+                //System.out.println(Final.get(i).getTitulo());
+                //System.out.println(tabla.getValueAt(0, tabla.getSelectedRow()));
+                //System.out.println("Eliminada" + Final.get(i));
+                Final.remove(i);
+            }
+        }
+//        System.out.println("");
+//        System.out.println(Final);
+    }//GEN-LAST:event_TareasEliminarTareasBoton1ActionPerformed
+
+    private void jl_personasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jl_personasKeyPressed
+        if (evt.getKeyCode() == evt.VK_DELETE) {
+            if (jl_personas.getSelectedIndex() >= 0) {
+                for (Tarea Task : Final) {
+                    if (jl_personas.getSelectedValue().equals(Final)) {
+                        Final.remove(Final);
+                    }
+                }
+                Listas.remove(jl_personas.getSelectedValue());
+                modelocombobox();
+                DefaultListModel modelo
+                        = (DefaultListModel) jl_personas.getModel();
+                modelo.remove(jl_personas.getSelectedIndex());
+                jl_personas.setModel(modelo);
+                JOptionPane.showMessageDialog(this,
+                        "Eliminado exitosamente");
+
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jl_personasKeyPressed
+
+    private void jl_personasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_personasMouseClicked
+        modeloTABLEListar(jl_personas.getSelectedValue());
+        NombreLista.setText((String) jl_personas.getSelectedValue());
+    }//GEN-LAST:event_jl_personasMouseClicked
+
+    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
+        Agegar();
+    }//GEN-LAST:event_jLabel24MouseClicked
 
     private void TareasCompletasTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TareasCompletasTareasBotonActionPerformed
-        // TODO add your handling code here:
+        modelocompletas();
+        NombreLista.setText("Completas");
     }//GEN-LAST:event_TareasCompletasTareasBotonActionPerformed
 
-    private void TareasImportantesTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TareasImportantesTareasBotonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TareasImportantesTareasBotonActionPerformed
+    private void CrearListasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearListasBotonActionPerformed
+        Listas.add(TituloListaTF1.getText());
+        TituloListaTF1.setText("");
+        Listatareas();
+    }//GEN-LAST:event_CrearListasBotonActionPerformed
 
-    private void TareasMediasTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TareasMediasTareasBotonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TareasMediasTareasBotonActionPerformed
+    private void MiDiaTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiDiaTareasBotonActionPerformed
+        modelomidia();
+        NombreLista.setText("Mi Dia");
+    }//GEN-LAST:event_MiDiaTareasBotonActionPerformed
 
-    private void TareasPendientesTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TareasPendientesTareasBotonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TareasPendientesTareasBotonActionPerformed
-
-    private void TareasMundanasTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TareasMundanasTareasBotonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TareasMundanasTareasBotonActionPerformed
+    private void CrearTareasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearTareasBotonActionPerformed
+        if (jDateChooser1.getDate() == null || jTextArea1.getText().equals(null) || CB_Listas.getSelectedItem().toString().equals(null) || TituloTareaTF.getText().equals(null)) {
+            JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos");
+        } else {
+            Final.add(new Tarea(fecha(), NewJFrame.Uactual.getID(), jTextArea1.getText(), "No", CB_Listas.getSelectedItem().toString(), TituloTareaTF.getText()));
+            jTextArea1.setText("");
+            TituloTareaTF.setText("");
+        }
+    }//GEN-LAST:event_CrearTareasBotonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -403,29 +664,199 @@ public class ToDo extends javax.swing.JFrame {
             }
         });
     }
-    
+
+    public String fecha() {
+        SimpleDateFormat fech = new SimpleDateFormat("dd/MMM/yyyy");
+        Date fecha = jDateChooser1.getDate();
+
+//        String voso = "11/sep./2022";
+//        Date fechas;
+//        try {
+//            fecha = fech.parse(voso);
+//            System.out.println(fecha);
+//        } catch (ParseException ex) {
+//            Logger.getLogger(ToDo.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        return fech.format(fecha);
+    }
+
+    public void Listatareas() {
+
+        DefaultListModel modelo
+                = (DefaultListModel) jl_personas.getModel();
+        modelo.clear();
+        for (String Lista : Listas) {
+            modelo.addElement(Lista);
+        }
+        jl_personas.setModel(modelo);
+        modelocombobox();
+    }
+
+    public void modelocombobox() {
+        CB_Listas.getModel();
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        for (String c : Listas) {
+            m.addElement(c);
+        }
+        CB_Listas.setModel(m);
+    }
+
+    public void modeloTABLEListar(Object t) {
+        DefaultTableModel listPersona = (DefaultTableModel) tabla.getModel();
+        listPersona.setRowCount(0);
+
+        for (Tarea tarea : Final) {
+            if (tarea.getLista().equals(t) && !tarea.getRelizada().equals("Si")) {
+                Object[] row = {tarea.getTitulo(), tarea.getNota(), tarea.getFechaVen()};
+                listPersona.addRow(row);
+            }
+
+        }
+        tabla.setModel(listPersona);
+    }
+
+    public void modelomidia() {
+        SimpleDateFormat fech = new SimpleDateFormat("dd/MMM/yyyy");
+        Date fechahoy = new Date();
+        DefaultTableModel listPersona = (DefaultTableModel) tabla.getModel();
+        listPersona.setRowCount(0);
+        for (Tarea tarea : Final) {
+//            System.out.println(fech.format(fechahoy) + "-----" + tarea.getFechaVen());
+//            System.out.println((tarea.getFechaVen().equals(fech.format(fechahoy))));
+            if (tarea.getFechaVen().equals(fech.format(fechahoy)) && tarea.getRelizada().equals("No")) {
+                Object[] row = {tarea.getTitulo(), tarea.getNota(), tarea.getFechaVen()};
+                listPersona.addRow(row);
+            }
+
+        }
+        tabla.setModel(listPersona);
+    }
+
+    public void modelocompletas() {
+
+        DefaultTableModel listPersona = (DefaultTableModel) tabla.getModel();
+        listPersona.setRowCount(0);
+        for (Tarea tarea : Final) {
+//            System.out.println(fech.format(fechahoy) + "-----" + tarea.getFechaVen());
+//            System.out.println((tarea.getFechaVen().equals(fech.format(fechahoy))));
+            if (tarea.getRelizada().equals("Si")) {
+                Object[] row = {tarea.getTitulo(), tarea.getNota(), tarea.getFechaVen()};
+                listPersona.addRow(row);
+            }
+
+        }
+        tabla.setModel(listPersona);
+    }
+
+    public void Agegar() {
+
+        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
+        db.conectar();
+        for (int i = 0; i < Tasks.size(); i++) {
+            for (int j = 0; j < Inicio.size(); j++) {
+                if (Tasks.get(i).getIDusuario()== NewJFrame.Uactual.getID()) {
+                    System.out.println("ELIMINADA " + Tasks.get(i));
+                    Tasks.remove(i);
+                }
+            }
+        }
+        Tasks.addAll(Final);
+        try {
+        //            db.query.execute("DELETE FROM Tareas ");
+            for (Tarea tarea : Tasks) {
+                tarea.getFechaVen();
+                db.query.execute("INSERT INTO Tareass"
+                        + " (Fecha,Id,Nota,Realizada,Lista,Titulo)"
+                        + " VALUES ('" + tarea.getFechaVen()
+                        + "', '" + tarea.getIDusuario()
+                        + "', '" + tarea.getNota()
+                        + "', '" + tarea.getRelizada()
+                        + "', '" + tarea.getLista()
+                        + "', '" + tarea.getTitulo()
+                        + "')");
+                db.commit();
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+    }
+
+    public void Cargar() {
+        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
+        db.conectar();
+        try {
+            db.query.execute("select Fecha,Id,Nota,Realizada,Lista,Titulo from Tareass");
+            ResultSet rs = db.query.getResultSet();
+
+            while (rs.next()) {
+                Tasks.add(new Tarea(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                if (NewJFrame.Uactual.getID() == rs.getInt(2)) {
+                    Inicio.add(new Tarea(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                    Final.add(new Tarea(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                    
+                    for (int i = 0; i < Listas.size(); i++) {
+                        if (!rs.getString(5).equals(Listas.get(i))) {
+                            Listas.add(rs.getString(5));
+                        }
+                    }
+                }
+
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+        HashSet hs = new HashSet();
+
+        hs.addAll(Listas);
+        Listas.clear();
+        Listas.addAll(hs);
+        
+    }
+
+    public Color header = new Color(247, 246, 220);
+    public ArrayList<Tarea> Tasks = new ArrayList();
+    public ArrayList<Tarea> Inicio = new ArrayList();
+    public ArrayList<Tarea> Final = new ArrayList();
+    public ArrayList<String> Listas = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CB_Listas;
+    private javax.swing.JButton CrearListasBoton;
     private javax.swing.JButton CrearTareasBoton;
     private javax.swing.JButton MiDiaTareasBoton;
-    private javax.swing.JButton ModificarTareasBoton;
+    private javax.swing.JLabel NombreLista;
     private javax.swing.JPanel PANELLATERAL;
+    private javax.swing.JButton TareasCompletadasTareasBoton2;
     private javax.swing.JButton TareasCompletasTareasBoton;
-    private javax.swing.JButton TareasImportantesTareasBoton;
-    private javax.swing.JButton TareasMediasTareasBoton;
-    private javax.swing.JButton TareasMundanasTareasBoton;
-    private javax.swing.JButton TareasPendientesTareasBoton;
+    private javax.swing.JButton TareasEliminarTareasBoton1;
+    private javax.swing.JTextField TituloListaTF1;
+    private javax.swing.JTextField TituloTareaTF;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JList jl_personas;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

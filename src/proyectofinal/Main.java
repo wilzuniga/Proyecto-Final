@@ -26,7 +26,7 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         iniciarVA();
-        Nombre_Usuario_Label.setText("Bienvenido " + Uactual.getNombre());
+        Nombre_Usuario_Label.setText("Bienvenido " + NewJFrame.Uactual.getNombre());
     }
 
     /**
@@ -418,6 +418,11 @@ public class Main extends javax.swing.JFrame {
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CloudIcon.png"))); // NOI18N
         jLabel21.setText("C l o u d");
         jLabel21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel21MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 120, 50));
 
         jSeparator2.setBackground(new java.awt.Color(78, 148, 79));
@@ -490,6 +495,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         TablaListar.setGridColor(new java.awt.Color(131, 189, 117));
+        TablaListar.setSelectionBackground(new java.awt.Color(78, 148, 79));
         jScrollPane2.setViewportView(TablaListar);
 
         ListarPane_AdminTools_MW.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 81, 734, 420));
@@ -531,6 +537,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         TABLAELIMINAR.setGridColor(new java.awt.Color(131, 189, 117));
+        TABLAELIMINAR.setSelectionBackground(new java.awt.Color(78, 148, 79));
         jScrollPane1.setViewportView(TABLAELIMINAR);
 
         EliminarPane_AdminTools_MW.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 81, 734, 219));
@@ -791,12 +798,12 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void InfoCuenta_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoCuenta_AdminTools_MWActionPerformed
-        NombreInfo.setText(Uactual.getNombre());
-        UsuarioInfo.setText(Uactual.getUsuario());
-        EdadInfo.setText("" + Uactual.getEdad());
-        CorreoInfo.setText(Uactual.getCorreo());
-        IdInfo.setText("" + Uactual.getID());
-        GeneroInfo.setText(Uactual.getGenero());
+        NombreInfo.setText(NewJFrame.Uactual.getNombre());
+        UsuarioInfo.setText(NewJFrame.Uactual.getUsuario());
+        EdadInfo.setText("" + NewJFrame.Uactual.getEdad());
+        CorreoInfo.setText(NewJFrame.Uactual.getCorreo());
+        IdInfo.setText("" + NewJFrame.Uactual.getID());
+        GeneroInfo.setText(NewJFrame.Uactual.getGenero());
 
         InformacionUsuarioFra.setModal(true);
         InformacionUsuarioFra.pack();
@@ -856,24 +863,45 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_botonuniversalActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int bander = 0;
         if (((String) jComboBox2.getSelectedItem()).toLowerCase().equals("hombre")) {
-            ListUssers.add(new Persona(CrearUsuarioP_TF_Usuario1.getText(),
-                    CrearUsuarioP_TF_Contraseña1.getText(),
-                    Integer.parseInt(CrearUsuarioP_TF_Edad1.getText()),
-                    Integer.parseInt(CrearUsuarioP_TF_Id1.getText()),
-                    CrearUsuarioP_TF_Nombre1.getText(),
-                    CrearUsuarioP_TF_CorreoElec1.getText(),
-                    "Hombre",
-                    "No"));
+            for (Persona ListUsser : ListUssers) {
+                if (ListUsser.getNombre().equals(CrearUsuarioP_TF_Nombre1.getText())) {
+                    JOptionPane.showMessageDialog(rootPane, "El usuario ya existe");
+                } else {
+                    bander = 0;
+                }
+            }
+            if (bander == 0) {
+                ListUssers.add(new Persona(CrearUsuarioP_TF_Usuario1.getText(),
+                        CrearUsuarioP_TF_Contraseña1.getText(),
+                        Integer.parseInt(CrearUsuarioP_TF_Edad1.getText()),
+                        Integer.parseInt(CrearUsuarioP_TF_Id1.getText()),
+                        CrearUsuarioP_TF_Nombre1.getText(),
+                        CrearUsuarioP_TF_CorreoElec1.getText(),
+                        "Hombre",
+                        "No"));
+            }
+
         } else if (((String) jComboBox2.getSelectedItem()).toLowerCase().equals("mujer")) {
-            ListUssers.add(new Persona(CrearUsuarioP_TF_Usuario1.getText(),
-                    CrearUsuarioP_TF_Contraseña1.getText(),
-                    Integer.parseInt(CrearUsuarioP_TF_Edad1.getText()),
-                    Integer.parseInt(CrearUsuarioP_TF_Id1.getText()),
-                    CrearUsuarioP_TF_Nombre1.getText(),
-                    CrearUsuarioP_TF_CorreoElec1.getText(),
-                    "Mujer",
-                    "No"));
+            for (Persona ListUsser : ListUssers) {
+                if (ListUsser.getNombre().equals(CrearUsuarioP_TF_Nombre1.getText())) {
+                    JOptionPane.showMessageDialog(rootPane, "El usuario ya existe");
+                } else {
+                    bander = 0;
+                }
+            }
+            if (bander == 0) {
+                ListUssers.add(new Persona(CrearUsuarioP_TF_Usuario1.getText(),
+                        CrearUsuarioP_TF_Contraseña1.getText(),
+                        Integer.parseInt(CrearUsuarioP_TF_Edad1.getText()),
+                        Integer.parseInt(CrearUsuarioP_TF_Id1.getText()),
+                        CrearUsuarioP_TF_Nombre1.getText(),
+                        CrearUsuarioP_TF_CorreoElec1.getText(),
+                        "Mujer",
+                        "No"));
+            }
+            
         } else {
             JOptionPane.showMessageDialog(this, "Ingrese un genero valido");
         }
@@ -927,6 +955,7 @@ public class Main extends javax.swing.JFrame {
         //TABLAELIMINAR.remove(TABLAELIMINAR.getSelectedRow());
         modeloTABLEELIMINAR();
         modeloTABLEListar();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
@@ -936,6 +965,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_jLabel23MouseClicked
+
+    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Drive().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jLabel21MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1016,7 +1053,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     public void listarDTB() {
-        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\Usuarios1.accdb");
+        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
         db.conectar();
         try {
             db.query.execute("select Usuario,Contraseña,Edad,Nombre,Correo,Genero,Administrador, Id from Usuarios");
@@ -1041,7 +1078,7 @@ public class Main extends javax.swing.JFrame {
 
     public void Agegar() {
 
-        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\Usuarios1.accdb");
+        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
         db.conectar();
 
         try {
@@ -1068,7 +1105,6 @@ public class Main extends javax.swing.JFrame {
     }
 
     public static ArrayList<Persona> ListUssers = new ArrayList();
-    public static Persona Uactual;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CB_Usuario_Modificar_AT;
     private javax.swing.JLabel CorreoInfo;

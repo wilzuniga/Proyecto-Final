@@ -172,34 +172,40 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_Botonl_Ingresar_LoginMouseEntered
 
     private void Botonl_Ingresar_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Botonl_Ingresar_LoginActionPerformed
-                    //System.out.println(Main.ListUssers.size());
+        //System.out.println(Main.ListUssers.size());
+        try {
+            boolean bandera = true;
+            int i = 0;
+            while (bandera) {
+                if (TF_Usuario_Login.getText().equals(Main.ListUssers.get(i).getUsuario()) && TF_Contraseña_Login.getText().equals(Main.ListUssers.get(i).getContraseña()) && Main.ListUssers.get(i).getAdministrador().equals("Si")) {
+                    Uactual = Main.ListUssers.get(i);
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            new Main().setVisible(true);
 
-        for (int i = 0; i < Main.ListUssers.size(); i++) {
-            if (TF_Usuario_Login.getText().equals(Main.ListUssers.get(i).getUsuario()) && TF_Contraseña_Login.getText().equals(Main.ListUssers.get(i).getContraseña()) && Main.ListUssers.get(i).getAdministrador().equals("Si")) {
-                Main.Uactual = Main.ListUssers.get(i);
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        new Main().setVisible(true);
+                        }
+                    });
+                    bandera = false;
+                    dispose();
+                } else if (TF_Usuario_Login.getText().equals(Main.ListUssers.get(i).getUsuario()) && TF_Contraseña_Login.getText().equals(Main.ListUssers.get(i).getContraseña())) {
+                    Uactual= Main.ListUssers.get(i);
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            new UsserDis().setVisible(true);
 
+                        }
+                    });
+                    bandera = false;
+                    dispose();
+                } else {
+                    if (i == Main.ListUssers.size() - 1) {
+                        JOptionPane.showMessageDialog(null, "Ingrese un usuario y contraseña correctos");
                     }
-                });
-                dispose();
-            } else if (TF_Usuario_Login.getText().equals(Main.ListUssers.get(i).getUsuario()) && TF_Contraseña_Login.getText().equals(Main.ListUssers.get(i).getContraseña())) {
-               // UsserDis.Uactual = Main.ListUssers.get(i);
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        new UsserDis().setVisible(true);
+                    i++;
 
-                    }
-                });
-                dispose();
-            } else {
-                if (i == Main.ListUssers.size()-1) {
-                    JOptionPane.showMessageDialog(null, "Ingrese un usuario y contraseña correctos");
                 }
-                
             }
-
+        } catch (Exception e) {
         }
 
     }//GEN-LAST:event_Botonl_Ingresar_LoginActionPerformed
@@ -245,29 +251,23 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     public void Cargar() {
-        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\Usuarios1.accdb");
+        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
         db.conectar();
         try {
             db.query.execute("select Usuario,Contraseña,Edad,Nombre,Correo,Genero,Administrador, Id from Usuarios");
             ResultSet rs = db.query.getResultSet();
 
             while (rs.next()) {
-
                 Main.ListUssers.add(new Persona(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(8), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
-//                System.out.println(rs.getString(1)
-//                        + "--" + rs.getString(2) + "--"
-//                        + rs.getInt(3) + "--"
-//                        + rs.getString(4) + "--"
-//                        + rs.getString(5) + "--"
-//                        + rs.getString(6) + "--"
-//                        + rs.getString(7) + "--"
-//                        + rs.getInt(8));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         db.desconectar();
     }
+    
+    public static Persona Uactual;
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Botonl_Ingresar_Login;
     private javax.swing.JLabel Label_Contraseña_Login;
