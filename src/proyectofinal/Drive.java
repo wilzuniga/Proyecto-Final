@@ -33,7 +33,7 @@ public class Drive extends javax.swing.JFrame {
     public Drive() {
         initComponents();
         setLocationRelativeTo(this);
-        
+
     }
 
     /**
@@ -946,8 +946,29 @@ public class Drive extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
-        tabla.getValueAt(tabla.getSelectedRow(), 0);
-        
+        //tabla.getValueAt(tabla.getSelectedRow(), 0);
+
+        DefaultListModel modelo
+                = (DefaultListModel) jl_personas1.getModel();
+        //modelo.clear();
+        if (modelo.getSize() <= 0) {
+            System.out.println(modelo.getSize());
+            modelo.addElement(tabla.getValueAt(tabla.getSelectedRow(), 0));
+            //System.out.println("no");
+        } else {
+            int coso = 8;
+            for (int i = 0; i < modelo.getSize(); i++) {
+                if (modelo.get(i) == tabla.getValueAt(tabla.getSelectedRow(), 0)) {
+                    coso = 0;
+                } else {
+                }
+            }
+            if (coso != 0) {
+                modelo.addElement(tabla.getValueAt(tabla.getSelectedRow(), 0));
+
+            }
+        }
+        jl_personas1.setModel(modelo);
     }//GEN-LAST:event_tablaMouseClicked
 
     /**

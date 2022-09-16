@@ -45,7 +45,7 @@ public class ToDo extends javax.swing.JFrame {
         //System.out.println(Listas);
         //System.out.println(NewJFrame.Uactual.getID());
         setLocationRelativeTo(this);
-        
+
 //        System.out.println("INICIO" + Inicio);
 //        System.out.println("");
     }
@@ -754,15 +754,15 @@ public class ToDo extends javax.swing.JFrame {
         db.conectar();
         for (int i = 0; i < Tasks.size(); i++) {
             for (int j = 0; j < Inicio.size(); j++) {
-                if (Tasks.get(i).getIDusuario()== NewJFrame.Uactual.getID()) {
-                    System.out.println("ELIMINADA " + Tasks.get(i));
+                if (Tasks.get(i).getIDusuario() == NewJFrame.Uactual.getID()) {
+                    //System.out.println("ELIMINADA " + Tasks.get(i));
                     Tasks.remove(i);
                 }
             }
         }
         Tasks.addAll(Final);
         try {
-        //            db.query.execute("DELETE FROM Tareas ");
+            db.query.execute("DELETE FROM Tareass ");
             for (Tarea tarea : Tasks) {
                 tarea.getFechaVen();
                 db.query.execute("INSERT INTO Tareass"
@@ -795,7 +795,7 @@ public class ToDo extends javax.swing.JFrame {
                 if (NewJFrame.Uactual.getID() == rs.getInt(2)) {
                     Inicio.add(new Tarea(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
                     Final.add(new Tarea(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
-                    
+
                     for (int i = 0; i < Listas.size(); i++) {
                         if (!rs.getString(5).equals(Listas.get(i))) {
                             Listas.add(rs.getString(5));
@@ -813,7 +813,7 @@ public class ToDo extends javax.swing.JFrame {
         hs.addAll(Listas);
         Listas.clear();
         Listas.addAll(hs);
-        
+
     }
 
     public Color header = new Color(247, 246, 220);
