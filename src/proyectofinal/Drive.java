@@ -50,7 +50,8 @@ public class Drive extends javax.swing.JFrame {
             setLocationRelativeTo(this);
             Cargar();
             modeloTABLEListar();
-
+            ModelolistNombre();
+            ModelolistNombreELECT();
         } catch (IOException ex) {
             Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -915,20 +916,16 @@ public class Drive extends javax.swing.JFrame {
                     if (grupo == jl_Grupos3.getSelectedValue()) {
                         archivo.setIdes(((Grupo) jl_Grupos3.getSelectedValue()).getIntegrantes());
                         System.out.println(archivo.getIdes());
-                    }
-                }
+                        //((Grupo) jl_Grupos3.getSelectedValue()).getIntegrantes()
 
-                for (int i = 0; i < GruposI.size(); i++) {
-                    if (GruposI.get(i) == jl_Grupos3.getSelectedValue()) {
-                        for (int j = 0; j < GruposI.get(i).getIntegrantes().size(); j++) {
+                        for (Integer integrante : ((Grupo) jl_Grupos3.getSelectedValue()).getIntegrantes()) {
                             try {
-                                agggr(archivo);
+                                Agegarcomp(integrante,archivo);
                             } catch (IOException ex) {
                                 Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         }
                     }
-
                 }
 
             }
@@ -1141,8 +1138,11 @@ public class Drive extends javax.swing.JFrame {
 
             ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(byteArray);
+            Paquete ppp = new Paquete();
+            ppp.setArchivosI(ArchivosI);
+            ppp.setGruposI(GruposI);
 
-            oos.writeObject(ArchivosI);
+            oos.writeObject(ppp);
 
             PreparedStatement p = db.query.getConnection().
                     prepareStatement("update Documentos set Archivo=?"
@@ -1157,30 +1157,32 @@ public class Drive extends javax.swing.JFrame {
         }
         db.desconectar();
     }
-    
-    public void agggr(Archivo arch) throws IOException {
-        ArrayList<Archivo> guardadito = Cargaragg(arch.getIdes().get(0));
-        guardadito.add(arch);
+
+    public void Agegarcomp(int usn, Archivo arc) throws IOException {
+        
+        Paquete coso = Cargarcomp(usn);
+        //System.out.println(arc);
+        coso.getArchivosI().add(arc);
         Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
         db.conectar();
 
         try {
-            db.query.execute("DELETE FROM Documentos" + " where Id_Usuario=" + arch.getIdes().get(0));
+            db.query.execute("DELETE FROM Documentos" + " where Id_Usuario=" + usn);
 
             db.query.execute("INSERT INTO Documentos"
                     + " (Id_Usuario)"
-                    + " VALUES ('" + arch.getIdes().get(0)
+                    + " VALUES ('" + usn
                     + "')");
             db.commit();
 
             ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(byteArray);
 
-            oos.writeObject(guardadito);
+            oos.writeObject(coso);
 
             PreparedStatement p = db.query.getConnection().
                     prepareStatement("update Documentos set Archivo=?"
-                            + "where Id_Usuario=" + arch.getIdes().get(0));
+                            + "where Id_Usuario=" + usn);
 
             p.setBytes(1, byteArray.toByteArray());
             p.execute();
@@ -1191,35 +1193,8 @@ public class Drive extends javax.swing.JFrame {
         }
         db.desconectar();
     }
-    
-        public ArrayList<Archivo>  Cargaragg(int indiceusser) throws IOException {
-            ArrayList<Archivo> guardadito = new ArrayList();
-        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
-        db.conectar();
-        try {
-            db.query.execute("select Archivo from Documentos" + " where Id_Usuario=" + indiceusser);
-            ResultSet rs = db.query.getResultSet();
-            Blob blob = null;
 
-            if (rs.next()) {
-                blob = rs.getBlob("Archivo");
-                ObjectInputStream ois = new ObjectInputStream(blob.getBinaryStream());
-                ArrayList<Archivo> coso = (ArrayList<Archivo>) ois.readObject();
-                for (Archivo archivo : coso) {
-                    guardadito.add(archivo);
-                }
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        db.desconectar();
-        return guardadito;
-    }
-
-    public void  Cargar() throws IOException {
+    public void Cargar() throws IOException {
         Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
         db.conectar();
         try {
@@ -1230,11 +1205,9 @@ public class Drive extends javax.swing.JFrame {
             if (rs.next()) {
                 blob = rs.getBlob("Archivo");
                 ObjectInputStream ois = new ObjectInputStream(blob.getBinaryStream());
-                ArrayList<Archivo> coso = (ArrayList<Archivo>) ois.readObject();
-                for (Archivo archivo : coso) {
-                    ArchivosI.add(archivo);
-                    
-                }
+                Paquete coso = ((Paquete) ois.readObject());
+                GruposI.addAll(coso.getGruposI());
+                ArchivosI.addAll(coso.getArchivosI());
             }
 
         } catch (SQLException ex) {
@@ -1243,8 +1216,31 @@ public class Drive extends javax.swing.JFrame {
             Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
         }
         db.desconectar();
+    }
 
-        
+    public Paquete Cargarcomp(int id) throws IOException {
+        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
+        db.conectar();
+        Paquete coso = new Paquete();
+        try {
+            db.query.execute("select Archivo from Documentos" + " where Id_Usuario=" + id);
+            ResultSet rs = db.query.getResultSet();
+            Blob blob = null;
+
+            if (rs.next()) {
+                blob = rs.getBlob("Archivo");
+                ObjectInputStream ois = new ObjectInputStream(blob.getBinaryStream());
+                coso = ((Paquete) ois.readObject());
+                return coso;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        db.desconectar();
+        return coso;
     }
 
     private ArrayList<Grupo> GruposI = new ArrayList();
