@@ -6,13 +6,15 @@
 package proyectofinal;
 
 import Clases.Persona;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author wilme
  */
-public class Grupo {
+public class Grupo implements Serializable{
+    private static final long SerialVersionUID = 777L;
     public ArrayList<Integer> integrantes = new ArrayList();
     public String Nombre;
 

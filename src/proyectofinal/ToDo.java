@@ -59,6 +59,15 @@ public class ToDo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        NuevoG = new javax.swing.JDialog();
+        jPanel4 = new javax.swing.JPanel();
+        NombreLista1 = new javax.swing.JLabel();
+        HEADERCOSO3 = new javax.swing.JLabel();
+        Agregarintegrante = new javax.swing.JButton();
+        Nombre_Usuario_Label1 = new javax.swing.JLabel();
+        CB_Usuario_Modificar_AT = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         PANELLATERAL = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
@@ -95,6 +104,85 @@ public class ToDo extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         TituloListaTF1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+
+        jMenuItem1.setText("Compartir con un usuario");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
+
+        jPanel4.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista1.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista1.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista1.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel4.add(NombreLista1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO3.setFont(new java.awt.Font("Roboto Medium", 1, 36)); // NOI18N
+        HEADERCOSO3.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO3.setText("Asignar Tarea");
+        HEADERCOSO3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel4.add(HEADERCOSO3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante.setText("          Agregar");
+        Agregarintegrante.setBorder(null);
+        Agregarintegrante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarintegranteActionPerformed(evt);
+            }
+        });
+        jPanel4.add(Agregarintegrante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 120, 40));
+
+        Nombre_Usuario_Label1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Nombre_Usuario_Label1.setForeground(new java.awt.Color(78, 148, 79));
+        Nombre_Usuario_Label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Nombre_Usuario_Label1.setText("ingrese un usuario");
+        Nombre_Usuario_Label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Nombre_Usuario_Label1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel4.add(Nombre_Usuario_Label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 130, 20));
+
+        CB_Usuario_Modificar_AT.setBackground(new java.awt.Color(180, 225, 151));
+        CB_Usuario_Modificar_AT.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_Usuario_Modificar_AT.setForeground(new java.awt.Color(78, 148, 79));
+        CB_Usuario_Modificar_AT.setBorder(null);
+        CB_Usuario_Modificar_AT.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_Usuario_Modificar_ATItemStateChanged(evt);
+            }
+        });
+        CB_Usuario_Modificar_AT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_Usuario_Modificar_ATActionPerformed(evt);
+            }
+        });
+        jPanel4.add(CB_Usuario_Modificar_AT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, 30));
+
+        javax.swing.GroupLayout NuevoGLayout = new javax.swing.GroupLayout(NuevoG.getContentPane());
+        NuevoG.getContentPane().setLayout(NuevoGLayout);
+        NuevoGLayout.setHorizontalGroup(
+            NuevoGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 344, Short.MAX_VALUE)
+            .addGroup(NuevoGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(NuevoGLayout.createSequentialGroup()
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        NuevoGLayout.setVerticalGroup(
+            NuevoGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+            .addGroup(NuevoGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(233, 239, 192));
@@ -394,6 +482,8 @@ public class ToDo extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tabla.setAutoscrolls(false);
+        tabla.setComponentPopupMenu(jPopupMenu1);
         tabla.setSelectionBackground(new java.awt.Color(78, 148, 79));
         jScrollPane1.setViewportView(tabla);
 
@@ -630,6 +720,48 @@ public class ToDo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_CrearTareasBotonActionPerformed
 
+    private void AgregarintegranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarintegranteActionPerformed
+        Integer id = Main.ListUssers.get(CB_Usuario_Modificar_AT.getSelectedIndex()).getID();
+        ArrayList<Tarea> coso = new ArrayList();
+        
+        System.out.println(Final.size());
+        for (Tarea tarea : Final) {
+            if (tarea.getTitulo().equals(tabla.getValueAt(tabla.getSelectedRow(), 0))) {
+                System.out.println("jjvskjn");
+                coso.add(new Tarea(tarea.getFechaVen()
+                        , id, tarea.getNota()
+                        , "No"
+                        , tarea.getLista()
+                        , tarea.getTitulo()));
+                //Tarea n = new Tarea(FechaVen, 0, nota, realizada, lista, Titulo)
+            }
+        }
+        Final.addAll(coso);
+        //for (int i = 0; i < Final.size(); i++) {
+            //System.out.println("111");
+//            if (Final.get(i).getTitulo().equals(tabla.getValueAt(tabla.getSelectedRow(), 0))) {
+//                System.out.println("jjvskjn");
+//                Final.add(new Tarea(Final.get(i).getFechaVen(), id, Final.get(i).getNota(), "No", Final.get(i).getLista(), Final.get(i).getTitulo()));
+//                //Tarea n = new Tarea(FechaVen, 0, nota, realizada, lista, Titulo)
+//            }
+        //}
+    }//GEN-LAST:event_AgregarintegranteActionPerformed
+
+    private void CB_Usuario_Modificar_ATItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_Usuario_Modificar_ATItemStateChanged
+
+    }//GEN-LAST:event_CB_Usuario_Modificar_ATItemStateChanged
+
+    private void CB_Usuario_Modificar_ATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Usuario_Modificar_ATActionPerformed
+
+    }//GEN-LAST:event_CB_Usuario_Modificar_ATActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        modelocomboboxussers();
+        NuevoG.setModal(true);
+        NuevoG.pack();
+        NuevoG.setLocationRelativeTo(this);
+        NuevoG.setVisible(true);    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -706,7 +838,7 @@ public class ToDo extends javax.swing.JFrame {
         listPersona.setRowCount(0);
 
         for (Tarea tarea : Final) {
-            if (tarea.getLista().equals(t) && !tarea.getRelizada().equals("Si")) {
+            if (tarea.getLista().equals(t) && !tarea.getRelizada().equals("Si")  && tarea.getIDusuario()==NewJFrame.Uactual.getID()) {
                 Object[] row = {tarea.getTitulo(), tarea.getNota(), tarea.getFechaVen()};
                 listPersona.addRow(row);
             }
@@ -723,7 +855,7 @@ public class ToDo extends javax.swing.JFrame {
         for (Tarea tarea : Final) {
 //            System.out.println(fech.format(fechahoy) + "-----" + tarea.getFechaVen());
 //            System.out.println((tarea.getFechaVen().equals(fech.format(fechahoy))));
-            if (tarea.getFechaVen().equals(fech.format(fechahoy)) && tarea.getRelizada().equals("No")) {
+            if (tarea.getFechaVen().equals(fech.format(fechahoy)) && tarea.getRelizada().equals("No") && tarea.getIDusuario()==NewJFrame.Uactual.getID()) {
                 Object[] row = {tarea.getTitulo(), tarea.getNota(), tarea.getFechaVen()};
                 listPersona.addRow(row);
             }
@@ -739,7 +871,7 @@ public class ToDo extends javax.swing.JFrame {
         for (Tarea tarea : Final) {
 //            System.out.println(fech.format(fechahoy) + "-----" + tarea.getFechaVen());
 //            System.out.println((tarea.getFechaVen().equals(fech.format(fechahoy))));
-            if (tarea.getRelizada().equals("Si")) {
+            if (tarea.getRelizada().equals("Si") && tarea.getIDusuario()==NewJFrame.Uactual.getID()) {
                 Object[] row = {tarea.getTitulo(), tarea.getNota(), tarea.getFechaVen()};
                 listPersona.addRow(row);
             }
@@ -815,6 +947,15 @@ public class ToDo extends javax.swing.JFrame {
         Listas.addAll(hs);
 
     }
+    
+    public void modelocomboboxussers() {
+        CB_Usuario_Modificar_AT.getModel();
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        for (Persona persona : Main.ListUssers) {
+            m.addElement(persona);
+        }
+        CB_Usuario_Modificar_AT.setModel(m);
+    }
 
     public Color header = new Color(247, 246, 220);
     public ArrayList<Tarea> Tasks = new ArrayList();
@@ -822,11 +963,17 @@ public class ToDo extends javax.swing.JFrame {
     public ArrayList<Tarea> Final = new ArrayList();
     public ArrayList<String> Listas = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Agregarintegrante;
     private javax.swing.JComboBox<String> CB_Listas;
+    private javax.swing.JComboBox<String> CB_Usuario_Modificar_AT;
     private javax.swing.JButton CrearListasBoton;
     private javax.swing.JButton CrearTareasBoton;
+    private javax.swing.JLabel HEADERCOSO3;
     private javax.swing.JButton MiDiaTareasBoton;
     private javax.swing.JLabel NombreLista;
+    private javax.swing.JLabel NombreLista1;
+    private javax.swing.JLabel Nombre_Usuario_Label1;
+    private javax.swing.JDialog NuevoG;
     private javax.swing.JPanel PANELLATERAL;
     private javax.swing.JButton TareasCompletadasTareasBoton2;
     private javax.swing.JButton TareasCompletasTareasBoton;
@@ -843,13 +990,16 @@ public class ToDo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

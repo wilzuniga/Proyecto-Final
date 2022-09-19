@@ -6,6 +6,7 @@
 package proyectofinal;
 
 import java.io.File;
+import java.io.Serializable;
 import java.net.URI;
 import java.util.ArrayList;
 
@@ -13,11 +14,12 @@ import java.util.ArrayList;
  *
  * @author wilme
  */
-public class Archivo {
-public String Fecha;
-public File Arch;
-public ArrayList<Integer> Ides = new ArrayList();
-public String Papelera = "No";
+public class Archivo implements Serializable {
+    private static final long SerialVersionUID = 777L;
+    public String Fecha;
+    public File Arch;
+    public ArrayList<Integer> Ides = new ArrayList();
+    public String Papelera = "No";
 
     public Archivo(String Fecha, File Arch, int Ide) {
         this.Fecha = Fecha;
@@ -51,7 +53,7 @@ public String Papelera = "No";
     public void setIdes(ArrayList<Integer> Ides) {
         this.Ides = Ides;
     }
-    
+
     public void AddIdes(int Ide) {
         this.Ides.add(Ide);
     }
@@ -63,17 +65,10 @@ public String Papelera = "No";
     public void setPapelera(String Papelera) {
         this.Papelera = Papelera;
     }
-    
-    
 
     @Override
     public String toString() {
         return "Archivo{" + "Fecha=" + Fecha + ", Arch=" + Arch + ", Ides=" + Ides + '}';
     }
-    
-    
 
-
-
-    
 }

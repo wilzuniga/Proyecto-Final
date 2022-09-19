@@ -7,10 +7,16 @@ package proyectofinal;
 
 import Clases.Persona;
 import Clases.Tarea;
+import DataBase.Dba;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,6 +30,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import static proyectofinal.Main.ListUssers;
+import java.sql.BatchUpdateException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Drive extends javax.swing.JFrame {
 
@@ -31,9 +45,15 @@ public class Drive extends javax.swing.JFrame {
      * Creates new form Drive
      */
     public Drive() {
-        initComponents();
-        setLocationRelativeTo(this);
+        try {
+            initComponents();
+            setLocationRelativeTo(this);
+            Cargar();
+            modeloTABLEListar();
 
+        } catch (IOException ex) {
+            Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -89,8 +109,6 @@ public class Drive extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        CrearArchivoBoton1 = new javax.swing.JButton();
-        jPanel10 = new javax.swing.JPanel();
         AgregarArchivoBoton1 = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         TareasCompletasTareasBoton1 = new javax.swing.JButton();
@@ -578,35 +596,6 @@ public class Drive extends javax.swing.JFrame {
         jSeparator4.setForeground(new java.awt.Color(78, 148, 79));
         PANELLATERAL1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 220, 20));
 
-        CrearArchivoBoton1.setBackground(new java.awt.Color(78, 148, 79));
-        CrearArchivoBoton1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        CrearArchivoBoton1.setForeground(new java.awt.Color(233, 239, 192));
-        CrearArchivoBoton1.setText("Crear Archivo");
-        CrearArchivoBoton1.setBorder(null);
-        CrearArchivoBoton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        CrearArchivoBoton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        CrearArchivoBoton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CrearArchivoBoton1ActionPerformed(evt);
-            }
-        });
-        PANELLATERAL1.add(CrearArchivoBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 190, 31));
-
-        jPanel10.setBackground(new java.awt.Color(78, 148, 79));
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        PANELLATERAL1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 100, 31));
-
         AgregarArchivoBoton1.setBackground(new java.awt.Color(78, 148, 79));
         AgregarArchivoBoton1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         AgregarArchivoBoton1.setForeground(new java.awt.Color(233, 239, 192));
@@ -619,7 +608,7 @@ public class Drive extends javax.swing.JFrame {
                 AgregarArchivoBoton1ActionPerformed(evt);
             }
         });
-        PANELLATERAL1.add(AgregarArchivoBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 190, 31));
+        PANELLATERAL1.add(AgregarArchivoBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 190, 31));
 
         jPanel11.setBackground(new java.awt.Color(78, 148, 79));
 
@@ -634,7 +623,7 @@ public class Drive extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        PANELLATERAL1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 100, 31));
+        PANELLATERAL1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 100, 31));
 
         TareasCompletasTareasBoton1.setBackground(new java.awt.Color(78, 148, 79));
         TareasCompletasTareasBoton1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
@@ -708,7 +697,7 @@ public class Drive extends javax.swing.JFrame {
                 GruposBoton2ActionPerformed(evt);
             }
         });
-        PANELLATERAL1.add(GruposBoton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 190, 31));
+        PANELLATERAL1.add(GruposBoton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, 31));
 
         jPanel13.setBackground(new java.awt.Color(78, 148, 79));
 
@@ -723,7 +712,7 @@ public class Drive extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        PANELLATERAL1.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 100, 31));
+        PANELLATERAL1.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 100, 31));
 
         GruposBoton3.setBackground(new java.awt.Color(78, 148, 79));
         GruposBoton3.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
@@ -737,7 +726,7 @@ public class Drive extends javax.swing.JFrame {
                 GruposBoton3ActionPerformed(evt);
             }
         });
-        PANELLATERAL1.add(GruposBoton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 190, 31));
+        PANELLATERAL1.add(GruposBoton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 190, 31));
 
         jPanel14.setBackground(new java.awt.Color(78, 148, 79));
 
@@ -752,7 +741,7 @@ public class Drive extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        PANELLATERAL1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 100, 31));
+        PANELLATERAL1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 100, 31));
 
         jPanel1.add(PANELLATERAL1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 610));
 
@@ -775,10 +764,6 @@ public class Drive extends javax.swing.JFrame {
     private void CrearCarpetaBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearCarpetaBoton1ActionPerformed
 
     }//GEN-LAST:event_CrearCarpetaBoton1ActionPerformed
-
-    private void CrearArchivoBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearArchivoBoton1ActionPerformed
-
-    }//GEN-LAST:event_CrearArchivoBoton1ActionPerformed
 
     private void AgregarArchivoBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarArchivoBoton1ActionPerformed
         JFileChooser jfc = new JFileChooser();//Instqncia fc
@@ -853,6 +838,12 @@ public class Drive extends javax.swing.JFrame {
     private void BOTONUNIVERSSALMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BOTONUNIVERSSALMouseClicked
         HEADERCOSO.setText("Mi Unidad");
         modeloTABLEListar();
+        try {
+            Agegar();
+        } catch (IOException ex) {
+            Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("nooooooo");
+        }
     }//GEN-LAST:event_BOTONUNIVERSSALMouseClicked
 
     private void jl_personasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_personasMouseClicked
@@ -926,6 +917,20 @@ public class Drive extends javax.swing.JFrame {
                         System.out.println(archivo.getIdes());
                     }
                 }
+
+                for (int i = 0; i < GruposI.size(); i++) {
+                    if (GruposI.get(i) == jl_Grupos3.getSelectedValue()) {
+                        for (int j = 0; j < GruposI.get(i).getIntegrantes().size(); j++) {
+                            try {
+                                agggr(archivo);
+                            } catch (IOException ex) {
+                                Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    }
+
+                }
+
             }
 
         }
@@ -1119,15 +1124,141 @@ public class Drive extends javax.swing.JFrame {
         jl_Grupos3.setModel(modelo);
 //        modelocombobox();
     }
+
+    public void Agegar() throws IOException {
+
+        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
+        db.conectar();
+
+        try {
+            db.query.execute("DELETE FROM Documentos" + " where Id_Usuario=" + NewJFrame.Uactual.getID());
+
+            db.query.execute("INSERT INTO Documentos"
+                    + " (Id_Usuario)"
+                    + " VALUES ('" + NewJFrame.Uactual.getID()
+                    + "')");
+            db.commit();
+
+            ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(byteArray);
+
+            oos.writeObject(ArchivosI);
+
+            PreparedStatement p = db.query.getConnection().
+                    prepareStatement("update Documentos set Archivo=?"
+                            + "where Id_Usuario=" + NewJFrame.Uactual.getID());
+
+            p.setBytes(1, byteArray.toByteArray());
+            p.execute();
+            db.commit();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+    }
+    
+    public void agggr(Archivo arch) throws IOException {
+        ArrayList<Archivo> guardadito = Cargaragg(arch.getIdes().get(0));
+        guardadito.add(arch);
+        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
+        db.conectar();
+
+        try {
+            db.query.execute("DELETE FROM Documentos" + " where Id_Usuario=" + arch.getIdes().get(0));
+
+            db.query.execute("INSERT INTO Documentos"
+                    + " (Id_Usuario)"
+                    + " VALUES ('" + arch.getIdes().get(0)
+                    + "')");
+            db.commit();
+
+            ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(byteArray);
+
+            oos.writeObject(guardadito);
+
+            PreparedStatement p = db.query.getConnection().
+                    prepareStatement("update Documentos set Archivo=?"
+                            + "where Id_Usuario=" + arch.getIdes().get(0));
+
+            p.setBytes(1, byteArray.toByteArray());
+            p.execute();
+            db.commit();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+    }
+    
+        public ArrayList<Archivo>  Cargaragg(int indiceusser) throws IOException {
+            ArrayList<Archivo> guardadito = new ArrayList();
+        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
+        db.conectar();
+        try {
+            db.query.execute("select Archivo from Documentos" + " where Id_Usuario=" + indiceusser);
+            ResultSet rs = db.query.getResultSet();
+            Blob blob = null;
+
+            if (rs.next()) {
+                blob = rs.getBlob("Archivo");
+                ObjectInputStream ois = new ObjectInputStream(blob.getBinaryStream());
+                ArrayList<Archivo> coso = (ArrayList<Archivo>) ois.readObject();
+                for (Archivo archivo : coso) {
+                    guardadito.add(archivo);
+                }
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        db.desconectar();
+        return guardadito;
+    }
+
+    public void  Cargar() throws IOException {
+        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
+        db.conectar();
+        try {
+            db.query.execute("select Archivo from Documentos" + " where Id_Usuario=" + NewJFrame.Uactual.getID());
+            ResultSet rs = db.query.getResultSet();
+            Blob blob = null;
+
+            if (rs.next()) {
+                blob = rs.getBlob("Archivo");
+                ObjectInputStream ois = new ObjectInputStream(blob.getBinaryStream());
+                ArrayList<Archivo> coso = (ArrayList<Archivo>) ois.readObject();
+                for (Archivo archivo : coso) {
+                    ArchivosI.add(archivo);
+                    
+                }
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        db.desconectar();
+
+        
+    }
+
     private ArrayList<Grupo> GruposI = new ArrayList();
+
     private ArrayList<Integer> IntegrantesI = new ArrayList();
+
     private ArrayList<Archivo> ArchivosI = new ArrayList();
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarArchivoBoton1;
     private javax.swing.JButton Agregarintegrante;
     private javax.swing.JLabel BOTONUNIVERSSAL;
     private javax.swing.JComboBox<String> CB_Usuario_Modificar_AT;
-    private javax.swing.JButton CrearArchivoBoton1;
     private javax.swing.JButton GruposBoton2;
     private javax.swing.JButton GruposBoton3;
     private javax.swing.JDialog Grupps;
@@ -1156,7 +1287,6 @@ public class Drive extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
