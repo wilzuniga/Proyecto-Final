@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.OverlayLayout;
 import Clases.Persona;
+import Correo.CorreoCloudy;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import DataBase.Dba;
@@ -259,6 +260,11 @@ public class UsserDis extends javax.swing.JFrame {
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MailIcon.png"))); // NOI18N
         jLabel22.setText("M a i l");
         jLabel22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel22MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 130, 50));
 
         jLabel23.setBackground(new java.awt.Color(78, 148, 79));
@@ -334,6 +340,10 @@ public class UsserDis extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_jLabel21MouseClicked
+
+    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
+        new CorreoCloudy(NewJFrame.Uactual.getID()).setVisible(true);
+    }//GEN-LAST:event_jLabel22MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

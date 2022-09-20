@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class Paquete implements Serializable {
     private static final long SerialVersionUID = 777L;
+    
     private ArrayList<Grupo> GruposI = new ArrayList();
     private ArrayList<Archivo> ArchivosI = new ArrayList();
 

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.OverlayLayout;
 import Clases.Persona;
+import Correo.CorreoCloudy;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import DataBase.Dba;
@@ -52,6 +53,13 @@ public class Main extends javax.swing.JFrame {
         CorreoInfo = new javax.swing.JLabel();
         GeneroInfo = new javax.swing.JLabel();
         IdInfo = new javax.swing.JLabel();
+        NuevoG = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        NombreLista1 = new javax.swing.JLabel();
+        HEADERCOSO3 = new javax.swing.JLabel();
+        Agregarintegrante = new javax.swing.JButton();
+        Nombre_Usuario_Label1 = new javax.swing.JLabel();
+        CB_Usuario_Modificar_AT1 = new javax.swing.JComboBox<>();
         PanelAdministrador = new javax.swing.JPanel();
         Panel_Lateral = new javax.swing.JPanel();
         FondoCloudy = new javax.swing.JLabel();
@@ -74,6 +82,8 @@ public class Main extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
+        InfoCuenta_AdminTools_MW1 = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
         Crud_Usuarios_AP = new javax.swing.JPanel();
         ListarPane_AdminTools_MW = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -239,6 +249,79 @@ public class Main extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanel6.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista1.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista1.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista1.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel6.add(NombreLista1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO3.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO3.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO3.setText("Cambiar a Usuario");
+        HEADERCOSO3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(HEADERCOSO3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante.setText("        Cambiar");
+        Agregarintegrante.setBorder(null);
+        Agregarintegrante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarintegranteActionPerformed(evt);
+            }
+        });
+        jPanel6.add(Agregarintegrante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 120, 40));
+
+        Nombre_Usuario_Label1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Nombre_Usuario_Label1.setForeground(new java.awt.Color(78, 148, 79));
+        Nombre_Usuario_Label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Nombre_Usuario_Label1.setText("ingrese un usuario");
+        Nombre_Usuario_Label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Nombre_Usuario_Label1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(Nombre_Usuario_Label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 130, 20));
+
+        CB_Usuario_Modificar_AT1.setBackground(new java.awt.Color(180, 225, 151));
+        CB_Usuario_Modificar_AT1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_Usuario_Modificar_AT1.setForeground(new java.awt.Color(78, 148, 79));
+        CB_Usuario_Modificar_AT1.setBorder(null);
+        CB_Usuario_Modificar_AT1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_Usuario_Modificar_AT1ItemStateChanged(evt);
+            }
+        });
+        CB_Usuario_Modificar_AT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_Usuario_Modificar_AT1ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(CB_Usuario_Modificar_AT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, 30));
+
+        javax.swing.GroupLayout NuevoGLayout = new javax.swing.GroupLayout(NuevoG.getContentPane());
+        NuevoG.getContentPane().setLayout(NuevoGLayout);
+        NuevoGLayout.setHorizontalGroup(
+            NuevoGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 344, Short.MAX_VALUE)
+            .addGroup(NuevoGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(NuevoGLayout.createSequentialGroup()
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        NuevoGLayout.setVerticalGroup(
+            NuevoGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 218, Short.MAX_VALUE)
+            .addGroup(NuevoGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(NuevoGLayout.createSequentialGroup()
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(250, 50));
         setResizable(false);
@@ -257,14 +340,14 @@ public class Main extends javax.swing.JFrame {
         InfoCuenta_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
         InfoCuenta_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         InfoCuenta_AdminTools_MW.setForeground(new java.awt.Color(233, 239, 192));
-        InfoCuenta_AdminTools_MW.setText("Informacion de Cuenta");
+        InfoCuenta_AdminTools_MW.setText("Cambiar llave de usuario");
         InfoCuenta_AdminTools_MW.setBorder(null);
         InfoCuenta_AdminTools_MW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InfoCuenta_AdminTools_MWActionPerformed(evt);
             }
         });
-        jPanel4.add(InfoCuenta_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 230, 30));
+        jPanel4.add(InfoCuenta_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 210, 30));
 
         Nombre_Usuario_Label.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         Nombre_Usuario_Label.setForeground(new java.awt.Color(78, 148, 79));
@@ -282,7 +365,7 @@ public class Main extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(78, 148, 79));
         jSeparator1.setForeground(new java.awt.Color(78, 148, 79));
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 211, 10));
+        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 211, 10));
 
         EliminarUsuario_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
         EliminarUsuario_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
@@ -423,7 +506,7 @@ public class Main extends javax.swing.JFrame {
                 jLabel21MouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 120, 50));
+        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 120, 50));
 
         jSeparator2.setBackground(new java.awt.Color(78, 148, 79));
         jSeparator2.setForeground(new java.awt.Color(78, 148, 79));
@@ -436,7 +519,12 @@ public class Main extends javax.swing.JFrame {
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MailIcon.png"))); // NOI18N
         jLabel22.setText("M a i l");
         jLabel22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 130, 50));
+        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel22MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 130, 50));
 
         jLabel23.setBackground(new java.awt.Color(78, 148, 79));
         jLabel23.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
@@ -449,12 +537,32 @@ public class Main extends javax.swing.JFrame {
                 jLabel23MouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 130, 40));
+        jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 130, 40));
 
         jSeparator3.setBackground(new java.awt.Color(78, 148, 79));
         jSeparator3.setForeground(new java.awt.Color(78, 148, 79));
         jSeparator3.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 211, 10));
+        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 211, 10));
+
+        InfoCuenta_AdminTools_MW1.setBackground(new java.awt.Color(78, 148, 79));
+        InfoCuenta_AdminTools_MW1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        InfoCuenta_AdminTools_MW1.setForeground(new java.awt.Color(233, 239, 192));
+        InfoCuenta_AdminTools_MW1.setText("Informacion de Cuenta");
+        InfoCuenta_AdminTools_MW1.setBorder(null);
+        InfoCuenta_AdminTools_MW1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InfoCuenta_AdminTools_MW1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(InfoCuenta_AdminTools_MW1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 230, 30));
+
+        jLabel30.setBackground(new java.awt.Color(78, 148, 79));
+        jLabel30.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MailIcon.png"))); // NOI18N
+        jLabel30.setText("M a i l");
+        jLabel30.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 130, 50));
 
         Panel_Lateral.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 620));
 
@@ -798,18 +906,12 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void InfoCuenta_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoCuenta_AdminTools_MWActionPerformed
-        NombreInfo.setText(NewJFrame.Uactual.getNombre());
-        UsuarioInfo.setText(NewJFrame.Uactual.getUsuario());
-        EdadInfo.setText("" + NewJFrame.Uactual.getEdad());
-        CorreoInfo.setText(NewJFrame.Uactual.getCorreo());
-        IdInfo.setText("" + NewJFrame.Uactual.getID());
-        GeneroInfo.setText(NewJFrame.Uactual.getGenero());
+        modelocomboboxussers();
 
-        InformacionUsuarioFra.setModal(true);
-        InformacionUsuarioFra.pack();
-        InformacionUsuarioFra.setLocationRelativeTo(this);
-        InformacionUsuarioFra.setVisible(true);
-
+        NuevoG.setModal(true);
+        NuevoG.pack();
+        NuevoG.setLocationRelativeTo(this);
+        NuevoG.setVisible(true);
 
     }//GEN-LAST:event_InfoCuenta_AdminTools_MWActionPerformed
 
@@ -974,6 +1076,26 @@ public class Main extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_jLabel21MouseClicked
 
+    private void InfoCuenta_AdminTools_MW1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoCuenta_AdminTools_MW1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InfoCuenta_AdminTools_MW1ActionPerformed
+
+    private void AgregarintegranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarintegranteActionPerformed
+        NewJFrame.Uactual=(Persona)CB_Usuario_Modificar_AT1.getSelectedItem();
+    }//GEN-LAST:event_AgregarintegranteActionPerformed
+
+    private void CB_Usuario_Modificar_AT1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_Usuario_Modificar_AT1ItemStateChanged
+
+    }//GEN-LAST:event_CB_Usuario_Modificar_AT1ItemStateChanged
+
+    private void CB_Usuario_Modificar_AT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Usuario_Modificar_AT1ActionPerformed
+
+    }//GEN-LAST:event_CB_Usuario_Modificar_AT1ActionPerformed
+
+    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
+        new CorreoCloudy(NewJFrame.Uactual.getID()).setVisible(true);
+    }//GEN-LAST:event_jLabel22MouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1103,10 +1225,21 @@ public class Main extends javax.swing.JFrame {
         }
         db.desconectar();
     }
+    
+    public void modelocomboboxussers() {
+        CB_Usuario_Modificar_AT1.getModel();
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        for (Persona persona : Main.ListUssers) {
+            m.addElement(persona);
+        }
+        CB_Usuario_Modificar_AT1.setModel(m);
+    }
 
     public static ArrayList<Persona> ListUssers = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Agregarintegrante;
     private javax.swing.JComboBox<String> CB_Usuario_Modificar_AT;
+    private javax.swing.JComboBox<String> CB_Usuario_Modificar_AT1;
     private javax.swing.JLabel CorreoInfo;
     private javax.swing.JPanel CrearPane_AdminTools_MW1;
     private javax.swing.JTextField CrearUsuarioP_TF_Contraseña;
@@ -1128,15 +1261,20 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton EliminarUsuario_AdminTools_MW;
     private javax.swing.JLabel FondoCloudy;
     private javax.swing.JLabel GeneroInfo;
+    private javax.swing.JLabel HEADERCOSO3;
     private javax.swing.JLabel IdInfo;
     private javax.swing.JButton InfoCuenta_AdminTools_MW;
+    private javax.swing.JButton InfoCuenta_AdminTools_MW1;
     private javax.swing.JDialog InformacionUsuarioFra;
     private javax.swing.JPanel ListarPane_AdminTools_MW;
     private javax.swing.JButton ListarUsuarios_AdminTools_MW;
     private javax.swing.JPanel ModificarPane_AdminTools_MW;
     private javax.swing.JButton ModificarUsuario_AdminTools_MW;
     private javax.swing.JLabel NombreInfo;
+    private javax.swing.JLabel NombreLista1;
     private javax.swing.JLabel Nombre_Usuario_Label;
+    private javax.swing.JLabel Nombre_Usuario_Label1;
+    private javax.swing.JDialog NuevoG;
     private javax.swing.JPanel PanelAdministrador;
     private javax.swing.JPanel Panel_Lateral;
     private javax.swing.JTable TABLAELIMINAR;
@@ -1171,6 +1309,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1181,6 +1320,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
