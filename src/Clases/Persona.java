@@ -1,10 +1,12 @@
 package Clases;
+import java.io.Serializable;
+
 
 /**
  *
  * @author wilme
  */
-public class Persona {
+public class Persona implements Serializable{
 
     public String Usuario;
     public String Contraseña;

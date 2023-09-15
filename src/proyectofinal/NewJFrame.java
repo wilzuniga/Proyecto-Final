@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectofinal;
 
 import Clases.Persona;
+import Correo.LinkMail;
+import Correo.Server;
 import DataBase.Dba;
 import java.awt.Color;
 import proyectofinal.Main;
@@ -15,6 +12,16 @@ import java.awt.event.WindowListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -28,7 +35,9 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
-        Cargar();
+        leerDesdeArchivo();
+        //crearYGuardarPersonaAdministradora();
+        //Cargar();
     }
 
     /**
@@ -48,7 +57,6 @@ public class NewJFrame extends javax.swing.JFrame {
         TF_Contraseña_Login = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
         Label_Titulo_Login = new javax.swing.JLabel();
-        OlvideContraseña_Label_Login = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(550, 5));
@@ -105,11 +113,6 @@ public class NewJFrame extends javax.swing.JFrame {
         Label_Titulo_Login.setToolTipText("");
         jPanel1.add(Label_Titulo_Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
 
-        OlvideContraseña_Label_Login.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        OlvideContraseña_Label_Login.setForeground(new java.awt.Color(78, 148, 79));
-        OlvideContraseña_Label_Login.setText("Olvide mi contraseña");
-        OlvideContraseña_Label_Login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login);
         Login.setLayout(LoginLayout);
         LoginLayout.setHorizontalGroup(
@@ -119,9 +122,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(LoginLayout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(OlvideContraseña_Label_Login)
-                            .addComponent(Botonl_Ingresar_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Botonl_Ingresar_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(LoginLayout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -148,9 +149,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(TF_Contraseña_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
                 .addComponent(Botonl_Ingresar_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(OlvideContraseña_Label_Login)
-                .addGap(92, 92, 92))
+                .addGap(127, 127, 127))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,27 +171,29 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_Botonl_Ingresar_LoginMouseEntered
 
     private void Botonl_Ingresar_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Botonl_Ingresar_LoginActionPerformed
-        //System.out.println(Main.ListUssers.size());
+        
+
+
         try {
             boolean bandera = true;
             int i = 0;
             while (bandera) {
-                if (TF_Usuario_Login.getText().equals(Main.ListUssers.get(i).getUsuario()) && TF_Contraseña_Login.getText().equals(Main.ListUssers.get(i).getContraseña()) && Main.ListUssers.get(i).getAdministrador().equals("Si")) {
+                if (TF_Usuario_Login.getText().equals(Main.ListUssers.get(i).getUsuario()) && TF_Contraseña_Login.getText().equals(Main.ListUssers.get(i).getContraseña()) && Main.ListUssers.get(i).getAdministrador().equals("Sí")) {
                     Uactual = Main.ListUssers.get(i);
+                    //CLAVALA, CLAVALA, CLAVALA
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {
                             new Main().setVisible(true);
-
                         }
                     });
                     bandera = false;
                     dispose();
                 } else if (TF_Usuario_Login.getText().equals(Main.ListUssers.get(i).getUsuario()) && TF_Contraseña_Login.getText().equals(Main.ListUssers.get(i).getContraseña())) {
-                    Uactual= Main.ListUssers.get(i);
+                    Uactual = Main.ListUssers.get(i);
+
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {
                             new UsserDis().setVisible(true);
-
                         }
                     });
                     bandera = false;
@@ -202,7 +203,6 @@ public class NewJFrame extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Ingrese un usuario y contraseña correctos");
                     }
                     i++;
-
                 }
             }
         } catch (Exception e) {
@@ -250,22 +250,22 @@ public class NewJFrame extends javax.swing.JFrame {
         });
     }
 
-    public void Cargar() {
-        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
-        db.conectar();
-        try {
-            db.query.execute("select Usuario,Contraseña,Edad,Nombre,Correo,Genero,Administrador, Id from Usuarios");
-            ResultSet rs = db.query.getResultSet();
 
-            while (rs.next()) {
-                Main.ListUssers.add(new Persona(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(8), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+    public void leerDesdeArchivo() {
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("./personas.bin"))) {
+            ArrayList<Persona> personas = (ArrayList<Persona>) ois.readObject();
+            for (Persona persona : personas) {
+                Main.ListUssers.add(persona);
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.err.println("Clase Persona no encontrada.");
+        } catch (IOException e) {
+            // Se lanza esta excepción cuando se llega al final del archivo.
+            System.out.println("Lectura del archivo binario completa.");
         }
-        db.desconectar();
     }
-    
+
     public static Persona Uactual;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -274,7 +274,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel Label_Titulo_Login;
     private javax.swing.JLabel Label_Usuario_Login;
     private javax.swing.JPanel Login;
-    private javax.swing.JLabel OlvideContraseña_Label_Login;
     private javax.swing.JPasswordField TF_Contraseña_Login;
     private javax.swing.JTextField TF_Usuario_Login;
     private javax.swing.JPanel jPanel1;

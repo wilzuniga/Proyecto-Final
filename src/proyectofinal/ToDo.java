@@ -726,10 +726,8 @@ public class ToDo extends javax.swing.JFrame {
         Integer id = Main.ListUssers.get(CB_Usuario_Modificar_AT.getSelectedIndex()).getID();
         ArrayList<Tarea> coso = new ArrayList();
         
-        System.out.println(Final.size());
         for (Tarea tarea : Final) {
             if (tarea.getTitulo().equals(tabla.getValueAt(tabla.getSelectedRow(), 0))) {
-                System.out.println("jjvskjn");
                 coso.add(new Tarea(tarea.getFechaVen()
                         , id, tarea.getNota()
                         , "No"
@@ -884,7 +882,7 @@ public class ToDo extends javax.swing.JFrame {
 
     public void Agegar() {
 
-        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
+        Dba db = new Dba("././DatosPrograma.accdb");
         db.conectar();
         for (int i = 0; i < Tasks.size(); i++) {
             for (int j = 0; j < Inicio.size(); j++) {
@@ -912,13 +910,12 @@ public class ToDo extends javax.swing.JFrame {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
         db.desconectar();
     }
 
     public void Cargar() {
-        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
+        Dba db = new Dba("././DatosPrograma.accdb");
         db.conectar();
         try {
             db.query.execute("select Fecha,Id,Nota,Realizada,Lista,Titulo from Tareass");
@@ -939,7 +936,6 @@ public class ToDo extends javax.swing.JFrame {
 
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
         db.desconectar();
         HashSet hs = new HashSet();

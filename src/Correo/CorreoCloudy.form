@@ -86,7 +86,7 @@
                           <Font name="Roboto Medium" size="12" style="1"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="c0" green="ef" red="e9" type="rgb"/>
+                          <Color blue="4f" green="94" red="4e" type="rgb"/>
                         </Property>
                         <Property name="rows" type="int" value="5"/>
                       </Properties>
@@ -106,7 +106,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="130" y="50" width="370" height="30"/>
+                  <AbsoluteConstraints x="80" y="30" width="370" height="30"/>
                 </Constraint>
               </Constraints>
 
@@ -160,7 +160,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="130" y="90" width="370" height="30"/>
+                  <AbsoluteConstraints x="80" y="70" width="370" height="30"/>
                 </Constraint>
               </Constraints>
 
@@ -168,7 +168,8 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="Subject" pref="364" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="Subject" pref="358" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>

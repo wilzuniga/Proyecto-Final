@@ -787,7 +787,6 @@ public class Drive extends javax.swing.JFrame {
                         "Archivo guardado exitosamente");
 
             } catch (Exception e) {
-                e.printStackTrace();
             }
             try {
                 bw.close();
@@ -842,8 +841,7 @@ public class Drive extends javax.swing.JFrame {
         try {
             Agegar();
         } catch (IOException ex) {
-            Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("nooooooo");
+            
         }
     }//GEN-LAST:event_BOTONUNIVERSSALMouseClicked
 
@@ -922,7 +920,7 @@ public class Drive extends javax.swing.JFrame {
                             try {
                                 Agegarcomp(integrante,archivo);
                             } catch (IOException ex) {
-                                Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
+
                             }
                         }
                     }
@@ -1124,7 +1122,7 @@ public class Drive extends javax.swing.JFrame {
 
     public void Agegar() throws IOException {
 
-        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
+        Dba db = new Dba("././DatosPrograma.accdb");
         db.conectar();
 
         try {
@@ -1153,7 +1151,7 @@ public class Drive extends javax.swing.JFrame {
             db.commit();
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+
         }
         db.desconectar();
     }
@@ -1163,7 +1161,7 @@ public class Drive extends javax.swing.JFrame {
         Paquete coso = Cargarcomp(usn);
         //System.out.println(arc);
         coso.getArchivosI().add(arc);
-        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
+        Dba db = new Dba("././DatosPrograma.accdb");
         db.conectar();
 
         try {
@@ -1189,13 +1187,13 @@ public class Drive extends javax.swing.JFrame {
             db.commit();
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+
         }
         db.desconectar();
     }
 
     public void Cargar() throws IOException {
-        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
+        Dba db = new Dba("././DatosPrograma.accdb");
         db.conectar();
         try {
             db.query.execute("select Archivo from Documentos" + " where Id_Usuario=" + NewJFrame.Uactual.getID());
@@ -1211,15 +1209,15 @@ public class Drive extends javax.swing.JFrame {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
+
         }
         db.desconectar();
     }
 
     public Paquete Cargarcomp(int id) throws IOException {
-        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
+        Dba db = new Dba("././DatosPrograma.accdb");
         db.conectar();
         Paquete coso = new Paquete();
         try {
@@ -1235,9 +1233,9 @@ public class Drive extends javax.swing.JFrame {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
+
         }
         db.desconectar();
         return coso;
@@ -1248,6 +1246,7 @@ public class Drive extends javax.swing.JFrame {
     private ArrayList<Integer> IntegrantesI = new ArrayList();
 
     private ArrayList<Archivo> ArchivosI = new ArrayList();
+    private ArrayList<Archivo> Carpeta = new ArrayList();
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

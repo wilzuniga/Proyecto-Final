@@ -18,13 +18,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.mail.BodyPart;
 import javax.mail.Folder;
 import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.Part;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Store;
 import javax.mail.internet.InternetAddress;
@@ -171,7 +175,7 @@ public class CorreoCloudy extends javax.swing.JFrame {
         Body.setBackground(new java.awt.Color(233, 239, 192));
         Body.setColumns(20);
         Body.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
-        Body.setForeground(new java.awt.Color(233, 239, 192));
+        Body.setForeground(new java.awt.Color(78, 148, 79));
         Body.setRows(5);
         jScrollPane3.setViewportView(Body);
 
@@ -222,7 +226,7 @@ public class CorreoCloudy extends javax.swing.JFrame {
             .addComponent(Aquienenvia, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 370, 30));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 370, 30));
 
         jPanel4.setBackground(new java.awt.Color(78, 148, 79));
         jPanel4.setForeground(new java.awt.Color(233, 239, 192));
@@ -243,7 +247,8 @@ public class CorreoCloudy extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addComponent(Subject, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(Subject, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -251,7 +256,7 @@ public class CorreoCloudy extends javax.swing.JFrame {
             .addComponent(Subject, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 370, 30));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 370, 30));
 
         jPanel5.setBackground(new java.awt.Color(78, 148, 79));
 
@@ -1590,14 +1595,8 @@ public class CorreoCloudy extends javax.swing.JFrame {
     }//GEN-LAST:event_jList2MouseClicked
 
     private void sendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendMouseClicked
-        String correo = "", contra = "";
-        for (CorreoUsuarios correosUsuario : correosUsuarios) {
-            if (correosUsuario.getIdCuenta() == Main.ListUssers.get(indexCuenta).getID()) {
-                correo = correosUsuario.getUsuario();
-                contra = correosUsuario.getContra();
-            }
-        }
-        Server server = new Server("smtp.office365.com", "587", correo, contra);
+
+        Server server = new Server("smtp.office365.com", "587", Usser, Contraseña);
         server.conectar();
         try {
             LinkMail mail = new LinkMail(server.getSession());
@@ -1620,7 +1619,6 @@ public class CorreoCloudy extends javax.swing.JFrame {
             Subject.setText("");
             EnviarCuadrito.setVisible(false);
         } catch (Exception e) {
-            e.printStackTrace();
         }
 
     }//GEN-LAST:event_sendMouseClicked
@@ -1646,87 +1644,108 @@ public class CorreoCloudy extends javax.swing.JFrame {
     }//GEN-LAST:event_TablainMouseClicked
 
     private void jlable8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlable8MouseClicked
-        DefaultTableModel listInbox = (DefaultTableModel) Tablain.getModel();
-        listInbox.setNumRows(0);
-        System.out.println(".");
-
-        try {
-            for (int i = Bandejas.getMensajesInbox().length - 1; i >= 0; i--) {
-                String[] row = new String[1];
-                row[0] = Bandejas.getMensajesInbox()[i].getSubject();
-                listInbox.addRow(row);
-                System.out.println(".");
+        try {                                     
+            DefaultTableModel listInbox = (DefaultTableModel) Tablain.getModel();
+            listInbox.setNumRows(0);
+            int cosso = Bandejas.getMensajesInbox().length/16;
+            
+            try {
+                for (int i = Bandejas.getMensajesInbox().length - 1; i >= cosso; i--) {
+                    String[] row = new String[1];
+                    row[0] = Bandejas.getMensajesInbox()[i].getSubject();
+                    listInbox.addRow(row);
+                    System.out.println(".");
+                }
+                Tablain.setModel(listInbox);
+            } catch (Exception e) {
+                
             }
-            Tablain.setModel(listInbox);
-        } catch (Exception e) {
-            System.out.println("eeee");
-
+            
+            sent.setVisible(false);
+            DELETE.setVisible(false);
+            INBOX.setVisible(true);
+            SWPAM.setVisible(false);
+        } catch (MessagingException ex) {
         }
-
-        sent.setVisible(false);
-        DELETE.setVisible(false);
-        INBOX.setVisible(true);
-        SWPAM.setVisible(false);
     }//GEN-LAST:event_jlable8MouseClicked
 
     private void jlabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlabel8MouseClicked
-        DefaultTableModel listInbox = (DefaultTableModel) enviaditos.getModel();
-        listInbox.setNumRows(0);
-        try {
-            for (int i = Bandejas.getMensajesEnviados().length - 1; i >= 0; i--) {
-                String[] row = new String[1];
-                row[0] = Bandejas.getMensajesEnviados()[i].getSubject();
-                listInbox.addRow(row);
+        try {                                     
+            DefaultTableModel listInbox = (DefaultTableModel) enviaditos.getModel();
+            listInbox.setNumRows(0);
+            
+            int cosso = Bandejas.getMensajesEnviados().length/16;
+            
+            
+            try {
+                for (int i = Bandejas.getMensajesEnviados().length - 1; i >= cosso; i--) {
+                    String[] row = new String[1];
+                    row[0] = Bandejas.getMensajesEnviados()[i].getSubject();
+                    listInbox.addRow(row);
+                }
+                
+                enviaditos.setModel(listInbox);
+            } catch (Exception e) {
+                
             }
-
-            enviaditos.setModel(listInbox);
-        } catch (Exception e) {
+            
+            sent.setVisible(true);
+            DELETE.setVisible(false);
+            INBOX.setVisible(false);
+            SWPAM.setVisible(false);
+        } catch (MessagingException ex) {
 
         }
-
-        sent.setVisible(true);
-        DELETE.setVisible(false);
-        INBOX.setVisible(false);
-        SWPAM.setVisible(false);
     }//GEN-LAST:event_jlabel8MouseClicked
 
     private void jlabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlabel9MouseClicked
-        DefaultTableModel listInbox = (DefaultTableModel) SABLASPAM.getModel();
-        listInbox.setNumRows(0);
-        try {
-            for (int i = Bandejas.getMensajesSpam().length - 1; i >= 0; i--) {
-                String[] row = new String[1];
-                row[0] = Bandejas.getMensajesSpam()[i].getSubject();
-                listInbox.addRow(row);
+        try {                                     
+            DefaultTableModel listInbox = (DefaultTableModel) SABLASPAM.getModel();
+            listInbox.setNumRows(0);
+            int cosso = Bandejas.getMensajesSpam().length/16;
+            try {
+                for (int i = Bandejas.getMensajesSpam().length - 1; i >= cosso; i--) {
+                    String[] row = new String[1];
+                    row[0] = Bandejas.getMensajesSpam()[i].getSubject();
+                    listInbox.addRow(row);
+                }
+                SABLASPAM.setModel(listInbox);
+            } catch (Exception e) {
+                
             }
-            SABLASPAM.setModel(listInbox);
-        } catch (Exception e) {
+            sent.setVisible(false);
+            DELETE.setVisible(false);
+            INBOX.setVisible(false);
+            SWPAM.setVisible(true);
+        } catch (MessagingException ex) {
 
         }
-        sent.setVisible(false);
-        DELETE.setVisible(false);
-        INBOX.setVisible(false);
-        SWPAM.setVisible(true);
     }//GEN-LAST:event_jlabel9MouseClicked
 
     private void label_eliminadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_eliminadosMouseClicked
-        DefaultTableModel listInbox = (DefaultTableModel) DELETED.getModel();
-        listInbox.setNumRows(0);
-        try {
-            for (int i = Bandejas.getMensajesEliminados().length - 1; i >= 0; i--) {
-                String[] row = new String[1];
-                row[0] = Bandejas.getMensajesEliminados()[i].getSubject();
-                listInbox.addRow(row);
+        try {                                              
+            DefaultTableModel listInbox = (DefaultTableModel) DELETED.getModel();
+            listInbox.setNumRows(0);
+            int cosso = Bandejas.getMensajesEliminados().length/16;
+            
+            try {
+                for (int i = Bandejas.getMensajesEliminados().length - 1; i >= cosso; i--) {
+                    String[] row = new String[1];
+                    row[0] = Bandejas.getMensajesEliminados()[i].getSubject();
+                    listInbox.addRow(row);
+                }
+                DELETED.setModel(listInbox);
+            } catch (Exception e) {
+                
             }
-            DELETED.setModel(listInbox);
-        } catch (Exception e) {
+            
+            sent.setVisible(false);
+            DELETE.setVisible(true);
+            INBOX.setVisible(false);
+            SWPAM.setVisible(false);
+        } catch (MessagingException ex) {
 
         }
-
-        sent.setVisible(false);
-        DELETE.setVisible(true);
-        INBOX.setVisible(false);
-        SWPAM.setVisible(false);
     }//GEN-LAST:event_label_eliminadosMouseClicked
 
     private void DELETEDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DELETEDMouseClicked
@@ -1808,7 +1827,6 @@ public class CorreoCloudy extends javax.swing.JFrame {
 
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
         db.desconectar();
     }
@@ -1831,7 +1849,6 @@ public class CorreoCloudy extends javax.swing.JFrame {
                 correosUsuarios.add(cu);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
         db.desconectar();
     }
@@ -1850,7 +1867,6 @@ public class CorreoCloudy extends javax.swing.JFrame {
                 }
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
         db.desconectar();
     }
@@ -1889,7 +1905,6 @@ public class CorreoCloudy extends javax.swing.JFrame {
                     + "' where IdBorrador= " + id);
             db.commit();
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
         db.desconectar();
 
@@ -1901,7 +1916,11 @@ public class CorreoCloudy extends javax.swing.JFrame {
 
     public boolean Conectandoconlosdiosesdelasmatematicas() {
         try {
-            session = Session.getDefaultInstance(props);
+            session = javax.mail.Session.getInstance(props, new javax.mail.Authenticator(){
+                protected PasswordAuthentication getPasswordAuthentication(){
+                    return new PasswordAuthentication(Usser,Contraseña);
+                }
+            });
             store = session.getStore("imap");
             store.connect("outlook.office365.com", Usser, Contraseña);
 
@@ -1922,7 +1941,6 @@ public class CorreoCloudy extends javax.swing.JFrame {
             spamM = MierdaSpam.getMessages();
             return true;
         } catch (Exception e) {
-            System.out.println("ndhwnejfhsdfhsdbfjhbsdf");
             System.out.println(Usser + " " + Contraseña);
             
         }

@@ -11,19 +11,21 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.OverlayLayout;
 import Clases.Persona;
+import Clases.DbCon;
 import Correo.CorreoCloudy;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import DataBase.Dba;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+
 import java.sql.SQLException;
+
+import java.sql.ResultSet;
 import proyectofinal.NewJFrame;
 
 public class Main extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Main
-     */
     public Main() {
         initComponents();
         iniciarVA();
@@ -39,32 +41,83 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        InformacionUsuarioFra = new javax.swing.JDialog();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        UsuarioInfo = new javax.swing.JLabel();
-        NombreInfo = new javax.swing.JLabel();
-        EdadInfo = new javax.swing.JLabel();
-        CorreoInfo = new javax.swing.JLabel();
-        GeneroInfo = new javax.swing.JLabel();
-        IdInfo = new javax.swing.JLabel();
-        NuevoG = new javax.swing.JDialog();
+        CrearProducto = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
         NombreLista1 = new javax.swing.JLabel();
         HEADERCOSO3 = new javax.swing.JLabel();
         Agregarintegrante = new javax.swing.JButton();
-        Nombre_Usuario_Label1 = new javax.swing.JLabel();
-        CB_Usuario_Modificar_AT1 = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre2 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre3 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre4 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre6 = new javax.swing.JTextField();
+        CrearVendedor = new javax.swing.JDialog();
+        jPanel9 = new javax.swing.JPanel();
+        NombreLista2 = new javax.swing.JLabel();
+        HEADERCOSO4 = new javax.swing.JLabel();
+        Agregarintegrante1 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre7 = new javax.swing.JTextField();
+        CrearCliente = new javax.swing.JDialog();
+        jPanel10 = new javax.swing.JPanel();
+        NombreLista3 = new javax.swing.JLabel();
+        HEADERCOSO5 = new javax.swing.JLabel();
+        Agregarintegrante2 = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre13 = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre14 = new javax.swing.JTextField();
+        CrearTienda = new javax.swing.JDialog();
+        jPanel11 = new javax.swing.JPanel();
+        NombreLista4 = new javax.swing.JLabel();
+        HEADERCOSO6 = new javax.swing.JLabel();
+        Agregarintegrante3 = new javax.swing.JButton();
+        jLabel29 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre15 = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre16 = new javax.swing.JTextField();
+        CrearTiene = new javax.swing.JDialog();
+        jPanel12 = new javax.swing.JPanel();
+        NombreLista5 = new javax.swing.JLabel();
+        HEADERCOSO7 = new javax.swing.JLabel();
+        Agregarintegrante4 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre5 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre8 = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre9 = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre10 = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre11 = new javax.swing.JTextField();
+        CrearUbicaciones = new javax.swing.JDialog();
+        jPanel13 = new javax.swing.JPanel();
+        NombreLista6 = new javax.swing.JLabel();
+        HEADERCOSO8 = new javax.swing.JLabel();
+        Agregarintegrante5 = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre12 = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre18 = new javax.swing.JTextField();
+        CrearVende = new javax.swing.JDialog();
+        jPanel14 = new javax.swing.JPanel();
+        NombreLista7 = new javax.swing.JLabel();
+        HEADERCOSO9 = new javax.swing.JLabel();
+        Agregarintegrante6 = new javax.swing.JButton();
+        jLabel31 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre17 = new javax.swing.JTextField();
+        jLabel34 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre20 = new javax.swing.JTextField();
         PanelAdministrador = new javax.swing.JPanel();
         Panel_Lateral = new javax.swing.JPanel();
         FondoCloudy = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        InfoCuenta_AdminTools_MW = new javax.swing.JButton();
         Nombre_Usuario_Label = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -77,23 +130,23 @@ public class Main extends javax.swing.JFrame {
         ListarUsuarios_AdminTools_MW = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         botonuniversal = new javax.swing.JButton();
-        jLabel21 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         InfoCuenta_AdminTools_MW1 = new javax.swing.JButton();
-        jLabel30 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
         Crud_Usuarios_AP = new javax.swing.JPanel();
         ListarPane_AdminTools_MW = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaListar = new javax.swing.JTable();
+        CB_Listar = new javax.swing.JComboBox<>();
         EliminarPane_AdminTools_MW = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TABLAELIMINAR = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        CB_Eliminar = new javax.swing.JComboBox<>();
         ModificarPane_AdminTools_MW = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -115,139 +168,11 @@ public class Main extends javax.swing.JFrame {
         CB_Usuario_Modificar_AT = new javax.swing.JComboBox<>();
         CrearPane_AdminTools_MW1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        CrearUsuarioP_TF_Nombre1 = new javax.swing.JTextField();
-        CrearUsuarioP_TF_Id1 = new javax.swing.JTextField();
-        CrearUsuarioP_TF_Edad1 = new javax.swing.JTextField();
-        CrearUsuarioP_TF_Contraseña1 = new javax.swing.JTextField();
-        CrearUsuarioP_TF_CorreoElec1 = new javax.swing.JTextField();
-        CrearUsuarioP_TF_Usuario1 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
+        CB_Crear = new javax.swing.JComboBox<>();
 
-        jPanel1.setBackground(new java.awt.Color(233, 239, 192));
-
-        jLabel24.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel24.setText("Usuario");
-
-        jLabel25.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel25.setText("Nombre");
-
-        jLabel26.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel26.setText("Edad");
-
-        jLabel27.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel27.setText("Correo");
-
-        jLabel28.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel28.setText("Genero");
-
-        jLabel29.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel29.setText("Id");
-
-        UsuarioInfo.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        UsuarioInfo.setForeground(new java.awt.Color(78, 148, 79));
-        UsuarioInfo.setText("Usuario");
-
-        NombreInfo.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        NombreInfo.setForeground(new java.awt.Color(78, 148, 79));
-        NombreInfo.setText("Nombre");
-
-        EdadInfo.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        EdadInfo.setForeground(new java.awt.Color(78, 148, 79));
-        EdadInfo.setText("Edad");
-
-        CorreoInfo.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        CorreoInfo.setForeground(new java.awt.Color(78, 148, 79));
-        CorreoInfo.setText("Correo");
-
-        GeneroInfo.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        GeneroInfo.setForeground(new java.awt.Color(78, 148, 79));
-        GeneroInfo.setText("Genero");
-
-        IdInfo.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        IdInfo.setForeground(new java.awt.Color(78, 148, 79));
-        IdInfo.setText("Id");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel24)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(EdadInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IdInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UsuarioInfo)
-                    .addComponent(NombreInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CorreoInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(GeneroInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(215, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jLabel25)
-                        .addGap(63, 63, 63)
-                        .addComponent(jLabel26)
-                        .addGap(63, 63, 63)
-                        .addComponent(jLabel27)
-                        .addGap(69, 69, 69)
-                        .addComponent(jLabel29)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                        .addComponent(jLabel28)
-                        .addGap(58, 58, 58))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(UsuarioInfo)
-                        .addGap(61, 61, 61)
-                        .addComponent(NombreInfo)
-                        .addGap(63, 63, 63)
-                        .addComponent(EdadInfo)
-                        .addGap(63, 63, 63)
-                        .addComponent(CorreoInfo)
-                        .addGap(69, 69, 69)
-                        .addComponent(IdInfo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(GeneroInfo)
-                        .addGap(20, 20, 20))))
-        );
-
-        javax.swing.GroupLayout InformacionUsuarioFraLayout = new javax.swing.GroupLayout(InformacionUsuarioFra.getContentPane());
-        InformacionUsuarioFra.getContentPane().setLayout(InformacionUsuarioFraLayout);
-        InformacionUsuarioFraLayout.setHorizontalGroup(
-            InformacionUsuarioFraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        InformacionUsuarioFraLayout.setVerticalGroup(
-            InformacionUsuarioFraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        CrearProducto.setFocusCycleRoot(false);
+        CrearProducto.setMinimumSize(new java.awt.Dimension(720, 520));
 
         jPanel6.setBackground(new java.awt.Color(247, 246, 220));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -260,7 +185,7 @@ public class Main extends javax.swing.JFrame {
         HEADERCOSO3.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
         HEADERCOSO3.setForeground(new java.awt.Color(78, 148, 79));
         HEADERCOSO3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        HEADERCOSO3.setText("Cambiar a Usuario");
+        HEADERCOSO3.setText("Crear Producto");
         HEADERCOSO3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         HEADERCOSO3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel6.add(HEADERCOSO3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
@@ -268,7 +193,7 @@ public class Main extends javax.swing.JFrame {
         Agregarintegrante.setBackground(new java.awt.Color(78, 148, 79));
         Agregarintegrante.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         Agregarintegrante.setForeground(new java.awt.Color(233, 239, 192));
-        Agregarintegrante.setText("        Cambiar");
+        Agregarintegrante.setText("            Crear");
         Agregarintegrante.setBorder(null);
         Agregarintegrante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Agregarintegrante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -277,49 +202,520 @@ public class Main extends javax.swing.JFrame {
                 AgregarintegranteActionPerformed(evt);
             }
         });
-        jPanel6.add(Agregarintegrante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 120, 40));
+        jPanel6.add(Agregarintegrante, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
 
-        Nombre_Usuario_Label1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        Nombre_Usuario_Label1.setForeground(new java.awt.Color(78, 148, 79));
-        Nombre_Usuario_Label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Nombre_Usuario_Label1.setText("ingrese un usuario");
-        Nombre_Usuario_Label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Nombre_Usuario_Label1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel6.add(Nombre_Usuario_Label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 130, 20));
+        jLabel11.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel11.setText("UPC");
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
-        CB_Usuario_Modificar_AT1.setBackground(new java.awt.Color(180, 225, 151));
-        CB_Usuario_Modificar_AT1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        CB_Usuario_Modificar_AT1.setForeground(new java.awt.Color(78, 148, 79));
-        CB_Usuario_Modificar_AT1.setBorder(null);
-        CB_Usuario_Modificar_AT1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CB_Usuario_Modificar_AT1ItemStateChanged(evt);
-            }
-        });
-        CB_Usuario_Modificar_AT1.addActionListener(new java.awt.event.ActionListener() {
+        CrearUsuarioP_TF_Nombre1.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre1.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre1.setBorder(null);
+        jPanel6.add(CrearUsuarioP_TF_Nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
+
+        jLabel12.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel12.setText("Tamaño");
+        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        CrearUsuarioP_TF_Nombre2.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre2.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre2.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre2.setBorder(null);
+        jPanel6.add(CrearUsuarioP_TF_Nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 220, 30));
+
+        jLabel13.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel13.setText("Nombre");
+        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
+
+        CrearUsuarioP_TF_Nombre3.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre3.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre3.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre3.setBorder(null);
+        jPanel6.add(CrearUsuarioP_TF_Nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 220, 30));
+
+        jLabel14.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel14.setText("Embalaje");
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, -1, -1));
+
+        CrearUsuarioP_TF_Nombre4.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre4.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre4.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre4.setBorder(null);
+        jPanel6.add(CrearUsuarioP_TF_Nombre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 220, 30));
+
+        jLabel16.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel16.setText("Marca");
+        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        CrearUsuarioP_TF_Nombre6.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre6.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre6.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre6.setBorder(null);
+        CrearUsuarioP_TF_Nombre6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CB_Usuario_Modificar_AT1ActionPerformed(evt);
+                CrearUsuarioP_TF_Nombre6ActionPerformed(evt);
             }
         });
-        jPanel6.add(CB_Usuario_Modificar_AT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, 30));
+        jPanel6.add(CrearUsuarioP_TF_Nombre6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 220, 30));
 
-        javax.swing.GroupLayout NuevoGLayout = new javax.swing.GroupLayout(NuevoG.getContentPane());
-        NuevoG.getContentPane().setLayout(NuevoGLayout);
-        NuevoGLayout.setHorizontalGroup(
-            NuevoGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 344, Short.MAX_VALUE)
-            .addGroup(NuevoGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(NuevoGLayout.createSequentialGroup()
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        javax.swing.GroupLayout CrearProductoLayout = new javax.swing.GroupLayout(CrearProducto.getContentPane());
+        CrearProducto.getContentPane().setLayout(CrearProductoLayout);
+        CrearProductoLayout.setHorizontalGroup(
+            CrearProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-        NuevoGLayout.setVerticalGroup(
-            NuevoGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 218, Short.MAX_VALUE)
-            .addGroup(NuevoGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(NuevoGLayout.createSequentialGroup()
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        CrearProductoLayout.setVerticalGroup(
+            CrearProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CrearProductoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        CrearVendedor.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel9.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista2.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista2.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista2.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel9.add(NombreLista2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO4.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO4.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO4.setText("Crear Vendedor");
+        HEADERCOSO4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel9.add(HEADERCOSO4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante1.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante1.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante1.setText("            Crear");
+        Agregarintegrante1.setBorder(null);
+        Agregarintegrante1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante1ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(Agregarintegrante1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
+
+        jLabel17.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel17.setText("Nombre");
+        jPanel9.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        CrearUsuarioP_TF_Nombre7.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre7.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre7.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre7.setBorder(null);
+        jPanel9.add(CrearUsuarioP_TF_Nombre7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
+
+        javax.swing.GroupLayout CrearVendedorLayout = new javax.swing.GroupLayout(CrearVendedor.getContentPane());
+        CrearVendedor.getContentPane().setLayout(CrearVendedorLayout);
+        CrearVendedorLayout.setHorizontalGroup(
+            CrearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearVendedorLayout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+        CrearVendedorLayout.setVerticalGroup(
+            CrearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearVendedorLayout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+
+        CrearCliente.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel10.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista3.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista3.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista3.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel10.add(NombreLista3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO5.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO5.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO5.setText("Crear Cliente");
+        HEADERCOSO5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel10.add(HEADERCOSO5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante2.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante2.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante2.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante2.setText("            Crear");
+        Agregarintegrante2.setBorder(null);
+        Agregarintegrante2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante2ActionPerformed(evt);
+            }
+        });
+        jPanel10.add(Agregarintegrante2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
+
+        jLabel27.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel27.setText("Nombre");
+        jPanel10.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        CrearUsuarioP_TF_Nombre13.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre13.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre13.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre13.setBorder(null);
+        jPanel10.add(CrearUsuarioP_TF_Nombre13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
+
+        jLabel28.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel28.setText("Correo Electronico");
+        jPanel10.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        CrearUsuarioP_TF_Nombre14.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre14.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre14.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre14.setBorder(null);
+        jPanel10.add(CrearUsuarioP_TF_Nombre14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 220, 30));
+
+        javax.swing.GroupLayout CrearClienteLayout = new javax.swing.GroupLayout(CrearCliente.getContentPane());
+        CrearCliente.getContentPane().setLayout(CrearClienteLayout);
+        CrearClienteLayout.setHorizontalGroup(
+            CrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearClienteLayout.createSequentialGroup()
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+        CrearClienteLayout.setVerticalGroup(
+            CrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearClienteLayout.createSequentialGroup()
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+
+        CrearTienda.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel11.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista4.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista4.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista4.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel11.add(NombreLista4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO6.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO6.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO6.setText("Crear Tienda");
+        HEADERCOSO6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel11.add(HEADERCOSO6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante3.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante3.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante3.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante3.setText("            Crear");
+        Agregarintegrante3.setBorder(null);
+        Agregarintegrante3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante3ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(Agregarintegrante3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
+
+        jLabel29.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel29.setText("Nombre tienda");
+        jPanel11.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        CrearUsuarioP_TF_Nombre15.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre15.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre15.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre15.setBorder(null);
+        jPanel11.add(CrearUsuarioP_TF_Nombre15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
+
+        jLabel30.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel30.setText("Horario");
+        jPanel11.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        CrearUsuarioP_TF_Nombre16.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre16.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre16.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre16.setBorder(null);
+        jPanel11.add(CrearUsuarioP_TF_Nombre16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 220, 30));
+
+        javax.swing.GroupLayout CrearTiendaLayout = new javax.swing.GroupLayout(CrearTienda.getContentPane());
+        CrearTienda.getContentPane().setLayout(CrearTiendaLayout);
+        CrearTiendaLayout.setHorizontalGroup(
+            CrearTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearTiendaLayout.createSequentialGroup()
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+        CrearTiendaLayout.setVerticalGroup(
+            CrearTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearTiendaLayout.createSequentialGroup()
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+
+        CrearTiene.setFocusCycleRoot(false);
+        CrearTiene.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel12.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista5.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista5.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista5.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel12.add(NombreLista5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO7.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO7.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO7.setText("Crear Tiene");
+        HEADERCOSO7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel12.add(HEADERCOSO7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante4.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante4.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante4.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante4.setText("            Crear");
+        Agregarintegrante4.setBorder(null);
+        Agregarintegrante4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante4ActionPerformed(evt);
+            }
+        });
+        jPanel12.add(Agregarintegrante4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
+
+        jLabel15.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel15.setText("UPC");
+        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        CrearUsuarioP_TF_Nombre5.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre5.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre5.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre5.setBorder(null);
+        jPanel12.add(CrearUsuarioP_TF_Nombre5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
+
+        jLabel22.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel22.setText("Precio");
+        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        CrearUsuarioP_TF_Nombre8.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre8.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre8.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre8.setBorder(null);
+        jPanel12.add(CrearUsuarioP_TF_Nombre8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 220, 30));
+
+        jLabel23.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel23.setText("Id Tienda");
+        jPanel12.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
+
+        CrearUsuarioP_TF_Nombre9.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre9.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre9.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre9.setBorder(null);
+        jPanel12.add(CrearUsuarioP_TF_Nombre9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 220, 30));
+
+        jLabel24.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel24.setText("Cantidad");
+        jPanel12.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, -1, -1));
+
+        CrearUsuarioP_TF_Nombre10.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre10.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre10.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre10.setBorder(null);
+        jPanel12.add(CrearUsuarioP_TF_Nombre10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 220, 30));
+
+        jLabel25.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel25.setText("Reorden");
+        jPanel12.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        CrearUsuarioP_TF_Nombre11.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre11.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre11.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre11.setBorder(null);
+        CrearUsuarioP_TF_Nombre11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearUsuarioP_TF_Nombre11ActionPerformed(evt);
+            }
+        });
+        jPanel12.add(CrearUsuarioP_TF_Nombre11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 220, 30));
+
+        javax.swing.GroupLayout CrearTieneLayout = new javax.swing.GroupLayout(CrearTiene.getContentPane());
+        CrearTiene.getContentPane().setLayout(CrearTieneLayout);
+        CrearTieneLayout.setHorizontalGroup(
+            CrearTieneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        CrearTieneLayout.setVerticalGroup(
+            CrearTieneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CrearTieneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        CrearUbicaciones.setFocusCycleRoot(false);
+        CrearUbicaciones.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel13.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista6.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista6.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista6.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel13.add(NombreLista6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO8.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO8.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO8.setText("Crear Ubicaciones");
+        HEADERCOSO8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel13.add(HEADERCOSO8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante5.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante5.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante5.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante5.setText("            Crear");
+        Agregarintegrante5.setBorder(null);
+        Agregarintegrante5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante5ActionPerformed(evt);
+            }
+        });
+        jPanel13.add(Agregarintegrante5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
+
+        jLabel26.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel26.setText("Id Tienda");
+        jPanel13.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        CrearUsuarioP_TF_Nombre12.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre12.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre12.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre12.setBorder(null);
+        jPanel13.add(CrearUsuarioP_TF_Nombre12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
+
+        jLabel32.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel32.setText("Ubicacion");
+        jPanel13.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
+
+        CrearUsuarioP_TF_Nombre18.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre18.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre18.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre18.setBorder(null);
+        jPanel13.add(CrearUsuarioP_TF_Nombre18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 220, 30));
+
+        javax.swing.GroupLayout CrearUbicacionesLayout = new javax.swing.GroupLayout(CrearUbicaciones.getContentPane());
+        CrearUbicaciones.getContentPane().setLayout(CrearUbicacionesLayout);
+        CrearUbicacionesLayout.setHorizontalGroup(
+            CrearUbicacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearUbicacionesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        CrearUbicacionesLayout.setVerticalGroup(
+            CrearUbicacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CrearUbicacionesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        CrearVende.setFocusCycleRoot(false);
+        CrearVende.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel14.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista7.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista7.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista7.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel14.add(NombreLista7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO9.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO9.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO9.setText("Crear Vende");
+        HEADERCOSO9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel14.add(HEADERCOSO9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante6.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante6.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante6.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante6.setText("            Crear");
+        Agregarintegrante6.setBorder(null);
+        Agregarintegrante6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante6ActionPerformed(evt);
+            }
+        });
+        jPanel14.add(Agregarintegrante6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
+
+        jLabel31.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel31.setText("UPC");
+        jPanel14.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        CrearUsuarioP_TF_Nombre17.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre17.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre17.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre17.setBorder(null);
+        jPanel14.add(CrearUsuarioP_TF_Nombre17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
+
+        jLabel34.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel34.setText("Id Vendedor");
+        jPanel14.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
+
+        CrearUsuarioP_TF_Nombre20.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre20.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre20.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre20.setBorder(null);
+        jPanel14.add(CrearUsuarioP_TF_Nombre20, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 220, 30));
+
+        javax.swing.GroupLayout CrearVendeLayout = new javax.swing.GroupLayout(CrearVende.getContentPane());
+        CrearVende.getContentPane().setLayout(CrearVendeLayout);
+        CrearVendeLayout.setHorizontalGroup(
+            CrearVendeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        CrearVendeLayout.setVerticalGroup(
+            CrearVendeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CrearVendeLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -337,40 +733,28 @@ public class Main extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(180, 225, 151));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        InfoCuenta_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
-        InfoCuenta_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        InfoCuenta_AdminTools_MW.setForeground(new java.awt.Color(233, 239, 192));
-        InfoCuenta_AdminTools_MW.setText("Cambiar llave de usuario");
-        InfoCuenta_AdminTools_MW.setBorder(null);
-        InfoCuenta_AdminTools_MW.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InfoCuenta_AdminTools_MWActionPerformed(evt);
-            }
-        });
-        jPanel4.add(InfoCuenta_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 210, 30));
-
         Nombre_Usuario_Label.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         Nombre_Usuario_Label.setForeground(new java.awt.Color(78, 148, 79));
         Nombre_Usuario_Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Nombre_Usuario_Label.setText("Bienvenido Avelardo");
         Nombre_Usuario_Label.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Nombre_Usuario_Label.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel4.add(Nombre_Usuario_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 230, -1));
+        jPanel4.add(Nombre_Usuario_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 230, -1));
 
         jLabel1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(78, 148, 79));
         jLabel1.setText("Herrramientas Administrativas");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(78, 148, 79));
         jSeparator1.setForeground(new java.awt.Color(78, 148, 79));
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 211, 10));
+        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 211, 10));
 
         EliminarUsuario_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
         EliminarUsuario_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         EliminarUsuario_AdminTools_MW.setForeground(new java.awt.Color(233, 239, 192));
-        EliminarUsuario_AdminTools_MW.setText("Eliminar Usuario");
+        EliminarUsuario_AdminTools_MW.setText("Eliminar ");
         EliminarUsuario_AdminTools_MW.setBorder(null);
         EliminarUsuario_AdminTools_MW.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         EliminarUsuario_AdminTools_MW.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -379,7 +763,7 @@ public class Main extends javax.swing.JFrame {
                 EliminarUsuario_AdminTools_MWActionPerformed(evt);
             }
         });
-        jPanel4.add(EliminarUsuario_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 190, 31));
+        jPanel4.add(EliminarUsuario_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 190, 31));
 
         jPanel2.setBackground(new java.awt.Color(78, 148, 79));
 
@@ -394,12 +778,12 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 31, Short.MAX_VALUE)
         );
 
-        jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 100, 31));
+        jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 100, 31));
 
         CrearUsuario_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
         CrearUsuario_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         CrearUsuario_AdminTools_MW.setForeground(new java.awt.Color(233, 239, 192));
-        CrearUsuario_AdminTools_MW.setText("Crear Usuario");
+        CrearUsuario_AdminTools_MW.setText("Crear ");
         CrearUsuario_AdminTools_MW.setBorder(null);
         CrearUsuario_AdminTools_MW.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CrearUsuario_AdminTools_MW.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -408,7 +792,7 @@ public class Main extends javax.swing.JFrame {
                 CrearUsuario_AdminTools_MWActionPerformed(evt);
             }
         });
-        jPanel4.add(CrearUsuario_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 190, 31));
+        jPanel4.add(CrearUsuario_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 190, 31));
 
         jPanel5.setBackground(new java.awt.Color(78, 148, 79));
 
@@ -423,12 +807,12 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 31, Short.MAX_VALUE)
         );
 
-        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 100, 31));
+        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 100, 31));
 
         ModificarUsuario_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
         ModificarUsuario_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         ModificarUsuario_AdminTools_MW.setForeground(new java.awt.Color(233, 239, 192));
-        ModificarUsuario_AdminTools_MW.setText("Modificar Usuario");
+        ModificarUsuario_AdminTools_MW.setText("Modificar ");
         ModificarUsuario_AdminTools_MW.setBorder(null);
         ModificarUsuario_AdminTools_MW.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ModificarUsuario_AdminTools_MW.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -437,7 +821,7 @@ public class Main extends javax.swing.JFrame {
                 ModificarUsuario_AdminTools_MWActionPerformed(evt);
             }
         });
-        jPanel4.add(ModificarUsuario_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 190, 31));
+        jPanel4.add(ModificarUsuario_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 190, 31));
 
         jPanel7.setBackground(new java.awt.Color(78, 148, 79));
 
@@ -452,12 +836,12 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 31, Short.MAX_VALUE)
         );
 
-        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 100, 31));
+        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 100, 31));
 
         ListarUsuarios_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
         ListarUsuarios_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         ListarUsuarios_AdminTools_MW.setForeground(new java.awt.Color(233, 239, 192));
-        ListarUsuarios_AdminTools_MW.setText("Listar Usuarios");
+        ListarUsuarios_AdminTools_MW.setText("Listar ");
         ListarUsuarios_AdminTools_MW.setBorder(null);
         ListarUsuarios_AdminTools_MW.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ListarUsuarios_AdminTools_MW.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -466,7 +850,7 @@ public class Main extends javax.swing.JFrame {
                 ListarUsuarios_AdminTools_MWActionPerformed(evt);
             }
         });
-        jPanel4.add(ListarUsuarios_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 190, 31));
+        jPanel4.add(ListarUsuarios_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 190, 31));
 
         jPanel8.setBackground(new java.awt.Color(78, 148, 79));
 
@@ -481,12 +865,12 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 31, Short.MAX_VALUE)
         );
 
-        jPanel4.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 100, 31));
+        jPanel4.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 100, 31));
 
         botonuniversal.setBackground(new java.awt.Color(78, 148, 79));
         botonuniversal.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         botonuniversal.setForeground(new java.awt.Color(233, 239, 192));
-        botonuniversal.setText("C l o u d y");
+        botonuniversal.setText("Tiendita");
         botonuniversal.setBorder(null);
         botonuniversal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -495,59 +879,20 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel4.add(botonuniversal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 230, 60));
 
-        jLabel21.setBackground(new java.awt.Color(78, 148, 79));
-        jLabel21.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CloudIcon.png"))); // NOI18N
-        jLabel21.setText("C l o u d");
-        jLabel21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel21MouseClicked(evt);
-            }
-        });
-        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 120, 50));
-
         jSeparator2.setBackground(new java.awt.Color(78, 148, 79));
         jSeparator2.setForeground(new java.awt.Color(78, 148, 79));
         jSeparator2.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 211, 10));
 
-        jLabel22.setBackground(new java.awt.Color(78, 148, 79));
-        jLabel22.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MailIcon.png"))); // NOI18N
-        jLabel22.setText("M a i l");
-        jLabel22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel22MouseClicked(evt);
-            }
-        });
-        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 130, 50));
-
-        jLabel23.setBackground(new java.awt.Color(78, 148, 79));
-        jLabel23.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ToDoIcon.png"))); // NOI18N
-        jLabel23.setText("T o - D o");
-        jLabel23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel23MouseClicked(evt);
-            }
-        });
-        jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 130, 40));
-
         jSeparator3.setBackground(new java.awt.Color(78, 148, 79));
         jSeparator3.setForeground(new java.awt.Color(78, 148, 79));
         jSeparator3.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 211, 10));
+        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 211, 10));
 
         InfoCuenta_AdminTools_MW1.setBackground(new java.awt.Color(78, 148, 79));
         InfoCuenta_AdminTools_MW1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         InfoCuenta_AdminTools_MW1.setForeground(new java.awt.Color(233, 239, 192));
-        InfoCuenta_AdminTools_MW1.setText("Informacion de Cuenta");
+        InfoCuenta_AdminTools_MW1.setText("Bitacora");
         InfoCuenta_AdminTools_MW1.setBorder(null);
         InfoCuenta_AdminTools_MW1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -556,13 +901,15 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel4.add(InfoCuenta_AdminTools_MW1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 230, 30));
 
-        jLabel30.setBackground(new java.awt.Color(78, 148, 79));
-        jLabel30.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MailIcon.png"))); // NOI18N
-        jLabel30.setText("M a i l");
-        jLabel30.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 130, 50));
+        jLabel21.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel21.setText("Reportes");
+        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
+
+        jSeparator4.setBackground(new java.awt.Color(78, 148, 79));
+        jSeparator4.setForeground(new java.awt.Color(78, 148, 79));
+        jSeparator4.setPreferredSize(new java.awt.Dimension(50, 30));
+        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 211, 10));
 
         Panel_Lateral.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 620));
 
@@ -573,8 +920,8 @@ public class Main extends javax.swing.JFrame {
 
         jLabel20.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel20.setText("L i s t a r  U s u a r i o");
-        ListarPane_AdminTools_MW.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 23, -1, -1));
+        jLabel20.setText("L i s t a r ");
+        ListarPane_AdminTools_MW.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         TablaListar.setBackground(new java.awt.Color(233, 239, 192));
         TablaListar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -606,7 +953,23 @@ public class Main extends javax.swing.JFrame {
         TablaListar.setSelectionBackground(new java.awt.Color(78, 148, 79));
         jScrollPane2.setViewportView(TablaListar);
 
-        ListarPane_AdminTools_MW.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 81, 734, 420));
+        ListarPane_AdminTools_MW.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 734, 420));
+
+        CB_Listar.setBackground(new java.awt.Color(180, 225, 151));
+        CB_Listar.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_Listar.setForeground(new java.awt.Color(78, 148, 79));
+        CB_Listar.setBorder(null);
+        CB_Listar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_ListarItemStateChanged(evt);
+            }
+        });
+        CB_Listar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_ListarActionPerformed(evt);
+            }
+        });
+        ListarPane_AdminTools_MW.add(CB_Listar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 220, 30));
 
         Crud_Usuarios_AP.add(ListarPane_AdminTools_MW);
 
@@ -615,7 +978,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel19.setText("E l i m i n a r  U s u a r i o");
+        jLabel19.setText("E l i m i n a r");
         EliminarPane_AdminTools_MW.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 23, -1, -1));
 
         TABLAELIMINAR.setBackground(new java.awt.Color(233, 239, 192));
@@ -648,7 +1011,7 @@ public class Main extends javax.swing.JFrame {
         TABLAELIMINAR.setSelectionBackground(new java.awt.Color(78, 148, 79));
         jScrollPane1.setViewportView(TABLAELIMINAR);
 
-        EliminarPane_AdminTools_MW.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 81, 734, 219));
+        EliminarPane_AdminTools_MW.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 734, 219));
 
         jButton2.setBackground(new java.awt.Color(78, 148, 79));
         jButton2.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
@@ -660,7 +1023,23 @@ public class Main extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        EliminarPane_AdminTools_MW.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 210, 70));
+        EliminarPane_AdminTools_MW.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 210, 70));
+
+        CB_Eliminar.setBackground(new java.awt.Color(180, 225, 151));
+        CB_Eliminar.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_Eliminar.setForeground(new java.awt.Color(78, 148, 79));
+        CB_Eliminar.setBorder(null);
+        CB_Eliminar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_EliminarItemStateChanged(evt);
+            }
+        });
+        CB_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_EliminarActionPerformed(evt);
+            }
+        });
+        EliminarPane_AdminTools_MW.add(CB_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 220, 30));
 
         Crud_Usuarios_AP.add(EliminarPane_AdminTools_MW);
 
@@ -791,99 +1170,36 @@ public class Main extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel10.setText("C r e a r  U s u a r i o");
+        jLabel10.setText("C r e a r  ");
         CrearPane_AdminTools_MW1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 23, -1, -1));
-
-        jLabel11.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel11.setText("Nombre");
-        CrearPane_AdminTools_MW1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
-
-        jLabel12.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel12.setText("Edad");
-        CrearPane_AdminTools_MW1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 50, -1));
-
-        jLabel13.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel13.setText("Genero");
-        CrearPane_AdminTools_MW1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 50, -1));
-
-        jLabel14.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel14.setText("Correo Electronico");
-        CrearPane_AdminTools_MW1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 130, -1));
-
-        jLabel15.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel15.setText("Id");
-        CrearPane_AdminTools_MW1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 50, -1));
-
-        jLabel16.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel16.setText("Usuario");
-        CrearPane_AdminTools_MW1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 70, -1));
-
-        jLabel17.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel17.setText("Contraseña");
-        CrearPane_AdminTools_MW1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 80, -1));
-
-        CrearUsuarioP_TF_Nombre1.setBackground(new java.awt.Color(180, 225, 151));
-        CrearUsuarioP_TF_Nombre1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        CrearUsuarioP_TF_Nombre1.setForeground(new java.awt.Color(78, 148, 79));
-        CrearUsuarioP_TF_Nombre1.setBorder(null);
-        CrearPane_AdminTools_MW1.add(CrearUsuarioP_TF_Nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 220, 30));
-
-        CrearUsuarioP_TF_Id1.setBackground(new java.awt.Color(180, 225, 151));
-        CrearUsuarioP_TF_Id1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        CrearUsuarioP_TF_Id1.setForeground(new java.awt.Color(78, 148, 79));
-        CrearUsuarioP_TF_Id1.setBorder(null);
-        CrearPane_AdminTools_MW1.add(CrearUsuarioP_TF_Id1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 220, 30));
-
-        CrearUsuarioP_TF_Edad1.setBackground(new java.awt.Color(180, 225, 151));
-        CrearUsuarioP_TF_Edad1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        CrearUsuarioP_TF_Edad1.setForeground(new java.awt.Color(78, 148, 79));
-        CrearUsuarioP_TF_Edad1.setBorder(null);
-        CrearPane_AdminTools_MW1.add(CrearUsuarioP_TF_Edad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 220, 30));
-
-        CrearUsuarioP_TF_Contraseña1.setBackground(new java.awt.Color(180, 225, 151));
-        CrearUsuarioP_TF_Contraseña1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        CrearUsuarioP_TF_Contraseña1.setForeground(new java.awt.Color(78, 148, 79));
-        CrearUsuarioP_TF_Contraseña1.setBorder(null);
-        CrearPane_AdminTools_MW1.add(CrearUsuarioP_TF_Contraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 220, 30));
-
-        CrearUsuarioP_TF_CorreoElec1.setBackground(new java.awt.Color(180, 225, 151));
-        CrearUsuarioP_TF_CorreoElec1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        CrearUsuarioP_TF_CorreoElec1.setForeground(new java.awt.Color(78, 148, 79));
-        CrearUsuarioP_TF_CorreoElec1.setBorder(null);
-        CrearPane_AdminTools_MW1.add(CrearUsuarioP_TF_CorreoElec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 220, 30));
-
-        CrearUsuarioP_TF_Usuario1.setBackground(new java.awt.Color(180, 225, 151));
-        CrearUsuarioP_TF_Usuario1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        CrearUsuarioP_TF_Usuario1.setForeground(new java.awt.Color(78, 148, 79));
-        CrearUsuarioP_TF_Usuario1.setBorder(null);
-        CrearPane_AdminTools_MW1.add(CrearUsuarioP_TF_Usuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 220, 30));
-
-        jComboBox2.setBackground(new java.awt.Color(180, 225, 151));
-        jComboBox2.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(78, 148, 79));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer", "Genero" }));
-        jComboBox2.setSelectedIndex(2);
-        jComboBox2.setBorder(null);
-        CrearPane_AdminTools_MW1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 220, 30));
 
         jButton4.setBackground(new java.awt.Color(180, 225, 151));
         jButton4.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(78, 148, 79));
-        jButton4.setText("C r e a r  U s u a r i o");
+        jButton4.setText("C r e a r  N u e v o");
         jButton4.setBorder(null);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        CrearPane_AdminTools_MW1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 220, 150));
+        CrearPane_AdminTools_MW1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 220, 150));
+
+        CB_Crear.setBackground(new java.awt.Color(180, 225, 151));
+        CB_Crear.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_Crear.setForeground(new java.awt.Color(78, 148, 79));
+        CB_Crear.setBorder(null);
+        CB_Crear.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_CrearItemStateChanged(evt);
+            }
+        });
+        CB_Crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_CrearActionPerformed(evt);
+            }
+        });
+        CrearPane_AdminTools_MW1.add(CB_Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 220, 30));
 
         Crud_Usuarios_AP.add(CrearPane_AdminTools_MW1);
 
@@ -905,17 +1221,8 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void InfoCuenta_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoCuenta_AdminTools_MWActionPerformed
-        modelocomboboxussers();
-
-        NuevoG.setModal(true);
-        NuevoG.pack();
-        NuevoG.setLocationRelativeTo(this);
-        NuevoG.setVisible(true);
-
-    }//GEN-LAST:event_InfoCuenta_AdminTools_MWActionPerformed
-
     private void CrearUsuario_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearUsuario_AdminTools_MWActionPerformed
+        modelocomboboxCREATE();
         CrearPane_AdminTools_MW1.setVisible(true);
         FondoCloudy.setVisible(false);
         Crud_Usuarios_AP.setVisible(true);
@@ -938,85 +1245,33 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_ModificarUsuario_AdminTools_MWActionPerformed
 
     private void EliminarUsuario_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarUsuario_AdminTools_MWActionPerformed
+        modelocomboboxEliminar();
+        modeloTABLEeliminar();
+
         ModificarPane_AdminTools_MW.setVisible(false);
         Crud_Usuarios_AP.setVisible(true);
         FondoCloudy.setVisible(false);
         EliminarPane_AdminTools_MW.setVisible(true);
         ListarPane_AdminTools_MW.setVisible((false));
-        modeloTABLEELIMINAR();
         CrearPane_AdminTools_MW1.setVisible(false);    }//GEN-LAST:event_EliminarUsuario_AdminTools_MWActionPerformed
 
     private void ListarUsuarios_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarUsuarios_AdminTools_MWActionPerformed
+        modelocomboboxListar();
+
         CrearPane_AdminTools_MW1.setVisible(false);
         ListarPane_AdminTools_MW.setVisible((true));
         Crud_Usuarios_AP.setVisible(true);
         FondoCloudy.setVisible(false);
         EliminarPane_AdminTools_MW.setVisible(false);
+
         modeloTABLEListar();
-        modeloTABLEELIMINAR();
 
         ModificarPane_AdminTools_MW.setVisible(false);    }//GEN-LAST:event_ListarUsuarios_AdminTools_MWActionPerformed
 
     private void botonuniversalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonuniversalActionPerformed
         TodoVfalse();
         FondoCloudy.setVisible(true);
-        Agegar();
-
     }//GEN-LAST:event_botonuniversalActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        int bander = 0;
-        if (((String) jComboBox2.getSelectedItem()).toLowerCase().equals("hombre")) {
-            for (Persona ListUsser : ListUssers) {
-                if (ListUsser.getNombre().equals(CrearUsuarioP_TF_Nombre1.getText())) {
-                    JOptionPane.showMessageDialog(rootPane, "El usuario ya existe");
-                } else {
-                    bander = 0;
-                }
-            }
-            if (bander == 0) {
-                ListUssers.add(new Persona(CrearUsuarioP_TF_Usuario1.getText(),
-                        CrearUsuarioP_TF_Contraseña1.getText(),
-                        Integer.parseInt(CrearUsuarioP_TF_Edad1.getText()),
-                        Integer.parseInt(CrearUsuarioP_TF_Id1.getText()),
-                        CrearUsuarioP_TF_Nombre1.getText(),
-                        CrearUsuarioP_TF_CorreoElec1.getText(),
-                        "Hombre",
-                        "No"));
-            }
-
-        } else if (((String) jComboBox2.getSelectedItem()).toLowerCase().equals("mujer")) {
-            for (Persona ListUsser : ListUssers) {
-                if (ListUsser.getNombre().equals(CrearUsuarioP_TF_Nombre1.getText())) {
-                    JOptionPane.showMessageDialog(rootPane, "El usuario ya existe");
-                } else {
-                    bander = 0;
-                }
-            }
-            if (bander == 0) {
-                ListUssers.add(new Persona(CrearUsuarioP_TF_Usuario1.getText(),
-                        CrearUsuarioP_TF_Contraseña1.getText(),
-                        Integer.parseInt(CrearUsuarioP_TF_Edad1.getText()),
-                        Integer.parseInt(CrearUsuarioP_TF_Id1.getText()),
-                        CrearUsuarioP_TF_Nombre1.getText(),
-                        CrearUsuarioP_TF_CorreoElec1.getText(),
-                        "Mujer",
-                        "No"));
-            }
-            
-        } else {
-            JOptionPane.showMessageDialog(this, "Ingrese un genero valido");
-        }
-
-        CrearUsuarioP_TF_Usuario1.setText("");
-        CrearUsuarioP_TF_Contraseña1.setText("");
-        CrearUsuarioP_TF_Edad1.setText("");
-        CrearUsuarioP_TF_Nombre1.setText("");
-        CrearUsuarioP_TF_CorreoElec1.setText("");
-        CrearUsuarioP_TF_Id1.setText("");
-//        System.out.println(ListUssers);
-
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void CB_Usuario_Modificar_ATItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_Usuario_Modificar_ATItemStateChanged
 
@@ -1031,7 +1286,6 @@ public class Main extends javax.swing.JFrame {
         ListUssers.get(index).setID(Integer.parseInt(CrearUsuarioP_TF_Id.getText()));
         ListUssers.get(index).setNombre(CrearUsuarioP_TF_Nombre.getText());
         ListUssers.get(index).setCorreo(CrearUsuarioP_TF_CorreoElec.getText());
-
         JOptionPane.showMessageDialog(this, "Usuario cambiado con exito");
         //out.println(ListUssers);
 
@@ -1053,48 +1307,114 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_CB_Usuario_Modificar_ATActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ListUssers.remove(TABLAELIMINAR.getSelectedRow());
-        //TABLAELIMINAR.remove(TABLAELIMINAR.getSelectedRow());
-        modeloTABLEELIMINAR();
-        modeloTABLEListar();
-        
+        //deleteElement(String table, Object id)
+        System.out.println(TABLAELIMINAR.getColumn(1).toString());
+        modeloTABLEeliminar();
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ToDo().setVisible(true);
-            }
-        });
-    }//GEN-LAST:event_jLabel23MouseClicked
-
-    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Drive().setVisible(true);
-            }
-        });
-    }//GEN-LAST:event_jLabel21MouseClicked
 
     private void InfoCuenta_AdminTools_MW1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoCuenta_AdminTools_MW1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InfoCuenta_AdminTools_MW1ActionPerformed
 
+    private void CB_ListarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_ListarItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_ListarItemStateChanged
+
+    private void CB_ListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ListarActionPerformed
+        modeloTABLEListar();
+    }//GEN-LAST:event_CB_ListarActionPerformed
+
+    private void CB_EliminarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_EliminarItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_EliminarItemStateChanged
+
+    private void CB_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_EliminarActionPerformed
+        modeloTABLEeliminar();
+    }//GEN-LAST:event_CB_EliminarActionPerformed
+
+    private void CB_CrearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_CrearItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_CrearItemStateChanged
+
+    private void CB_CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_CrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_CrearActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
+        String entidad = (String) CB_Crear.getSelectedItem();
+        switch (entidad) {
+            case "Producto":
+                CrearProducto.setVisible(true);
+                break;
+            case "Vendedor":
+                CrearVendedor.setVisible(true);
+                break;
+            case "Cliente":
+                CrearCliente.setVisible(true);
+                break;
+            case "Factura":
+                // Aquí puedes poner el código para manejar la entidad "Factura"
+                //crearfa.setVisible(true);
+                break;
+            case "Tienda":
+                CrearTienda.setVisible(true);
+                break;
+            case "Tiene":
+                CrearTiene.setVisible(true);
+                break;
+            case "Ubicaciones":
+                CrearUbicaciones.setVisible(true);
+                break;
+            case "Vende":
+                CrearVende.setVisible(true);
+                break;
+            case "Detalle_Factura":
+                // Aquí puedes poner el código para manejar la entidad "Detalle_Factura"
+                break;
+            default:
+                System.out.println("Entidad no reconocida");
+                // Si el valor del String no coincide con ninguna de las opciones anteriores
+                break;
+        }
+
+    }
+
+
     private void AgregarintegranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarintegranteActionPerformed
-        NewJFrame.Uactual=(Persona)CB_Usuario_Modificar_AT1.getSelectedItem();
+
     }//GEN-LAST:event_AgregarintegranteActionPerformed
 
-    private void CB_Usuario_Modificar_AT1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_Usuario_Modificar_AT1ItemStateChanged
+    private void CrearUsuarioP_TF_Nombre6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearUsuarioP_TF_Nombre6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CrearUsuarioP_TF_Nombre6ActionPerformed
 
-    }//GEN-LAST:event_CB_Usuario_Modificar_AT1ItemStateChanged
+    private void Agregarintegrante1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Agregarintegrante1ActionPerformed
 
-    private void CB_Usuario_Modificar_AT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Usuario_Modificar_AT1ActionPerformed
+    private void Agregarintegrante2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Agregarintegrante2ActionPerformed
 
-    }//GEN-LAST:event_CB_Usuario_Modificar_AT1ActionPerformed
+    private void Agregarintegrante3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Agregarintegrante3ActionPerformed
 
-    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-        new CorreoCloudy(NewJFrame.Uactual.getID()).setVisible(true);
-    }//GEN-LAST:event_jLabel22MouseClicked
+    private void Agregarintegrante4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Agregarintegrante4ActionPerformed
+
+    private void CrearUsuarioP_TF_Nombre11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearUsuarioP_TF_Nombre11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CrearUsuarioP_TF_Nombre11ActionPerformed
+
+    private void Agregarintegrante5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Agregarintegrante5ActionPerformed
+
+    private void Agregarintegrante6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Agregarintegrante6ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1152,140 +1472,180 @@ public class Main extends javax.swing.JFrame {
         CB_Usuario_Modificar_AT.setModel(m);
     }
 
-    public void modeloTABLEListar() {
-        DefaultTableModel listPersona = (DefaultTableModel) TablaListar.getModel();
-        listPersona.setRowCount(0);
-
-        for (Persona ListUsser : ListUssers) {
-            Object[] row = {ListUsser, ListUsser.getUsuario(), ListUsser.getID()};
-            listPersona.addRow(row);
-        }
-        TablaListar.setModel(listPersona);
-    }
-
-    public void modeloTABLEELIMINAR() {
-        //TABLAELIMINAR.fireTableDataChanged();
-        DefaultTableModel listPersona = (DefaultTableModel) TABLAELIMINAR.getModel();
-        listPersona.setRowCount(0);
-        for (Persona ListUsser : ListUssers) {
-            Object[] row = {ListUsser, ListUsser.getUsuario(), ListUsser.getID()};
-            listPersona.addRow(row);
-        }
-        TABLAELIMINAR.setModel(listPersona);
-    }
-
-    public void listarDTB() {
-        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
-        db.conectar();
-        try {
-            db.query.execute("select Usuario,Contraseña,Edad,Nombre,Correo,Genero,Administrador, Id from Usuarios");
-            ResultSet rs = db.query.getResultSet();
-
-            while (rs.next()) {
-                System.out.println(rs.getString(1)
-                        + "--" + rs.getString(2) + "--"
-                        + rs.getInt(3) + "--"
-                        + rs.getString(4) + "--"
-                        + rs.getString(5) + "--"
-                        + rs.getString(6) + "--"
-                        + rs.getString(7) + "--"
-                        + rs.getInt(8));
-//                System.out.println(rs.getInt(1) + "--->" + rs.getString(2));
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        db.desconectar();
-    }
-
-    public void Agegar() {
-
-        Dba db = new Dba("C:\\Users\\wilme\\Desktop\\Q4-22\\Proyecto Programacion II\\ProyectoFinal\\DatosPrograma.accdb");
-        db.conectar();
-
-        try {
-            db.query.execute("DELETE FROM Usuarios ");
-            for (Persona persona : ListUssers) {
-                db.query.execute("INSERT INTO Usuarios"
-                        + " (Usuario,Contraseña,Edad,Nombre,Correo,Genero,Administrador,Id)"
-                        + " VALUES ('" + persona.getUsuario()
-                        + "', '" + persona.getContraseña()
-                        + "', '" + persona.getEdad()
-                        + "', '" + persona.getNombre()
-                        + "', '" + persona.getCorreo()
-                        + "', '" + persona.getGenero()
-                        + "', '" + persona.getAdministrador()
-                        + "', '" + persona.getID()
-                        + "')");
-                db.commit();
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        db.desconectar();
-    }
-    
-    public void modelocomboboxussers() {
-        CB_Usuario_Modificar_AT1.getModel();
+    //TODO DE LISTAR
+    public void modelocomboboxListar() {
+        CB_Listar.getModel();
         DefaultComboBoxModel m = new DefaultComboBoxModel();
-        for (Persona persona : Main.ListUssers) {
-            m.addElement(persona);
+        for (String entidade : entidades) {
+            m.addElement(entidade);
         }
-        CB_Usuario_Modificar_AT1.setModel(m);
+        CB_Listar.setModel(m);
+    }
+
+    public void modeloTABLEListar() {
+        String entidad = (String) CB_Listar.getSelectedItem();
+        DefaultTableModel m = new DefaultTableModel();
+        m = (TraerTabla(coso.getTable(entidad)));
+        TablaListar.setModel(m);
+    }
+
+    //TODO ELIMINAR
+    public void modelocomboboxEliminar() {
+        CB_Eliminar.getModel();
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        for (String entidade : entidades) {
+            m.addElement(entidade);
+        }
+        CB_Eliminar.setModel(m);
+    }
+
+    public void modeloTABLEeliminar() {
+        String entidad = (String) CB_Eliminar.getSelectedItem();
+        DefaultTableModel m = new DefaultTableModel();
+        m = (TraerTabla(coso.getTable(entidad)));
+        TABLAELIMINAR.setModel(m);
+    }
+//TODO DE CREAR
+
+    public void modelocomboboxCREATE() {
+        CB_Crear.getModel();
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        for (String entidade : entidadesCrear) {
+            m.addElement(entidade);
+        }
+        CB_Crear.setModel(m);
     }
 
     public static ArrayList<Persona> ListUssers = new ArrayList();
+    public static ArrayList<String> entidades = new ArrayList<String>() {
+        {
+            add("Producto");
+            add("Vendedor");
+            add("Cliente");
+            add("Factura");
+            add("Tiene");
+            add("Ubicaciones");
+            add("Vende");
+            add("Detalle_Factura");
+            add("Tienda");
+        }
+    };
+
+    public static ArrayList<String> entidadesCrear = new ArrayList<String>() {
+        {
+            add("Producto");
+            add("Vendedor");
+            add("Cliente");
+            add("Factura");
+            add("Tiene");
+            add("Ubicaciones");
+            add("Vende");
+            add("Detalle_Factura");
+            add("Tienda");
+        }
+    };
+
+    public DefaultTableModel TraerTabla(ResultSet rs) {
+        DefaultTableModel model = new DefaultTableModel();
+        try {
+            ResultSetMetaData metaData = rs.getMetaData();
+            for (int i = 1; i <= metaData.getColumnCount(); i++) {
+                model.addColumn(metaData.getColumnName(i));
+            }
+            while (rs.next()) {
+                Object[] row = new Object[metaData.getColumnCount()];
+                for (int i = 1; i <= metaData.getColumnCount(); i++) {
+                    row[i - 1] = rs.getObject(i);
+                }
+                model.addRow(row);
+            }
+            return model;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return model;
+    }
+
+    DbCon coso = new DbCon("master");
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Agregarintegrante;
+    private javax.swing.JButton Agregarintegrante1;
+    private javax.swing.JButton Agregarintegrante2;
+    private javax.swing.JButton Agregarintegrante3;
+    private javax.swing.JButton Agregarintegrante4;
+    private javax.swing.JButton Agregarintegrante5;
+    private javax.swing.JButton Agregarintegrante6;
+    private javax.swing.JComboBox<String> CB_Crear;
+    private javax.swing.JComboBox<String> CB_Eliminar;
+    private javax.swing.JComboBox<String> CB_Listar;
     private javax.swing.JComboBox<String> CB_Usuario_Modificar_AT;
-    private javax.swing.JComboBox<String> CB_Usuario_Modificar_AT1;
-    private javax.swing.JLabel CorreoInfo;
+    private javax.swing.JDialog CrearCliente;
     private javax.swing.JPanel CrearPane_AdminTools_MW1;
+    private javax.swing.JDialog CrearProducto;
+    private javax.swing.JDialog CrearTienda;
+    private javax.swing.JDialog CrearTiene;
+    private javax.swing.JDialog CrearUbicaciones;
     private javax.swing.JTextField CrearUsuarioP_TF_Contraseña;
-    private javax.swing.JTextField CrearUsuarioP_TF_Contraseña1;
     private javax.swing.JTextField CrearUsuarioP_TF_CorreoElec;
-    private javax.swing.JTextField CrearUsuarioP_TF_CorreoElec1;
     private javax.swing.JTextField CrearUsuarioP_TF_Edad;
-    private javax.swing.JTextField CrearUsuarioP_TF_Edad1;
     private javax.swing.JTextField CrearUsuarioP_TF_Id;
-    private javax.swing.JTextField CrearUsuarioP_TF_Id1;
     private javax.swing.JTextField CrearUsuarioP_TF_Nombre;
     private javax.swing.JTextField CrearUsuarioP_TF_Nombre1;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre10;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre11;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre12;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre13;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre14;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre15;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre16;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre17;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre18;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre2;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre20;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre3;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre4;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre5;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre6;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre7;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre8;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre9;
     private javax.swing.JTextField CrearUsuarioP_TF_Usuario;
-    private javax.swing.JTextField CrearUsuarioP_TF_Usuario1;
     private javax.swing.JButton CrearUsuario_AdminTools_MW;
+    private javax.swing.JDialog CrearVende;
+    private javax.swing.JDialog CrearVendedor;
     private javax.swing.JPanel Crud_Usuarios_AP;
-    private javax.swing.JLabel EdadInfo;
     private javax.swing.JPanel EliminarPane_AdminTools_MW;
     private javax.swing.JButton EliminarUsuario_AdminTools_MW;
     private javax.swing.JLabel FondoCloudy;
-    private javax.swing.JLabel GeneroInfo;
     private javax.swing.JLabel HEADERCOSO3;
-    private javax.swing.JLabel IdInfo;
-    private javax.swing.JButton InfoCuenta_AdminTools_MW;
+    private javax.swing.JLabel HEADERCOSO4;
+    private javax.swing.JLabel HEADERCOSO5;
+    private javax.swing.JLabel HEADERCOSO6;
+    private javax.swing.JLabel HEADERCOSO7;
+    private javax.swing.JLabel HEADERCOSO8;
+    private javax.swing.JLabel HEADERCOSO9;
     private javax.swing.JButton InfoCuenta_AdminTools_MW1;
-    private javax.swing.JDialog InformacionUsuarioFra;
     private javax.swing.JPanel ListarPane_AdminTools_MW;
     private javax.swing.JButton ListarUsuarios_AdminTools_MW;
     private javax.swing.JPanel ModificarPane_AdminTools_MW;
     private javax.swing.JButton ModificarUsuario_AdminTools_MW;
-    private javax.swing.JLabel NombreInfo;
     private javax.swing.JLabel NombreLista1;
+    private javax.swing.JLabel NombreLista2;
+    private javax.swing.JLabel NombreLista3;
+    private javax.swing.JLabel NombreLista4;
+    private javax.swing.JLabel NombreLista5;
+    private javax.swing.JLabel NombreLista6;
+    private javax.swing.JLabel NombreLista7;
     private javax.swing.JLabel Nombre_Usuario_Label;
-    private javax.swing.JLabel Nombre_Usuario_Label1;
-    private javax.swing.JDialog NuevoG;
     private javax.swing.JPanel PanelAdministrador;
     private javax.swing.JPanel Panel_Lateral;
     private javax.swing.JTable TABLAELIMINAR;
     private javax.swing.JTable TablaListar;
-    private javax.swing.JLabel UsuarioInfo;
     private javax.swing.JButton botonuniversal;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1310,23 +1670,32 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     // End of variables declaration//GEN-END:variables
 }

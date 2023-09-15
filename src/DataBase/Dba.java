@@ -23,7 +23,7 @@ public class Dba {
             dbcon = DriverManager.getConnection(driver+base_datos,"","");
             query = dbcon.createStatement();
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
     }
    
@@ -39,7 +39,7 @@ public class Dba {
        try{
            dbcon.commit();
        }catch(Exception e){
-           e.printStackTrace();
+
        }
    }
     

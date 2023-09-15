@@ -21,9 +21,7 @@ import proyectofinal.NewJFrame;
 
 public class UsserDis extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Main
-     */
+
     public UsserDis() {
         initComponents();
         Nombre_Usuario_Label.setText("Bienvenido " + NewJFrame.Uactual.getNombre());

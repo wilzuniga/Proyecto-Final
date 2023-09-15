@@ -52,10 +52,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="2" attributes="0">
-                              <Component id="OlvideContraseña_Label_Login" alignment="2" min="-2" max="-2" attributes="0"/>
-                              <Component id="Botonl_Ingresar_Login" alignment="2" min="-2" pref="229" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="Botonl_Ingresar_Login" min="-2" pref="229" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
@@ -89,9 +86,7 @@
                   <Component id="TF_Contraseña_Login" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                   <Component id="Botonl_Ingresar_Login" min="-2" pref="34" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="OlvideContraseña_Label_Login" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -210,20 +205,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="OlvideContrase&#xf1;a_Label_Login">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto Medium" size="14" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="4f" green="94" red="4e" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Olvide mi contrase&#xf1;a"/>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
-            </Property>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
