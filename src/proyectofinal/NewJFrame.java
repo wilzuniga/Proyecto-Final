@@ -1,9 +1,7 @@
 package proyectofinal;
 
 import Clases.Persona;
-import Correo.LinkMail;
-import Correo.Server;
-import DataBase.Dba;
+
 import java.awt.Color;
 import proyectofinal.Main;
 import java.awt.*;
@@ -171,14 +169,12 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_Botonl_Ingresar_LoginMouseEntered
 
     private void Botonl_Ingresar_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Botonl_Ingresar_LoginActionPerformed
-        
-
 
         try {
             boolean bandera = true;
             int i = 0;
             while (bandera) {
-                if (TF_Usuario_Login.getText().equals(Main.ListUssers.get(i).getUsuario()) && TF_Contraseña_Login.getText().equals(Main.ListUssers.get(i).getContraseña()) && Main.ListUssers.get(i).getAdministrador().equals("Sí")) {
+                if (TF_Usuario_Login.getText().equals(Main.ListUssers.get(i).getUsuario()) && TF_Contraseña_Login.getText().equals(Main.ListUssers.get(i).getContraseña()) && Main.ListUssers.get(i).getAdministrador().equals("Sí") || Main.ListUssers.get(i).getAdministrador().equals("SI") || Main.ListUssers.get(i).getAdministrador().equals("si") || Main.ListUssers.get(i).getAdministrador().equals("S")) {
                     Uactual = Main.ListUssers.get(i);
                     //CLAVALA, CLAVALA, CLAVALA
                     java.awt.EventQueue.invokeLater(new Runnable() {
@@ -250,7 +246,6 @@ public class NewJFrame extends javax.swing.JFrame {
         });
     }
 
-
     public void leerDesdeArchivo() {
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("./personas.bin"))) {
@@ -265,6 +260,8 @@ public class NewJFrame extends javax.swing.JFrame {
             System.out.println("Lectura del archivo binario completa.");
         }
     }
+
+
 
     public static Persona Uactual;
 

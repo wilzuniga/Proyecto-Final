@@ -5,13 +5,18 @@
  */
 package Clases;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.sql.ResultSetMetaData;
-
+import java.sql.DatabaseMetaData;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DbCon {
 
@@ -52,10 +57,144 @@ public class DbCon {
         this.con = con;
     }
 
-    public ResultSet getTable(String table) {
+    public ResultSet Select(String table) {
         ResultSet rs = null;
         try {
-            PreparedStatement ps = con.prepareStatement("Select * from " + table);
+            CallableStatement callSt = con.prepareCall("Select" + table);;
+            rs = callSt.executeQuery();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return rs;
+    }
+
+    public ResultSet SelectById(String table, int id) {
+        ResultSet rs = null;
+        try {
+            CallableStatement callSt = null;
+
+            switch (table) {
+                case "Tienda":
+                    callSt = con.prepareCall("SELECT * FROM " + table + " WHERE id_tienda = ?");
+                    break;
+                case "Producto":
+                    callSt = con.prepareCall("SELECT * FROM " + table + " WHERE UPC = ?");
+                    break;
+                case "Vendedor":
+                    callSt = con.prepareCall("SELECT * FROM " + table + " WHERE id_vendedor = ?");
+                    break;
+                case "Factura":
+                    callSt = con.prepareCall("SELECT * FROM " + table + " WHERE numero = ?");
+                    break;
+                case "Cliente":
+                    callSt = con.prepareCall("SELECT * FROM " + table + " WHERE id_cliente = ?");
+                    break;
+                default:
+                    callSt = con.prepareCall("SELECT * FROM " + table + " WHERE II = ?");
+
+            }
+            callSt.setInt(1, id);
+            rs = callSt.executeQuery();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return rs;
+    }
+
+    public void Delete(String table, int id) {
+        try {
+            CallableStatement callSt = con.prepareCall("{call Delete" + table + "(?)}");;
+            callSt.setInt(1, id);
+            callSt.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void Update(String table, int id, ArrayList<Object> atributes) {
+        try {
+            CallableStatement callSt = null;
+            switch (table) {
+                case "Tienda":
+                    callSt = con.prepareCall("{call UpdateTienda(?,?,?)}");
+                    callSt.setInt("@id_tienda", id);
+                    callSt.setString("@nombre_tienda", (String) atributes.get(0));
+                    callSt.setString("@horario", (String) atributes.get(1));
+                    break;
+                case "Producto":
+                    callSt = con.prepareCall("{call UpdateProducto(?,?,?,?,?)}");
+                    callSt.setInt("@UPC", id);
+                    callSt.setString("@nombre_producto", (String) atributes.get(0));
+                    callSt.setString("@tamaño", (String) atributes.get(1));
+                    callSt.setString("@embalaje", (String) atributes.get(2));
+                    callSt.setString("@marca", (String) atributes.get(3));
+                    break;
+                case "Vendedor":
+                    callSt = con.prepareCall("{call UpdateVendedor(?,?)}");
+                    callSt.setInt("@id_vendedor", id);
+                    callSt.setString("@nombre", (String) atributes.get(0));
+                    break;
+                case "Factura":
+                    callSt = con.prepareCall("{call UpdateFactura(?,?,?,?,?,?,?)}");
+                    callSt.setInt("@numero", id);
+                    callSt.setInt("@id_cliente", Integer.parseInt((String) atributes.get(0)));
+                    callSt.setInt("@id_tienda", (Integer) atributes.get(1));
+                    callSt.setString("@fecha", (String) atributes.get(2));
+                    callSt.setInt("@subtotal", (Integer) atributes.get(3));
+                    callSt.setInt("@ISV", (Integer) atributes.get(4));
+                    callSt.setInt("@total", (Integer) atributes.get(5));
+                    break;
+                case "Cliente":
+                    callSt = con.prepareCall("{call UpdateCliente(?,?,?)}");
+                    callSt.setInt("@id_cliente", id);
+                    callSt.setString("@nombre_cliente", (String) atributes.get(0));
+                    callSt.setString("@coreoElectronico", (String) atributes.get(1));
+                    break;
+                default:
+                    return;
+            }
+            callSt.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void Insert(String table, ArrayList<Object> atributes) {
+        try {
+            CallableStatement callSt = null;
+            switch (table) {
+                case "Tienda":
+                    callSt = con.prepareCall("{call InsertTienda(?,?)}");
+                    break;
+                case "Producto":
+                    callSt = con.prepareCall("{call InsertProducto(?,?,?,?)}");
+                    break;
+                case "Vendedor":
+                    callSt = con.prepareCall("{call InsertVendedor(?)}");
+                    break;
+                case "Factura":
+                    callSt = con.prepareCall("{call InsertFactura(?,?,?,?,?,?)}");
+                    break;
+                case "Cliente":
+                    callSt = con.prepareCall("{call InsertCliente(?,?)}");
+                    break;
+                default:
+                    return;
+            }
+            for (int i = 1; i <= atributes.size(); i++) {
+                callSt.setObject(i, atributes.get(i - 1));
+            }
+            callSt.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public ResultSet Inventario(int id) {
+        ResultSet rs = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(
+                    "Select * from Inventario where TiendaID = " + id);
             rs = ps.executeQuery();
         } catch (Exception e) {
             e.printStackTrace();
@@ -63,65 +202,197 @@ public class DbCon {
         return rs;
     }
 
-    public void deleteElement(String table, Object id) {
-        String id_table = "";
-        switch (table) {
-            case "Tienda":
-                id_table = "id_tienda";
-                break;
-            case "Cliente":
-                id_table = "id_cliente";
-                break;
-            case "Producto":
-                id_table = "UPC";
-                break;
-            case "Vendedor":
-                id_table = "id_vendedor";
-                break;
-            case "Factura":
-                id_table = "numero";
-                break;
-        }
+    public ResultSet HistorialVentas(int id) {
+        ResultSet rs = null;
         try {
-            PreparedStatement ps = con.prepareStatement("Delete from " + table + " where " + id_table + " = " + id);
-            ps.execute();
+            PreparedStatement ps = con.prepareStatement(
+                    "Select * from HistorialVentas where TiendaID = " + id);
+            rs = ps.executeQuery();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return rs;
     }
 
-    public void updateElement(String table, Object id, ArrayList<Object> atributes) {
-        String id_table = "";
-        switch (table) {
-            case "Tienda":
-                id_table = "id_tienda";
-                break;
-            case "Cliente":
-                id_table = "id_cliente";
-                break;
-            case "Producto":
-                id_table = "UPC";
-                break;
-            case "Vendedor":
-                id_table = "id_vendedor";
-                break;
-            case "Factura":
-                id_table = "numero";
-                break;
-        }
-
-        String params = "";
+    public ResultSet ProductosPorPais(String ubicacion) {
+        ResultSet rs = null;
         try {
-            ResultSet rs = getTable(table);
-            ResultSetMetaData metaData = rs.getMetaData();
-            for (int i = 2; i <= metaData.getColumnCount(); i++) {
-                params += (" " + metaData.getColumnName(i)+" = "+ atributes.get(i-2)+",");
+            PreparedStatement ps = con.prepareStatement(
+                    "Select TOP (20) * from ProductosPorPais where ubicacion = '" + ubicacion + "' order by Ventas DESC");
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public ResultSet ComprasPorCliente(int id) {
+        ResultSet rs = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(
+                    "Select * from ComprasPorCliente where ClienteID = " + id);
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public ResultSet Coso(int id) {
+        ResultSet rs = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT p.UPC , p.nombre_producto, t.precio FROM Producto AS p JOIN Tiene AS T ON T.UPC=p.UPC where T.id_tienda = " + id);
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public ResultSet Prod1MasQueProd2(String menos, String mas) {
+        ResultSet rs = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(
+                    "with \n"
+                    + "menos as(\n"
+                    + "	Select * from Prod1MasQueProd2 where nombre_producto='" + menos + "'\n"
+                    + "),\n"
+                    + "mas as(\n"
+                    + "	Select * from Prod1MasQueProd2 where nombre_producto='" + mas + "'\n"
+                    + ")\n"
+                    + "\n"
+                    + "Select P2.id_tienda, P2.nombre_producto, P2.nombre_tienda, P2.Ventas\n"
+                    + "from menos as P1 , mas as P2\n"
+                    + "where P1.id_tienda=P2.id_tienda and P1.Ventas<P2.Ventas");
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public void insertarDetalleFactura(int numero, int UPC) {
+        PreparedStatement stmt = null;
+        try {
+            String sql = "INSERT INTO Detalle_Factura (numero, UPC) VALUES (?, ?)";
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, numero);
+            stmt.setInt(2, UPC);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            params = params.substring(0, params.length()-1);
-            PreparedStatement ps = con.prepareStatement("Update " + table + " Set" + params + " where " + id_table + " = "+ id);
-            ps.execute();
+        }
+    }
+
+    public ResultSet Top3TiposProductosCompradosExceptLacteo() {
+        ResultSet rs = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT TOP 3 id_tipo, nombre_tipo, total_compras "
+                    + "FROM Top3TiposProductosCompradosExceptLacteo "
+                    + "ORDER BY total_compras DESC");
+            rs = ps.executeQuery();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return rs;
     }
+
+    public ResultSet Top20ProductosVendidosPorTienda(int id_tienda) {
+        ResultSet rs = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT Top 20 id_tienda, UPC, nombre_producto, cantidad_vendida, ranking\n"
+                    + "FROM Top20ProductosVendidosPorTienda\n"
+                    + "WHERE id_tienda = " + id_tienda + ";");
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public ResultSet Top5TiendasConMasVentas() {
+        ResultSet rs = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT id_tienda, nombre_tienda, ventas_totales\n"
+                    + "FROM Top5TiendasConMasVentas;\n"
+                    + "");
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public ResultSet bitacora_producto() {
+        ResultSet rs = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT * from bitacora_producto");
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public ResultSet bitacora_factura() {
+        ResultSet rs = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT * from bitacora_factura");
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public ResultSet bitacora_cliente() {
+        ResultSet rs = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT * from bitacora_cliente");
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public ResultSet bitacora_tienda() {
+        ResultSet rs = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT * from bitacora_tienda");
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public ResultSet bitacora_vendedor() {
+        ResultSet rs = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT * from bitacora_vendedor");
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
 }

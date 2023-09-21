@@ -11,19 +11,37 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.OverlayLayout;
 import Clases.Persona;
-import Correo.CorreoCloudy;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import com.toedter.calendar.JDateChooser;
+import Clases.DbCon;
+import javax.swing.JOptionPane;
+import java.io.*;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import DataBase.Dba;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+import java.util.Arrays;
 import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import proyectofinal.NewJFrame;
 
 public class UsserDis extends javax.swing.JFrame {
 
-
     public UsserDis() {
+
         initComponents();
+        iniciarVA();
+        CB_ID.setVisible(Boolean.FALSE);
         Nombre_Usuario_Label.setText("Bienvenido " + NewJFrame.Uactual.getNombre());
     }
 
@@ -36,150 +54,1048 @@ public class UsserDis extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        InformacionUsuarioFra = new javax.swing.JDialog();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
+        CrearProducto = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        NombreLista1 = new javax.swing.JLabel();
+        HEADERCOSO3 = new javax.swing.JLabel();
+        Agregarintegrante = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        CrearProductoTamaño = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        CrearProductoNombre = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        CrearProductoEmbalaje = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        CrearProductoMarca = new javax.swing.JTextField();
+        CrearVendedor = new javax.swing.JDialog();
+        jPanel9 = new javax.swing.JPanel();
+        NombreLista2 = new javax.swing.JLabel();
+        HEADERCOSO4 = new javax.swing.JLabel();
+        Agregarintegrante1 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        CrearVendedorNombre = new javax.swing.JTextField();
+        CrearCliente = new javax.swing.JDialog();
+        jPanel10 = new javax.swing.JPanel();
+        NombreLista3 = new javax.swing.JLabel();
+        HEADERCOSO5 = new javax.swing.JLabel();
+        Agregarintegrante2 = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
+        CrearClienteNombre = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
+        CrearCorreoCliente = new javax.swing.JTextField();
+        CrearTienda = new javax.swing.JDialog();
+        jPanel11 = new javax.swing.JPanel();
+        NombreLista4 = new javax.swing.JLabel();
+        HEADERCOSO6 = new javax.swing.JLabel();
+        Agregarintegrante3 = new javax.swing.JButton();
         jLabel29 = new javax.swing.JLabel();
-        UsuarioInfo = new javax.swing.JLabel();
-        NombreInfo = new javax.swing.JLabel();
-        EdadInfo = new javax.swing.JLabel();
-        CorreoInfo = new javax.swing.JLabel();
-        GeneroInfo = new javax.swing.JLabel();
-        IdInfo = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre15 = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre16 = new javax.swing.JTextField();
+        ModificarProducto = new javax.swing.JDialog();
+        jPanel15 = new javax.swing.JPanel();
+        NombreLista8 = new javax.swing.JLabel();
+        HEADERCOSO10 = new javax.swing.JLabel();
+        Agregarintegrante7 = new javax.swing.JButton();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre21 = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre22 = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre23 = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre24 = new javax.swing.JTextField();
+        CB_Modificar = new javax.swing.JComboBox<>();
+        ModificarVendedor = new javax.swing.JDialog();
+        jPanel16 = new javax.swing.JPanel();
+        NombreLista9 = new javax.swing.JLabel();
+        HEADERCOSO11 = new javax.swing.JLabel();
+        Agregarintegrante8 = new javax.swing.JButton();
+        jLabel39 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre25 = new javax.swing.JTextField();
+        CB_Modificar1 = new javax.swing.JComboBox<>();
+        jLabel53 = new javax.swing.JLabel();
+        ModificarTienda = new javax.swing.JDialog();
+        jPanel17 = new javax.swing.JPanel();
+        NombreLista10 = new javax.swing.JLabel();
+        HEADERCOSO12 = new javax.swing.JLabel();
+        Agregarintegrante9 = new javax.swing.JButton();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre27 = new javax.swing.JTextField();
+        CB_ModificarTienda = new javax.swing.JComboBox<>();
+        jLabel54 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre39 = new javax.swing.JTextField();
+        ModificarCliente = new javax.swing.JDialog();
+        jPanel18 = new javax.swing.JPanel();
+        NombreLista11 = new javax.swing.JLabel();
+        HEADERCOSO13 = new javax.swing.JLabel();
+        Agregarintegrante10 = new javax.swing.JButton();
+        jLabel42 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre28 = new javax.swing.JTextField();
+        jLabel43 = new javax.swing.JLabel();
+        CrearUsuarioP_TF_Nombre29 = new javax.swing.JTextField();
+        CB_ModificarCliente = new javax.swing.JComboBox<>();
+        jLabel55 = new javax.swing.JLabel();
+        CrearFactura = new javax.swing.JDialog();
+        jPanel13 = new javax.swing.JPanel();
+        NombreLista5 = new javax.swing.JLabel();
+        HEADERCOSO7 = new javax.swing.JLabel();
+        Agregarintegrante4 = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        dETALLECOMPRA = new javax.swing.JButton();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        CBCrearFacturaIDTIENDA = new javax.swing.JComboBox<>();
+        CBCrearFacturaIDCLIENT = new javax.swing.JComboBox<>();
+        CrearUsuarioP_TF_Nombre30 = new javax.swing.JTextField();
+        jLabel56 = new javax.swing.JLabel();
+        DetalleFactura = new javax.swing.JDialog();
+        jPanel14 = new javax.swing.JPanel();
+        NombreLista6 = new javax.swing.JLabel();
+        HEADERCOSO8 = new javax.swing.JLabel();
+        Agregarintegrante6 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableDetalle = new javax.swing.JTable();
         PanelAdministrador = new javax.swing.JPanel();
         Panel_Lateral = new javax.swing.JPanel();
         FondoCloudy = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        InfoCuenta_AdminTools_MW = new javax.swing.JButton();
         Nombre_Usuario_Label = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        EliminarUsuario_AdminTools_MW = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        CrearUsuario_AdminTools_MW = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        ModificarUsuario_AdminTools_MW = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        ListarUsuarios_AdminTools_MW = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
         botonuniversal = new javax.swing.JButton();
-        jLabel21 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
+        Crud_Usuarios_AP = new javax.swing.JPanel();
+        ListarPane_AdminTools_MW = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TablaListar = new javax.swing.JTable();
+        CB_Listar = new javax.swing.JComboBox<>();
+        CB_ID = new javax.swing.JComboBox<>();
+        EliminarPane_AdminTools_MW = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TABLAELIMINAR = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        CB_Eliminar = new javax.swing.JComboBox<>();
+        ModificarPane_AdminTools_MW = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        CB_MODIFICAR = new javax.swing.JComboBox<>();
+        CrearPane_AdminTools_MW1 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        CB_Crear = new javax.swing.JComboBox<>();
 
-        jPanel1.setBackground(new java.awt.Color(233, 239, 192));
+        CrearProducto.setFocusCycleRoot(false);
+        CrearProducto.setMinimumSize(new java.awt.Dimension(720, 520));
 
-        jLabel24.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel24.setText("Usuario");
+        jPanel6.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel25.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel25.setText("Nombre");
+        NombreLista1.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista1.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista1.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel6.add(NombreLista1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
-        jLabel26.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel26.setText("Edad");
+        HEADERCOSO3.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO3.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO3.setText("Crear Producto");
+        HEADERCOSO3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(HEADERCOSO3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante.setText("            Crear");
+        Agregarintegrante.setBorder(null);
+        Agregarintegrante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarintegranteActionPerformed(evt);
+            }
+        });
+        jPanel6.add(Agregarintegrante, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
+
+        jLabel12.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel12.setText("Tamaño");
+        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        CrearProductoTamaño.setBackground(new java.awt.Color(180, 225, 151));
+        CrearProductoTamaño.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearProductoTamaño.setForeground(new java.awt.Color(78, 148, 79));
+        CrearProductoTamaño.setBorder(null);
+        jPanel6.add(CrearProductoTamaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 220, 30));
+
+        jLabel13.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel13.setText("Nombre");
+        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
+
+        CrearProductoNombre.setBackground(new java.awt.Color(180, 225, 151));
+        CrearProductoNombre.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearProductoNombre.setForeground(new java.awt.Color(78, 148, 79));
+        CrearProductoNombre.setBorder(null);
+        jPanel6.add(CrearProductoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 220, 30));
+
+        jLabel14.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel14.setText("Embalaje");
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        CrearProductoEmbalaje.setBackground(new java.awt.Color(180, 225, 151));
+        CrearProductoEmbalaje.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearProductoEmbalaje.setForeground(new java.awt.Color(78, 148, 79));
+        CrearProductoEmbalaje.setBorder(null);
+        jPanel6.add(CrearProductoEmbalaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
+
+        jLabel16.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel16.setText("Marca");
+        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, -1, -1));
+
+        CrearProductoMarca.setBackground(new java.awt.Color(180, 225, 151));
+        CrearProductoMarca.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearProductoMarca.setForeground(new java.awt.Color(78, 148, 79));
+        CrearProductoMarca.setBorder(null);
+        CrearProductoMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearProductoMarcaActionPerformed(evt);
+            }
+        });
+        jPanel6.add(CrearProductoMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 220, 30));
+
+        javax.swing.GroupLayout CrearProductoLayout = new javax.swing.GroupLayout(CrearProducto.getContentPane());
+        CrearProducto.getContentPane().setLayout(CrearProductoLayout);
+        CrearProductoLayout.setHorizontalGroup(
+            CrearProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        CrearProductoLayout.setVerticalGroup(
+            CrearProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CrearProductoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        CrearVendedor.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel9.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista2.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista2.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista2.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel9.add(NombreLista2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO4.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO4.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO4.setText("Crear Vendedor");
+        HEADERCOSO4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel9.add(HEADERCOSO4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante1.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante1.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante1.setText("            Crear");
+        Agregarintegrante1.setBorder(null);
+        Agregarintegrante1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante1ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(Agregarintegrante1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
+
+        jLabel17.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel17.setText("Nombre");
+        jPanel9.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        CrearVendedorNombre.setBackground(new java.awt.Color(180, 225, 151));
+        CrearVendedorNombre.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearVendedorNombre.setForeground(new java.awt.Color(78, 148, 79));
+        CrearVendedorNombre.setBorder(null);
+        jPanel9.add(CrearVendedorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
+
+        javax.swing.GroupLayout CrearVendedorLayout = new javax.swing.GroupLayout(CrearVendedor.getContentPane());
+        CrearVendedor.getContentPane().setLayout(CrearVendedorLayout);
+        CrearVendedorLayout.setHorizontalGroup(
+            CrearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearVendedorLayout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+        CrearVendedorLayout.setVerticalGroup(
+            CrearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearVendedorLayout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+
+        CrearCliente.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel10.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista3.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista3.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista3.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel10.add(NombreLista3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO5.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO5.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO5.setText("Crear Cliente");
+        HEADERCOSO5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel10.add(HEADERCOSO5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante2.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante2.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante2.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante2.setText("            Crear");
+        Agregarintegrante2.setBorder(null);
+        Agregarintegrante2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante2ActionPerformed(evt);
+            }
+        });
+        jPanel10.add(Agregarintegrante2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
 
         jLabel27.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel27.setText("Correo");
+        jLabel27.setText("Nombre");
+        jPanel10.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        CrearClienteNombre.setBackground(new java.awt.Color(180, 225, 151));
+        CrearClienteNombre.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearClienteNombre.setForeground(new java.awt.Color(78, 148, 79));
+        CrearClienteNombre.setBorder(null);
+        jPanel10.add(CrearClienteNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
 
         jLabel28.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel28.setText("Genero");
+        jLabel28.setText("Correo Electronico");
+        jPanel10.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        CrearCorreoCliente.setBackground(new java.awt.Color(180, 225, 151));
+        CrearCorreoCliente.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearCorreoCliente.setForeground(new java.awt.Color(78, 148, 79));
+        CrearCorreoCliente.setBorder(null);
+        jPanel10.add(CrearCorreoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 220, 30));
+
+        javax.swing.GroupLayout CrearClienteLayout = new javax.swing.GroupLayout(CrearCliente.getContentPane());
+        CrearCliente.getContentPane().setLayout(CrearClienteLayout);
+        CrearClienteLayout.setHorizontalGroup(
+            CrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearClienteLayout.createSequentialGroup()
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+        CrearClienteLayout.setVerticalGroup(
+            CrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearClienteLayout.createSequentialGroup()
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+
+        CrearTienda.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel11.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista4.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista4.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista4.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel11.add(NombreLista4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO6.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO6.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO6.setText("Crear Tienda");
+        HEADERCOSO6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel11.add(HEADERCOSO6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante3.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante3.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante3.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante3.setText("            Crear");
+        Agregarintegrante3.setBorder(null);
+        Agregarintegrante3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante3ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(Agregarintegrante3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
 
         jLabel29.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel29.setText("Id");
+        jLabel29.setText("Nombre tienda");
+        jPanel11.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
-        UsuarioInfo.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        UsuarioInfo.setForeground(new java.awt.Color(78, 148, 79));
-        UsuarioInfo.setText("Usuario");
+        CrearUsuarioP_TF_Nombre15.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre15.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre15.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre15.setBorder(null);
+        jPanel11.add(CrearUsuarioP_TF_Nombre15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
 
-        NombreInfo.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        NombreInfo.setForeground(new java.awt.Color(78, 148, 79));
-        NombreInfo.setText("Nombre");
+        jLabel30.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel30.setText("Horario");
+        jPanel11.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
-        EdadInfo.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        EdadInfo.setForeground(new java.awt.Color(78, 148, 79));
-        EdadInfo.setText("Edad");
+        CrearUsuarioP_TF_Nombre16.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre16.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre16.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre16.setBorder(null);
+        jPanel11.add(CrearUsuarioP_TF_Nombre16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 220, 30));
 
-        CorreoInfo.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        CorreoInfo.setForeground(new java.awt.Color(78, 148, 79));
-        CorreoInfo.setText("Correo");
-
-        GeneroInfo.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        GeneroInfo.setForeground(new java.awt.Color(78, 148, 79));
-        GeneroInfo.setText("Genero");
-
-        IdInfo.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        IdInfo.setForeground(new java.awt.Color(78, 148, 79));
-        IdInfo.setText("Id");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel24)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(EdadInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IdInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UsuarioInfo)
-                    .addComponent(NombreInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CorreoInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(GeneroInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(215, Short.MAX_VALUE))
+        javax.swing.GroupLayout CrearTiendaLayout = new javax.swing.GroupLayout(CrearTienda.getContentPane());
+        CrearTienda.getContentPane().setLayout(CrearTiendaLayout);
+        CrearTiendaLayout.setHorizontalGroup(
+            CrearTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearTiendaLayout.createSequentialGroup()
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jLabel25)
-                        .addGap(63, 63, 63)
-                        .addComponent(jLabel26)
-                        .addGap(63, 63, 63)
-                        .addComponent(jLabel27)
-                        .addGap(69, 69, 69)
-                        .addComponent(jLabel29)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                        .addComponent(jLabel28)
-                        .addGap(58, 58, 58))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(UsuarioInfo)
-                        .addGap(61, 61, 61)
-                        .addComponent(NombreInfo)
-                        .addGap(63, 63, 63)
-                        .addComponent(EdadInfo)
-                        .addGap(63, 63, 63)
-                        .addComponent(CorreoInfo)
-                        .addGap(69, 69, 69)
-                        .addComponent(IdInfo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(GeneroInfo)
-                        .addGap(20, 20, 20))))
+        CrearTiendaLayout.setVerticalGroup(
+            CrearTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CrearTiendaLayout.createSequentialGroup()
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout InformacionUsuarioFraLayout = new javax.swing.GroupLayout(InformacionUsuarioFra.getContentPane());
-        InformacionUsuarioFra.getContentPane().setLayout(InformacionUsuarioFraLayout);
-        InformacionUsuarioFraLayout.setHorizontalGroup(
-            InformacionUsuarioFraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        ModificarProducto.setFocusCycleRoot(false);
+        ModificarProducto.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel15.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista8.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista8.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista8.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel15.add(NombreLista8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO10.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO10.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO10.setText("Modificar Producto");
+        HEADERCOSO10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel15.add(HEADERCOSO10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante7.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante7.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante7.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante7.setText("        Modificar");
+        Agregarintegrante7.setBorder(null);
+        Agregarintegrante7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante7ActionPerformed(evt);
+            }
+        });
+        jPanel15.add(Agregarintegrante7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
+
+        jLabel33.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel33.setText("UPC");
+        jPanel15.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        jLabel35.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel35.setText("Tamaño");
+        jPanel15.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        CrearUsuarioP_TF_Nombre21.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre21.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre21.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre21.setBorder(null);
+        jPanel15.add(CrearUsuarioP_TF_Nombre21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 220, 30));
+
+        jLabel36.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel36.setText("Nombre");
+        jPanel15.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
+
+        CrearUsuarioP_TF_Nombre22.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre22.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre22.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre22.setBorder(null);
+        jPanel15.add(CrearUsuarioP_TF_Nombre22, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 220, 30));
+
+        jLabel37.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel37.setText("Embalaje");
+        jPanel15.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, -1, -1));
+
+        CrearUsuarioP_TF_Nombre23.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre23.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre23.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre23.setBorder(null);
+        jPanel15.add(CrearUsuarioP_TF_Nombre23, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 220, 30));
+
+        jLabel38.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel38.setText("Marca");
+        jPanel15.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        CrearUsuarioP_TF_Nombre24.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre24.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre24.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre24.setBorder(null);
+        CrearUsuarioP_TF_Nombre24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearUsuarioP_TF_Nombre24ActionPerformed(evt);
+            }
+        });
+        jPanel15.add(CrearUsuarioP_TF_Nombre24, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 220, 30));
+
+        CB_Modificar.setBackground(new java.awt.Color(180, 225, 151));
+        CB_Modificar.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_Modificar.setForeground(new java.awt.Color(78, 148, 79));
+        CB_Modificar.setBorder(null);
+        CB_Modificar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_ModificarItemStateChanged(evt);
+            }
+        });
+        CB_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_ModificarActionPerformed(evt);
+            }
+        });
+        jPanel15.add(CB_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
+
+        javax.swing.GroupLayout ModificarProductoLayout = new javax.swing.GroupLayout(ModificarProducto.getContentPane());
+        ModificarProducto.getContentPane().setLayout(ModificarProductoLayout);
+        ModificarProductoLayout.setHorizontalGroup(
+            ModificarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-        InformacionUsuarioFraLayout.setVerticalGroup(
-            InformacionUsuarioFraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        ModificarProductoLayout.setVerticalGroup(
+            ModificarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ModificarProductoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        ModificarVendedor.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel16.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista9.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista9.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista9.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel16.add(NombreLista9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO11.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO11.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO11.setText("Modificar Vendedor");
+        HEADERCOSO11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel16.add(HEADERCOSO11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 310, 40));
+
+        Agregarintegrante8.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante8.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante8.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante8.setText("        Modificar");
+        Agregarintegrante8.setBorder(null);
+        Agregarintegrante8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante8ActionPerformed(evt);
+            }
+        });
+        jPanel16.add(Agregarintegrante8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
+
+        jLabel39.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel39.setText("Nombre");
+        jPanel16.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
+
+        CrearUsuarioP_TF_Nombre25.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre25.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre25.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre25.setBorder(null);
+        jPanel16.add(CrearUsuarioP_TF_Nombre25, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 220, 30));
+
+        CB_Modificar1.setBackground(new java.awt.Color(180, 225, 151));
+        CB_Modificar1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_Modificar1.setForeground(new java.awt.Color(78, 148, 79));
+        CB_Modificar1.setBorder(null);
+        CB_Modificar1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_Modificar1ItemStateChanged(evt);
+            }
+        });
+        CB_Modificar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_Modificar1ActionPerformed(evt);
+            }
+        });
+        jPanel16.add(CB_Modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
+
+        jLabel53.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel53.setText("Id");
+        jPanel16.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        javax.swing.GroupLayout ModificarVendedorLayout = new javax.swing.GroupLayout(ModificarVendedor.getContentPane());
+        ModificarVendedor.getContentPane().setLayout(ModificarVendedorLayout);
+        ModificarVendedorLayout.setHorizontalGroup(
+            ModificarVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE)
+        );
+        ModificarVendedorLayout.setVerticalGroup(
+            ModificarVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
+        );
+
+        ModificarTienda.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel17.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista10.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista10.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista10.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel17.add(NombreLista10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO12.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO12.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO12.setText("Modificar Tienda");
+        HEADERCOSO12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel17.add(HEADERCOSO12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante9.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante9.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante9.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante9.setText("         Modificar");
+        Agregarintegrante9.setBorder(null);
+        Agregarintegrante9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante9ActionPerformed(evt);
+            }
+        });
+        jPanel17.add(Agregarintegrante9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
+
+        jLabel40.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel40.setText("Id Tienda");
+        jPanel17.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        jLabel41.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel41.setText("Nombre Tienda");
+        jPanel17.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        CrearUsuarioP_TF_Nombre27.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre27.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre27.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre27.setBorder(null);
+        jPanel17.add(CrearUsuarioP_TF_Nombre27, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 220, 30));
+
+        CB_ModificarTienda.setBackground(new java.awt.Color(180, 225, 151));
+        CB_ModificarTienda.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_ModificarTienda.setForeground(new java.awt.Color(78, 148, 79));
+        CB_ModificarTienda.setBorder(null);
+        CB_ModificarTienda.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_ModificarTiendaItemStateChanged(evt);
+            }
+        });
+        CB_ModificarTienda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_ModificarTiendaActionPerformed(evt);
+            }
+        });
+        jPanel17.add(CB_ModificarTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
+
+        jLabel54.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel54.setText("Horario");
+        jPanel17.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        CrearUsuarioP_TF_Nombre39.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre39.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre39.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre39.setBorder(null);
+        jPanel17.add(CrearUsuarioP_TF_Nombre39, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 220, 30));
+
+        javax.swing.GroupLayout ModificarTiendaLayout = new javax.swing.GroupLayout(ModificarTienda.getContentPane());
+        ModificarTienda.getContentPane().setLayout(ModificarTiendaLayout);
+        ModificarTiendaLayout.setHorizontalGroup(
+            ModificarTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ModificarTiendaLayout.createSequentialGroup()
+                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+        ModificarTiendaLayout.setVerticalGroup(
+            ModificarTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ModificarTiendaLayout.createSequentialGroup()
+                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+
+        ModificarCliente.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel18.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista11.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista11.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista11.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel18.add(NombreLista11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO13.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO13.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO13.setText("Modificar Cliente");
+        HEADERCOSO13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel18.add(HEADERCOSO13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante10.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante10.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante10.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante10.setText("        Modificar");
+        Agregarintegrante10.setBorder(null);
+        Agregarintegrante10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante10ActionPerformed(evt);
+            }
+        });
+        jPanel18.add(Agregarintegrante10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 120, 40));
+
+        jLabel42.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel42.setText("Id");
+        jPanel18.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+
+        CrearUsuarioP_TF_Nombre28.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre28.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre28.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre28.setBorder(null);
+        jPanel18.add(CrearUsuarioP_TF_Nombre28, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 220, 30));
+
+        jLabel43.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel43.setText("Correo Electronico");
+        jPanel18.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+
+        CrearUsuarioP_TF_Nombre29.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre29.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre29.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre29.setBorder(null);
+        jPanel18.add(CrearUsuarioP_TF_Nombre29, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 220, 30));
+
+        CB_ModificarCliente.setBackground(new java.awt.Color(180, 225, 151));
+        CB_ModificarCliente.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_ModificarCliente.setForeground(new java.awt.Color(78, 148, 79));
+        CB_ModificarCliente.setBorder(null);
+        CB_ModificarCliente.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_ModificarClienteItemStateChanged(evt);
+            }
+        });
+        CB_ModificarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_ModificarClienteActionPerformed(evt);
+            }
+        });
+        jPanel18.add(CB_ModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 220, 30));
+
+        jLabel55.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel55.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel55.setText("Nombre");
+        jPanel18.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+
+        javax.swing.GroupLayout ModificarClienteLayout = new javax.swing.GroupLayout(ModificarCliente.getContentPane());
+        ModificarCliente.getContentPane().setLayout(ModificarClienteLayout);
+        ModificarClienteLayout.setHorizontalGroup(
+            ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ModificarClienteLayout.createSequentialGroup()
+                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+        ModificarClienteLayout.setVerticalGroup(
+            ModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ModificarClienteLayout.createSequentialGroup()
+                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+
+        CrearFactura.setFocusCycleRoot(false);
+        CrearFactura.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel13.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista5.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista5.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista5.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel13.add(NombreLista5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO7.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO7.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO7.setText("Crear Factura");
+        HEADERCOSO7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel13.add(HEADERCOSO7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 310, 40));
+
+        Agregarintegrante4.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante4.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante4.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante4.setText("            Crear");
+        Agregarintegrante4.setBorder(null);
+        Agregarintegrante4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante4ActionPerformed(evt);
+            }
+        });
+        jPanel13.add(Agregarintegrante4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 130, 30));
+
+        jLabel22.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel22.setText("Fecha");
+        jPanel13.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        jLabel23.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel23.setText("Id Tienda");
+        jPanel13.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
+
+        jLabel24.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel24.setText("0.00");
+        jPanel13.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
+
+        jLabel26.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel26.setText("Detalles");
+        jPanel13.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, -1, -1));
+
+        jDateChooser1.setBackground(new java.awt.Color(78, 148, 79));
+        jDateChooser1.setForeground(new java.awt.Color(180, 225, 151));
+        jPanel13.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 220, 30));
+
+        dETALLECOMPRA.setBackground(new java.awt.Color(78, 148, 79));
+        dETALLECOMPRA.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        dETALLECOMPRA.setForeground(new java.awt.Color(233, 239, 192));
+        dETALLECOMPRA.setText("Detalles de compra");
+        dETALLECOMPRA.setBorder(null);
+        dETALLECOMPRA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dETALLECOMPRA.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        dETALLECOMPRA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dETALLECOMPRAActionPerformed(evt);
+            }
+        });
+        jPanel13.add(dETALLECOMPRA, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 220, 30));
+
+        jLabel31.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel31.setText("Id Cliente");
+        jPanel13.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        jLabel32.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel32.setText("Subtotal");
+        jPanel13.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
+
+        jLabel34.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel34.setText("0.00");
+        jPanel13.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+
+        jLabel44.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel44.setText("Total");
+        jPanel13.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+
+        CBCrearFacturaIDTIENDA.setBackground(new java.awt.Color(180, 225, 151));
+        CBCrearFacturaIDTIENDA.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CBCrearFacturaIDTIENDA.setForeground(new java.awt.Color(78, 148, 79));
+        CBCrearFacturaIDTIENDA.setBorder(null);
+        CBCrearFacturaIDTIENDA.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CBCrearFacturaIDTIENDAItemStateChanged(evt);
+            }
+        });
+        CBCrearFacturaIDTIENDA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBCrearFacturaIDTIENDAActionPerformed(evt);
+            }
+        });
+        jPanel13.add(CBCrearFacturaIDTIENDA, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 220, 30));
+
+        CBCrearFacturaIDCLIENT.setBackground(new java.awt.Color(180, 225, 151));
+        CBCrearFacturaIDCLIENT.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CBCrearFacturaIDCLIENT.setForeground(new java.awt.Color(78, 148, 79));
+        CBCrearFacturaIDCLIENT.setBorder(null);
+        CBCrearFacturaIDCLIENT.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CBCrearFacturaIDCLIENTItemStateChanged(evt);
+            }
+        });
+        CBCrearFacturaIDCLIENT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBCrearFacturaIDCLIENTActionPerformed(evt);
+            }
+        });
+        jPanel13.add(CBCrearFacturaIDCLIENT, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 220, 30));
+
+        CrearUsuarioP_TF_Nombre30.setBackground(new java.awt.Color(180, 225, 151));
+        CrearUsuarioP_TF_Nombre30.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuarioP_TF_Nombre30.setForeground(new java.awt.Color(78, 148, 79));
+        CrearUsuarioP_TF_Nombre30.setBorder(null);
+        jPanel13.add(CrearUsuarioP_TF_Nombre30, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 220, 30));
+
+        jLabel56.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel56.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel56.setText("ISV");
+        jPanel13.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
+
+        javax.swing.GroupLayout CrearFacturaLayout = new javax.swing.GroupLayout(CrearFactura.getContentPane());
+        CrearFactura.getContentPane().setLayout(CrearFacturaLayout);
+        CrearFacturaLayout.setHorizontalGroup(
+            CrearFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CrearFacturaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        CrearFacturaLayout.setVerticalGroup(
+            CrearFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CrearFacturaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        DetalleFactura.setFocusCycleRoot(false);
+        DetalleFactura.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel14.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista6.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista6.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista6.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel14.add(NombreLista6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO8.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO8.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO8.setText("Detalle Factura");
+        HEADERCOSO8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel14.add(HEADERCOSO8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 30, 310, 40));
+
+        Agregarintegrante6.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante6.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante6.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante6.setText("            Crear");
+        Agregarintegrante6.setBorder(null);
+        Agregarintegrante6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante6ActionPerformed(evt);
+            }
+        });
+        jPanel14.add(Agregarintegrante6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 130, 30));
+
+        tableDetalle.setBackground(new java.awt.Color(233, 239, 192));
+        tableDetalle.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        tableDetalle.setForeground(new java.awt.Color(78, 148, 79));
+        tableDetalle.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Usuario", "Id"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableDetalle.setGridColor(new java.awt.Color(131, 189, 117));
+        tableDetalle.setSelectionBackground(new java.awt.Color(78, 148, 79));
+        jScrollPane3.setViewportView(tableDetalle);
+
+        jPanel14.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 630, 350));
+
+        javax.swing.GroupLayout DetalleFacturaLayout = new javax.swing.GroupLayout(DetalleFactura.getContentPane());
+        DetalleFactura.getContentPane().setLayout(DetalleFacturaLayout);
+        DetalleFacturaLayout.setHorizontalGroup(
+            DetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DetalleFacturaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        DetalleFacturaLayout.setVerticalGroup(
+            DetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DetalleFacturaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -197,35 +1113,144 @@ public class UsserDis extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(180, 225, 151));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        InfoCuenta_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
-        InfoCuenta_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        InfoCuenta_AdminTools_MW.setForeground(new java.awt.Color(233, 239, 192));
-        InfoCuenta_AdminTools_MW.setText("Informacion de Cuenta");
-        InfoCuenta_AdminTools_MW.setBorder(null);
-        InfoCuenta_AdminTools_MW.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InfoCuenta_AdminTools_MWActionPerformed(evt);
-            }
-        });
-        jPanel4.add(InfoCuenta_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 230, 30));
-
         Nombre_Usuario_Label.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         Nombre_Usuario_Label.setForeground(new java.awt.Color(78, 148, 79));
         Nombre_Usuario_Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Nombre_Usuario_Label.setText("Bienvenido Avelardo");
         Nombre_Usuario_Label.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Nombre_Usuario_Label.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel4.add(Nombre_Usuario_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 230, -1));
+        jPanel4.add(Nombre_Usuario_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 230, -1));
+
+        jLabel1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel1.setText("Herrramientas Administrativas");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(78, 148, 79));
         jSeparator1.setForeground(new java.awt.Color(78, 148, 79));
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 211, 10));
+        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 211, 10));
+
+        EliminarUsuario_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
+        EliminarUsuario_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        EliminarUsuario_AdminTools_MW.setForeground(new java.awt.Color(233, 239, 192));
+        EliminarUsuario_AdminTools_MW.setText("Eliminar ");
+        EliminarUsuario_AdminTools_MW.setBorder(null);
+        EliminarUsuario_AdminTools_MW.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        EliminarUsuario_AdminTools_MW.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        EliminarUsuario_AdminTools_MW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarUsuario_AdminTools_MWActionPerformed(evt);
+            }
+        });
+        jPanel4.add(EliminarUsuario_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 190, 31));
+
+        jPanel2.setBackground(new java.awt.Color(78, 148, 79));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 31, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 100, 31));
+
+        CrearUsuario_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
+        CrearUsuario_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CrearUsuario_AdminTools_MW.setForeground(new java.awt.Color(233, 239, 192));
+        CrearUsuario_AdminTools_MW.setText("Crear ");
+        CrearUsuario_AdminTools_MW.setBorder(null);
+        CrearUsuario_AdminTools_MW.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CrearUsuario_AdminTools_MW.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        CrearUsuario_AdminTools_MW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearUsuario_AdminTools_MWActionPerformed(evt);
+            }
+        });
+        jPanel4.add(CrearUsuario_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 190, 31));
+
+        jPanel5.setBackground(new java.awt.Color(78, 148, 79));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 31, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 100, 31));
+
+        ModificarUsuario_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
+        ModificarUsuario_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        ModificarUsuario_AdminTools_MW.setForeground(new java.awt.Color(233, 239, 192));
+        ModificarUsuario_AdminTools_MW.setText("Modificar ");
+        ModificarUsuario_AdminTools_MW.setBorder(null);
+        ModificarUsuario_AdminTools_MW.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ModificarUsuario_AdminTools_MW.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ModificarUsuario_AdminTools_MW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarUsuario_AdminTools_MWActionPerformed(evt);
+            }
+        });
+        jPanel4.add(ModificarUsuario_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 190, 31));
+
+        jPanel7.setBackground(new java.awt.Color(78, 148, 79));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 31, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 100, 31));
+
+        ListarUsuarios_AdminTools_MW.setBackground(new java.awt.Color(78, 148, 79));
+        ListarUsuarios_AdminTools_MW.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        ListarUsuarios_AdminTools_MW.setForeground(new java.awt.Color(233, 239, 192));
+        ListarUsuarios_AdminTools_MW.setText("Listar ");
+        ListarUsuarios_AdminTools_MW.setBorder(null);
+        ListarUsuarios_AdminTools_MW.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ListarUsuarios_AdminTools_MW.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ListarUsuarios_AdminTools_MW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListarUsuarios_AdminTools_MWActionPerformed(evt);
+            }
+        });
+        jPanel4.add(ListarUsuarios_AdminTools_MW, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 190, 31));
+
+        jPanel8.setBackground(new java.awt.Color(78, 148, 79));
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 31, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 100, 31));
 
         botonuniversal.setBackground(new java.awt.Color(78, 148, 79));
         botonuniversal.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         botonuniversal.setForeground(new java.awt.Color(233, 239, 192));
-        botonuniversal.setText("C l o u d y");
+        botonuniversal.setText("Tiendita");
         botonuniversal.setBorder(null);
         botonuniversal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,56 +1259,236 @@ public class UsserDis extends javax.swing.JFrame {
         });
         jPanel4.add(botonuniversal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 230, 60));
 
-        jLabel21.setBackground(new java.awt.Color(78, 148, 79));
-        jLabel21.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CloudIcon.png"))); // NOI18N
-        jLabel21.setText("C l o u d");
-        jLabel21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel21MouseClicked(evt);
-            }
-        });
-        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 120, 50));
-
-        jSeparator2.setBackground(new java.awt.Color(78, 148, 79));
-        jSeparator2.setForeground(new java.awt.Color(78, 148, 79));
-        jSeparator2.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 211, 10));
-
-        jLabel22.setBackground(new java.awt.Color(78, 148, 79));
-        jLabel22.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MailIcon.png"))); // NOI18N
-        jLabel22.setText("M a i l");
-        jLabel22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel22MouseClicked(evt);
-            }
-        });
-        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 130, 50));
-
-        jLabel23.setBackground(new java.awt.Color(78, 148, 79));
-        jLabel23.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(78, 148, 79));
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ToDoIcon.png"))); // NOI18N
-        jLabel23.setText("T o - D o");
-        jLabel23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel23MouseClicked(evt);
-            }
-        });
-        jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 130, 40));
-
         jSeparator3.setBackground(new java.awt.Color(78, 148, 79));
         jSeparator3.setForeground(new java.awt.Color(78, 148, 79));
         jSeparator3.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 211, 10));
+        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 211, 10));
 
         Panel_Lateral.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 620));
+
+        Crud_Usuarios_AP.setLayout(new javax.swing.OverlayLayout(Crud_Usuarios_AP));
+
+        ListarPane_AdminTools_MW.setBackground(new java.awt.Color(247, 246, 220));
+        ListarPane_AdminTools_MW.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel20.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel20.setText("L i s t a r ");
+        ListarPane_AdminTools_MW.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        TablaListar.setBackground(new java.awt.Color(233, 239, 192));
+        TablaListar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        TablaListar.setForeground(new java.awt.Color(78, 148, 79));
+        TablaListar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Usuario", "Id"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaListar.setGridColor(new java.awt.Color(131, 189, 117));
+        TablaListar.setSelectionBackground(new java.awt.Color(78, 148, 79));
+        jScrollPane2.setViewportView(TablaListar);
+
+        ListarPane_AdminTools_MW.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 734, 420));
+
+        CB_Listar.setBackground(new java.awt.Color(180, 225, 151));
+        CB_Listar.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_Listar.setForeground(new java.awt.Color(78, 148, 79));
+        CB_Listar.setBorder(null);
+        CB_Listar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_ListarItemStateChanged(evt);
+            }
+        });
+        CB_Listar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_ListarActionPerformed(evt);
+            }
+        });
+        ListarPane_AdminTools_MW.add(CB_Listar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 350, 30));
+
+        CB_ID.setBackground(new java.awt.Color(180, 225, 151));
+        CB_ID.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_ID.setForeground(new java.awt.Color(78, 148, 79));
+        CB_ID.setBorder(null);
+        CB_ID.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_IDItemStateChanged(evt);
+            }
+        });
+        CB_ID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_IDActionPerformed(evt);
+            }
+        });
+        ListarPane_AdminTools_MW.add(CB_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 220, 30));
+
+        Crud_Usuarios_AP.add(ListarPane_AdminTools_MW);
+
+        EliminarPane_AdminTools_MW.setBackground(new java.awt.Color(247, 246, 220));
+        EliminarPane_AdminTools_MW.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel19.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel19.setText("E l i m i n a r");
+        EliminarPane_AdminTools_MW.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 23, -1, -1));
+
+        TABLAELIMINAR.setBackground(new java.awt.Color(233, 239, 192));
+        TABLAELIMINAR.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        TABLAELIMINAR.setForeground(new java.awt.Color(78, 148, 79));
+        TABLAELIMINAR.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Usuario", "Id"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TABLAELIMINAR.setGridColor(new java.awt.Color(131, 189, 117));
+        TABLAELIMINAR.setSelectionBackground(new java.awt.Color(78, 148, 79));
+        jScrollPane1.setViewportView(TABLAELIMINAR);
+
+        EliminarPane_AdminTools_MW.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 734, 219));
+
+        jButton2.setBackground(new java.awt.Color(78, 148, 79));
+        jButton2.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(233, 239, 192));
+        jButton2.setText("E l i m i n a r ");
+        jButton2.setBorder(null);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        EliminarPane_AdminTools_MW.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 210, 70));
+
+        CB_Eliminar.setBackground(new java.awt.Color(180, 225, 151));
+        CB_Eliminar.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_Eliminar.setForeground(new java.awt.Color(78, 148, 79));
+        CB_Eliminar.setBorder(null);
+        CB_Eliminar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_EliminarItemStateChanged(evt);
+            }
+        });
+        CB_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_EliminarActionPerformed(evt);
+            }
+        });
+        EliminarPane_AdminTools_MW.add(CB_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 220, 30));
+
+        Crud_Usuarios_AP.add(EliminarPane_AdminTools_MW);
+
+        ModificarPane_AdminTools_MW.setBackground(new java.awt.Color(247, 246, 220));
+        ModificarPane_AdminTools_MW.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel11.setText("Modificar");
+        ModificarPane_AdminTools_MW.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 23, -1, -1));
+
+        jButton5.setBackground(new java.awt.Color(180, 225, 151));
+        jButton5.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(78, 148, 79));
+        jButton5.setText("Modificar");
+        jButton5.setBorder(null);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        ModificarPane_AdminTools_MW.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 220, 150));
+
+        CB_MODIFICAR.setBackground(new java.awt.Color(180, 225, 151));
+        CB_MODIFICAR.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_MODIFICAR.setForeground(new java.awt.Color(78, 148, 79));
+        CB_MODIFICAR.setBorder(null);
+        CB_MODIFICAR.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_MODIFICARItemStateChanged(evt);
+            }
+        });
+        CB_MODIFICAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_MODIFICARActionPerformed(evt);
+            }
+        });
+        ModificarPane_AdminTools_MW.add(CB_MODIFICAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 220, 30));
+
+        Crud_Usuarios_AP.add(ModificarPane_AdminTools_MW);
+
+        CrearPane_AdminTools_MW1.setBackground(new java.awt.Color(247, 246, 220));
+        CrearPane_AdminTools_MW1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel10.setText("C r e a r  ");
+        CrearPane_AdminTools_MW1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 23, -1, -1));
+
+        jButton4.setBackground(new java.awt.Color(180, 225, 151));
+        jButton4.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(78, 148, 79));
+        jButton4.setText("C r e a r  N u e v o");
+        jButton4.setBorder(null);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        CrearPane_AdminTools_MW1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, 220, 150));
+
+        CB_Crear.setBackground(new java.awt.Color(180, 225, 151));
+        CB_Crear.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        CB_Crear.setForeground(new java.awt.Color(78, 148, 79));
+        CB_Crear.setBorder(null);
+        CB_Crear.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_CrearItemStateChanged(evt);
+            }
+        });
+        CB_Crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_CrearActionPerformed(evt);
+            }
+        });
+        CrearPane_AdminTools_MW1.add(CB_Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 220, 30));
+
+        Crud_Usuarios_AP.add(CrearPane_AdminTools_MW1);
+
+        Panel_Lateral.add(Crud_Usuarios_AP, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 790, 580));
 
         PanelAdministrador.add(Panel_Lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 620));
 
@@ -301,47 +1506,721 @@ public class UsserDis extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void InfoCuenta_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoCuenta_AdminTools_MWActionPerformed
-        NombreInfo.setText(NewJFrame.Uactual.getNombre());
-        UsuarioInfo.setText(NewJFrame.Uactual.getUsuario());
-        EdadInfo.setText("" + NewJFrame.Uactual.getEdad());
-        CorreoInfo.setText(NewJFrame.Uactual.getCorreo());
-        IdInfo.setText("" + NewJFrame.Uactual.getID());
-        GeneroInfo.setText(NewJFrame.Uactual.getGenero());
+    private void CrearUsuario_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearUsuario_AdminTools_MWActionPerformed
+        modelocomboboxCREATE();
+        CrearPane_AdminTools_MW1.setVisible(true);
+        FondoCloudy.setVisible(false);
+        Crud_Usuarios_AP.setVisible(true);
+        EliminarPane_AdminTools_MW.setVisible(false);
+        ListarPane_AdminTools_MW.setVisible((false));
+        ModificarPane_AdminTools_MW.setVisible(false);
+    }//GEN-LAST:event_CrearUsuario_AdminTools_MWActionPerformed
 
-        InformacionUsuarioFra.setModal(true);
-        InformacionUsuarioFra.pack();
-        InformacionUsuarioFra.setLocationRelativeTo(this);
-        InformacionUsuarioFra.setVisible(true);
+    private void ModificarUsuario_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarUsuario_AdminTools_MWActionPerformed
+        modelocomboboxModif();
+        ModificarPane_AdminTools_MW.setVisible(true);
+        ListarPane_AdminTools_MW.setVisible((false));
+        Crud_Usuarios_AP.setVisible(true);
+        FondoCloudy.setVisible(false);
+
+        CrearPane_AdminTools_MW1.setVisible(false);
+        EliminarPane_AdminTools_MW.setVisible(false);
 
 
-    }//GEN-LAST:event_InfoCuenta_AdminTools_MWActionPerformed
+    }//GEN-LAST:event_ModificarUsuario_AdminTools_MWActionPerformed
+
+    private void EliminarUsuario_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarUsuario_AdminTools_MWActionPerformed
+        modelocomboboxEliminar();
+        modeloTABLEeliminar();
+
+        ModificarPane_AdminTools_MW.setVisible(false);
+        Crud_Usuarios_AP.setVisible(true);
+        FondoCloudy.setVisible(false);
+        EliminarPane_AdminTools_MW.setVisible(true);
+        ListarPane_AdminTools_MW.setVisible((false));
+        CrearPane_AdminTools_MW1.setVisible(false);    }//GEN-LAST:event_EliminarUsuario_AdminTools_MWActionPerformed
+
+    private void ListarUsuarios_AdminTools_MWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarUsuarios_AdminTools_MWActionPerformed
+        jLabel20.setText("L i s t a r");
+        CB_ID.setVisible((false));
+        modelocomboboxListar();
+
+        CrearPane_AdminTools_MW1.setVisible(false);
+        ListarPane_AdminTools_MW.setVisible((true));
+        Crud_Usuarios_AP.setVisible(true);
+        FondoCloudy.setVisible(false);
+        EliminarPane_AdminTools_MW.setVisible(false);
+
+        modeloTABLEListar();
+
+        ModificarPane_AdminTools_MW.setVisible(false);    }//GEN-LAST:event_ListarUsuarios_AdminTools_MWActionPerformed
 
     private void botonuniversalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonuniversalActionPerformed
+        TodoVfalse();
         FondoCloudy.setVisible(true);
-        Nombre_Usuario_Label.setText("Bienvenido " + NewJFrame.Uactual.getNombre());
     }//GEN-LAST:event_botonuniversalActionPerformed
 
-    private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ToDo().setVisible(true);
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //deleteElement(String table, Object id)
+        int filaSeleccionada = TABLAELIMINAR.getSelectedRow(); // Obtener la fila seleccionada
+        Object valorPrimeraCelda = TABLAELIMINAR.getValueAt(filaSeleccionada, 0); // Obtener el valor de la primera celda (columna 0)
+        coso.Delete((String) CB_Eliminar.getSelectedItem(), (Integer) valorPrimeraCelda);
+        modeloTABLEeliminar();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void CB_ListarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_ListarItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_ListarItemStateChanged
+
+    private void CB_ListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ListarActionPerformed
+        if (jLabel20.getText() == "L i s t a r") {
+            modeloTABLEListar();
+        } else if (jLabel20.getText() == "Reportes") {
+            String Reporte = (String) CB_Listar.getSelectedItem();
+            ResultSet idrs = null;
+            ArrayList<Object> valores = new ArrayList<>();
+            DefaultComboBoxModel m = new DefaultComboBoxModel();
+
+            switch (Reporte) {
+                case "Inventario de productos":
+                    idrs = coso.Select("Tienda");
+                    try {
+                        while (idrs.next()) {
+                            Object valorPrimeraCelda = idrs.getObject(1); // El índice 1 representa la primera columna
+                            valores.add(valorPrimeraCelda);
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    for (Object valor : valores) {
+                        m.addElement(valor);
+                    }
+                    CB_ID.setModel(m);
+                    CB_ID.setVisible(Boolean.TRUE);
+
+                    break;
+                case "Compras por cliente":
+                    idrs = coso.Select("Cliente");
+                    try {
+                        while (idrs.next()) {
+                            Object valorPrimeraCelda = idrs.getObject(1); // El índice 1 representa la primera columna
+                            valores.add(valorPrimeraCelda);
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    for (Object valor : valores) {
+                        m.addElement(valor);
+                    }
+                    CB_ID.setModel(m);
+                    CB_ID.setVisible(Boolean.TRUE);
+
+                    break;
+                case "Historial de ventas por tienda":
+                    idrs = coso.Select("Tienda");
+                    try {
+                        while (idrs.next()) {
+                            Object valorPrimeraCelda = idrs.getObject(1); // El índice 1 representa la primera columna
+                            valores.add(valorPrimeraCelda);
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    for (Object valor : valores) {
+                        m.addElement(valor);
+                    }
+                    CB_ID.setModel(m);
+                    CB_ID.setVisible(Boolean.TRUE);
+
+                    break;
+                case "Los 20 productos más vendidos en cada tienda":
+                    idrs = coso.Select("Tienda");
+                    try {
+                        while (idrs.next()) {
+                            Object valorPrimeraCelda = idrs.getObject(1); // El índice 1 representa la primera columna
+                            valores.add(valorPrimeraCelda);
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    for (Object valor : valores) {
+                        m.addElement(valor);
+                    }
+                    CB_ID.setModel(m);
+                    CB_ID.setVisible(Boolean.TRUE);
+
+                    break;
+                case "Los 20 productos más vendidos en cada país":
+                    idrs = coso.Select("Ubicaciones");
+                    try {
+                        while (idrs.next()) {
+                            Object valorPrimeraCelda = idrs.getObject(2); // El índice 1 representa la primera columna
+                            valores.add(valorPrimeraCelda);
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    for (Object valor : valores) {
+                        m.addElement(valor);
+                    }
+                    CB_ID.setModel(m);
+                    CB_ID.setVisible(Boolean.TRUE);
+
+                    break;
+                case "Las 5 tiendas con más ventas en lo que va de año": {
+                    CB_ID.setVisible(Boolean.FALSE);
+                    DefaultTableModel T = new DefaultTableModel();
+                    T = (TraerTabla(coso.Top5TiendasConMasVentas()));
+                    TablaListar.setModel(T);
+                }
+                break;
+                case "Las tiendas se venden Coca-Cola más que Pepsi":
+                    // Realizar acciones relacionadas con "Las tiendas se venden Coca-Cola más que Pepsi"
+                    System.out.println("Acciones para Las tiendas se venden Coca-Cola más que Pepsi");
+                    break;
+                case "Los 3 principales tipos de productos que los clientes compran además de la leche": {
+                    CB_ID.setVisible(Boolean.FALSE);
+                    DefaultTableModel T = new DefaultTableModel();
+                    //T = (TraerTabla(coso.Top5TiendasConMasVentas()));
+                    TablaListar.setModel(T);
+                    CB_ID.setVisible(Boolean.FALSE);
+                }
+                break;
+                default:
+                    System.out.println("Título no reconocido");
+                    // Acciones para un título no reconocido
+                    break;
+            }
+        } else {
+            String bitac = (String) CB_Listar.getSelectedItem();
+            ResultSet idrs = null;
+            DefaultTableModel m = new DefaultTableModel();
+
+            switch (bitac) {
+                case "Producto":
+                    m = (TraerTabla(coso.bitacora_producto()));
+                    TablaListar.setModel(m);
+                    break;
+                case "Vendedor":
+                    m = (TraerTabla(coso.bitacora_vendedor()));
+                    TablaListar.setModel(m);
+                    break;
+                case "Cliente":
+                    m = (TraerTabla(coso.bitacora_cliente()));
+                    TablaListar.setModel(m);
+                    break;
+                case "Factura":
+                    m = (TraerTabla(coso.bitacora_factura()));
+                    TablaListar.setModel(m);
+                    break;
+                case "Tienda":
+                    m = (TraerTabla(coso.bitacora_cliente()));
+                    TablaListar.setModel(m);
+                    break;
+                default:
+                    // Si el valor del String no coincide con ninguna de las opciones anteriores
+                    break;
+            }
+
+        }
+    }//GEN-LAST:event_CB_ListarActionPerformed
+
+    private void CB_EliminarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_EliminarItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_EliminarItemStateChanged
+
+    private void CB_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_EliminarActionPerformed
+        modeloTABLEeliminar();
+    }//GEN-LAST:event_CB_EliminarActionPerformed
+
+    private void CB_CrearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_CrearItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_CrearItemStateChanged
+
+    private void CB_CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_CrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_CrearActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
+        String entidad = (String) CB_Crear.getSelectedItem();
+        switch (entidad) {
+            case "Producto":
+                CrearProducto.setVisible(true);
+                break;
+            case "Vendedor":
+                CrearVendedor.setVisible(true);
+                break;
+            case "Cliente":
+                CrearCliente.setVisible(true);
+                break;
+            case "Factura":
+                ResultSet idrs0 = coso.Select("Tienda");
+                ResultSet idrs1 = coso.Select("Cliente");
+                ArrayList<Object> valoresTien = new ArrayList<>();
+                ArrayList<Object> valoresClien = new ArrayList<>();
+                DefaultComboBoxModel Tien = new DefaultComboBoxModel();
+                DefaultComboBoxModel Clien = new DefaultComboBoxModel();
+                try {
+                    while (idrs0.next()) {
+                        Object valorPrimeraCelda = idrs0.getObject(1); // El índice 1 representa la primera columna
+                        valoresTien.add(valorPrimeraCelda);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                for (Object valor : valoresTien) {
+                    Tien.addElement(valor);
+                }
+
+                try {
+                    while (idrs1.next()) {
+                        Object valorPrimeraCelda = idrs1.getObject(1); // El índice 1 representa la primera columna
+                        valoresClien.add(valorPrimeraCelda);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                for (Object valor : valoresClien) {
+                    Clien.addElement(valor);
+                }
+
+                CBCrearFacturaIDCLIENT.setModel(Clien);
+                CBCrearFacturaIDTIENDA.setModel(Tien);
+                CrearFactura.setVisible(true);
+
+                // Aquí puedes poner el código para manejar la entidad "Factura"
+                //crearfa.setVisible(true);
+                break;
+            case "Tienda":
+                CrearTienda.setVisible(true);
+                break;
+            default:
+                System.out.println("Entidad no reconocida");
+                // Si el valor del String no coincide con ninguna de las opciones anteriores
+                break;
+        }
+
+    }
+
+
+    private void AgregarintegranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarintegranteActionPerformed
+        // Tus campos de texto (supongamos que estos son los valores ingresados)
+        String nombre = CrearProductoNombre.getText();
+        String tamaño = CrearProductoTamaño.getText();
+        String embalaje = CrearProductoEmbalaje.getText();
+        String marca = CrearProductoMarca.getText();
+
+        // Crear el ArrayList "attributes" y agregar los valores
+        ArrayList<Object> atributes = new ArrayList<Object>();
+        atributes.add(nombre);
+        atributes.add(tamaño);
+        atributes.add(embalaje);
+        atributes.add(marca);
+        CrearProductoNombre.setText("");
+        CrearProductoTamaño.setText("");
+        CrearProductoEmbalaje.setText("");
+        CrearProductoMarca.setText("");
+        coso.Insert((String) CB_Crear.getSelectedItem(), atributes);
+
+    }//GEN-LAST:event_AgregarintegranteActionPerformed
+
+    private void CrearProductoMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearProductoMarcaActionPerformed
+
+    }//GEN-LAST:event_CrearProductoMarcaActionPerformed
+
+    private void Agregarintegrante1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante1ActionPerformed
+        String nombre = CrearVendedorNombre.getText();
+
+        // Crear el ArrayList "attributes" y agregar los valores
+        ArrayList<Object> atributes = new ArrayList<Object>();
+        atributes.add(nombre);
+
+        CrearVendedorNombre.setText("");
+        coso.Insert((String) CB_Crear.getSelectedItem(), atributes);
+    }//GEN-LAST:event_Agregarintegrante1ActionPerformed
+
+    private void Agregarintegrante2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante2ActionPerformed
+        // TODO add your handling code here:ACA
+        String nombre = CrearClienteNombre.getText();
+        String Correo = CrearCorreoCliente.getText();
+
+        // Crear el ArrayList "attributes" y agregar los valores
+        ArrayList<Object> atributes = new ArrayList<Object>();
+        atributes.add(nombre);
+        atributes.add(Correo);
+
+        CrearClienteNombre.setText("");
+        CrearCorreoCliente.setText("");
+
+        coso.Insert((String) CB_Crear.getSelectedItem(), atributes);
+    }//GEN-LAST:event_Agregarintegrante2ActionPerformed
+
+    private void Agregarintegrante3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante3ActionPerformed
+// TODO add your handling code here:ACA
+        String nombre = CrearUsuarioP_TF_Nombre15.getText();
+        String Horario = CrearUsuarioP_TF_Nombre16.getText();
+
+        // Crear el ArrayList "attributes" y agregar los valores
+        ArrayList<Object> atributes = new ArrayList<Object>();
+        atributes.add(nombre);
+        atributes.add(Horario);
+
+        CrearUsuarioP_TF_Nombre15.setText("");
+        CrearUsuarioP_TF_Nombre16.setText("");
+
+        coso.Insert((String) CB_Crear.getSelectedItem(), atributes);    }//GEN-LAST:event_Agregarintegrante3ActionPerformed
+
+    private void Agregarintegrante7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante7ActionPerformed
+        String nombre = CrearUsuarioP_TF_Nombre22.getText();
+        String tamaño = CrearUsuarioP_TF_Nombre21.getText();
+        String embalaje = CrearUsuarioP_TF_Nombre23.getText();
+        String marca = CrearUsuarioP_TF_Nombre24.getText();
+        ArrayList<Object> atributes = new ArrayList<Object>();
+        atributes.add(nombre);
+        atributes.add(tamaño);
+        atributes.add(embalaje);
+        atributes.add(marca);
+        coso.Update((String) CB_MODIFICAR.getSelectedItem(), (Integer) CB_Modificar.getSelectedItem(), atributes);
+
+    }//GEN-LAST:event_Agregarintegrante7ActionPerformed
+
+    private void CrearUsuarioP_TF_Nombre24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearUsuarioP_TF_Nombre24ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CrearUsuarioP_TF_Nombre24ActionPerformed
+
+    private void Agregarintegrante8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante8ActionPerformed
+        String nombre = CrearUsuarioP_TF_Nombre25.getText();
+        ArrayList<Object> atributes = new ArrayList<Object>();
+        atributes.add(nombre);
+
+        coso.Update((String) CB_MODIFICAR.getSelectedItem(), (Integer) CB_Modificar1.getSelectedItem(), atributes);    }//GEN-LAST:event_Agregarintegrante8ActionPerformed
+
+    private void Agregarintegrante9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante9ActionPerformed
+        String nombre = CrearUsuarioP_TF_Nombre27.getText();
+        String Horario = CrearUsuarioP_TF_Nombre39.getText();
+
+        ArrayList<Object> atributes = new ArrayList<Object>();
+        atributes.add(nombre);
+        atributes.add(Horario);
+
+        coso.Update((String) CB_MODIFICAR.getSelectedItem(), (Integer) CB_ModificarTienda.getSelectedItem(), atributes);
+    }//GEN-LAST:event_Agregarintegrante9ActionPerformed
+
+    private void Agregarintegrante10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante10ActionPerformed
+        String nombre = CrearUsuarioP_TF_Nombre28.getText();
+        String Correo = CrearUsuarioP_TF_Nombre29.getText();
+
+        ArrayList<Object> atributes = new ArrayList<Object>();
+        atributes.add(nombre);
+        atributes.add(Correo);
+
+        coso.Update((String) CB_MODIFICAR.getSelectedItem(), (Integer) CB_ModificarCliente.getSelectedItem(), atributes);    }//GEN-LAST:event_Agregarintegrante10ActionPerformed
+
+    private void CB_ModificarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_ModificarItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_ModificarItemStateChanged
+
+    private void CB_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ModificarActionPerformed
+        ResultSet idrsText = coso.SelectById((String) CB_MODIFICAR.getSelectedItem(), (Integer) CB_Modificar.getSelectedItem());
+
+        try {
+            idrsText.next();
+            CrearUsuarioP_TF_Nombre22.setText(((String) idrsText.getObject(2)));
+            CrearUsuarioP_TF_Nombre21.setText(((String) idrsText.getObject(3)));
+            CrearUsuarioP_TF_Nombre23.setText(((String) idrsText.getObject(4)));
+            CrearUsuarioP_TF_Nombre24.setText(((String) idrsText.getObject(5)));
+            //CrearUsuarioP_TF_Nombre22.setText((String) idrsText.getObject(1));
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_CB_ModificarActionPerformed
+
+    private void CB_Modificar1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_Modificar1ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_Modificar1ItemStateChanged
+
+    private void CB_Modificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Modificar1ActionPerformed
+        // TODO add your handling code here:acaaaa
+        ResultSet idrsText = coso.SelectById((String) CB_MODIFICAR.getSelectedItem(), (Integer) CB_Modificar1.getSelectedItem());
+
+        try {
+            idrsText.next();
+            CrearUsuarioP_TF_Nombre25.setText(((String) idrsText.getObject(2)));
+            //CrearUsuarioP_TF_Nombre22.setText((String) idrsText.getObject(1));
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }//GEN-LAST:event_CB_Modificar1ActionPerformed
+
+    private void CB_ModificarTiendaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_ModificarTiendaItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_ModificarTiendaItemStateChanged
+
+    private void CB_ModificarTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ModificarTiendaActionPerformed
+        ResultSet idrsText = coso.SelectById((String) CB_MODIFICAR.getSelectedItem(), (Integer) CB_ModificarTienda.getSelectedItem());
+
+        try {
+            idrsText.next();
+            CrearUsuarioP_TF_Nombre27.setText(((String) idrsText.getObject(2)));
+            CrearUsuarioP_TF_Nombre39.setText(((String) idrsText.getObject(3)));
+        } catch (SQLException ex) {
+            Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+        }    }//GEN-LAST:event_CB_ModificarTiendaActionPerformed
+
+    private void CB_ModificarClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_ModificarClienteItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_ModificarClienteItemStateChanged
+
+    private void CB_ModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ModificarClienteActionPerformed
+        ResultSet idrsText = coso.SelectById((String) CB_MODIFICAR.getSelectedItem(), (Integer) CB_ModificarCliente.getSelectedItem());
+        try {
+            idrsText.next();
+            CrearUsuarioP_TF_Nombre28.setText(((String) idrsText.getObject(2)));
+            CrearUsuarioP_TF_Nombre29.setText(((String) idrsText.getObject(3)));
+        } catch (SQLException ex) {
+            Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_CB_ModificarClienteActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        String entidad = (String) CB_MODIFICAR.getSelectedItem();
+        ResultSet idrs = coso.Select((String) CB_MODIFICAR.getSelectedItem());
+        ArrayList<Object> valores = new ArrayList<>();
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+
+        switch (entidad) {
+            case "Producto":
                 
+                try {
+                while (idrs.next()) {
+                    Object valorPrimeraCelda = idrs.getObject(1); // El índice 1 representa la primera columna
+                    valores.add(valorPrimeraCelda);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
-    }//GEN-LAST:event_jLabel23MouseClicked
-
-    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Drive().setVisible(true);
+            for (Object valor : valores) {
+                m.addElement(valor);
             }
-        });
-    }//GEN-LAST:event_jLabel21MouseClicked
+            CB_Modificar.setModel(m);
+            ModificarProducto.setVisible(true);
+            break;
 
-    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-        new CorreoCloudy(NewJFrame.Uactual.getID()).setVisible(true);
-    }//GEN-LAST:event_jLabel22MouseClicked
+            case "Vendedor":
+                
+                try {
+                while (idrs.next()) {
+                    Object valorPrimeraCelda = idrs.getObject(1); // El índice 1 representa la primera columna
+                    valores.add(valorPrimeraCelda);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (Object valor : valores) {
+                m.addElement(valor);
+            }
+            CB_Modificar1.setModel(m);
+            ModificarVendedor.setVisible(true);
+            break;
+            case "Cliente":
+                try {
+                while (idrs.next()) {
+                    Object valorPrimeraCelda = idrs.getObject(1); // El índice 1 representa la primera columna
+                    valores.add(valorPrimeraCelda);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (Object valor : valores) {
+                m.addElement(valor);
+            }
+            CB_ModificarCliente.setModel(m);
+            ModificarCliente.setVisible(true);
+            break;
+            case "Factura":
+                try {
+                while (idrs.next()) {
+                    Object valorPrimeraCelda = idrs.getObject(1); // El índice 1 representa la primera columna
+                    valores.add(valorPrimeraCelda);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (Object valor : valores) {
+                m.addElement(valor);
+            }
+            CrearFactura.setVisible(true);
+            break;
+            case "Tienda":          
+                try {
+                while (idrs.next()) {
+                    Object valorPrimeraCelda = idrs.getObject(1); // El índice 1 representa la primera columna
+                    valores.add(valorPrimeraCelda);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(UsserDis.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (Object valor : valores) {
+                m.addElement(valor);
+            }
+            CB_ModificarTienda.setModel(m);
+            ModificarTienda.setVisible(true);
+            break;
+            default:
+                System.out.println("Entidad no reconocida");
+                // Si el valor del String no coincide con ninguna de las opciones anteriores
+                break;
+        }
+
+
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void CB_MODIFICARItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_MODIFICARItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_MODIFICARItemStateChanged
+
+    private void CB_MODIFICARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_MODIFICARActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_MODIFICARActionPerformed
+
+    private void CB_IDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_IDItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_IDItemStateChanged
+
+    private void CB_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_IDActionPerformed
+        String Reporte = (String) CB_Listar.getSelectedItem();
+        ResultSet idrs = null;
+        ArrayList<Object> valores = new ArrayList<>();
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+
+        switch (Reporte) {
+            case "Inventario de productos": {
+                DefaultTableModel T = new DefaultTableModel();
+                T = (TraerTabla(coso.Inventario((Integer) CB_ID.getSelectedItem())));
+                TablaListar.setModel(T);
+            }
+            break;
+            case "Compras por cliente": {
+                DefaultTableModel T = new DefaultTableModel();
+                T = (TraerTabla(coso.ComprasPorCliente((Integer) CB_ID.getSelectedItem())));
+                TablaListar.setModel(T);
+            }
+            break;
+            case "Historial de ventas por tienda": {
+                DefaultTableModel T = new DefaultTableModel();
+                T = (TraerTabla(coso.HistorialVentas((Integer) CB_ID.getSelectedItem())));
+                TablaListar.setModel(T);
+            }
+            break;
+            case "Los 20 productos más vendidos en cada tienda": {
+                DefaultTableModel T = new DefaultTableModel();
+                T = (TraerTabla(coso.Top20ProductosVendidosPorTienda((Integer) CB_ID.getSelectedItem())));
+                TablaListar.setModel(T);
+            }
+            break;
+            case "Los 20 productos más vendidos en cada país": {
+                DefaultTableModel T = new DefaultTableModel();
+                T = (TraerTabla(coso.ProductosPorPais((String) CB_ID.getSelectedItem())));
+                TablaListar.setModel(T);
+            }
+            break;
+
+            default:
+                System.out.println("Título no reconocido");
+                // Acciones para un título no reconocido
+                break;
+        }    }//GEN-LAST:event_CB_IDActionPerformed
+
+    private void Agregarintegrante4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante4ActionPerformed
+        int id_tienda = (Integer) CBCrearFacturaIDTIENDA.getSelectedItem();
+        int id_cliente = (Integer) CBCrearFacturaIDCLIENT.getSelectedItem();
+        Date selectedDate = jDateChooser1.getDate();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String fecha = dateFormat.format(selectedDate);
+        double subtotal = Double.valueOf(jLabel24.getText());
+        String porcentajeStr = CrearUsuarioP_TF_Nombre30.getText();
+        double ISV = Double.parseDouble(porcentajeStr);
+        double total = subtotal + (subtotal * (ISV / 100.0));
+
+        ArrayList<Object> atributes = new ArrayList<Object>();
+        atributes.add(id_cliente);
+        atributes.add(id_tienda);
+        atributes.add(fecha);
+        atributes.add(subtotal);
+        atributes.add(ISV);
+        atributes.add(total);
+
+        coso.Insert((String) CB_Crear.getSelectedItem(), atributes);
+    }//GEN-LAST:event_Agregarintegrante4ActionPerformed
+
+    private void dETALLECOMPRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dETALLECOMPRAActionPerformed
+        DefaultTableModel m = new DefaultTableModel();
+        m = (TraerTabla(coso.Coso((Integer) CBCrearFacturaIDTIENDA.getSelectedItem())));
+        tableDetalle.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        tableDetalle.setModel(m);
+        DetalleFactura.setVisible(true);
+    }//GEN-LAST:event_dETALLECOMPRAActionPerformed
+
+    private void CBCrearFacturaIDTIENDAItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBCrearFacturaIDTIENDAItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBCrearFacturaIDTIENDAItemStateChanged
+
+    private void CBCrearFacturaIDTIENDAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBCrearFacturaIDTIENDAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBCrearFacturaIDTIENDAActionPerformed
+
+    private void CBCrearFacturaIDCLIENTItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBCrearFacturaIDCLIENTItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBCrearFacturaIDCLIENTItemStateChanged
+
+    private void CBCrearFacturaIDCLIENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBCrearFacturaIDCLIENTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBCrearFacturaIDCLIENTActionPerformed
+
+    private void Agregarintegrante6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante6ActionPerformed
+        int[] selectedRows = tableDetalle.getSelectedRows();
+        double subtotal = 0.0; // Inicializamos el subtotal como un valor double
+
+// Itera a través de las filas seleccionadas
+        for (int row : selectedRows) {
+            // Obtiene el valor como BigDecimal desde la columna 1
+            BigDecimal bigDecimalValue = (BigDecimal) tableDetalle.getValueAt(row, 2);
+
+            // Convierte el valor BigDecimal a String
+            String stringValue = bigDecimalValue.toString();
+
+            // Convierte el valor String a double
+            try {
+                double doubleValue = Double.parseDouble(stringValue);
+                subtotal += doubleValue;
+            } catch (NumberFormatException e) {
+                // Manejar el caso en el que la conversión no sea exitosa
+            }
+            coso.insertarDetalleFactura((Integer) CBCrearFacturaIDTIENDA.getSelectedItem(), (Integer) tableDetalle.getValueAt(row, 0));
+        }
+
+// Ahora, subtotal contiene la suma de los valores convertidos de la columna 1
+        jLabel24.setText(Double.toString(subtotal));
+        String porcentajeStr = CrearUsuarioP_TF_Nombre30.getText();
+
+        try {
+            double porcentaje = Double.parseDouble(porcentajeStr);
+            double nuevoValor = subtotal + (subtotal * (porcentaje / 100.0));
+            jLabel34.setText(Double.toString(nuevoValor));
+        } catch (NumberFormatException e) {
+            // Manejar el caso en el que el porcentaje no es un número válido
+            jLabel34.setText("Error: Porcentaje no válido");
+        }
+
+        DetalleFactura.setVisible(false);
+    }//GEN-LAST:event_Agregarintegrante6ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -376,34 +2255,305 @@ public class UsserDis extends javax.swing.JFrame {
         });
     }
 
+    public void iniciarVA() {
+        Crud_Usuarios_AP.setVisible(false);
+        CrearPane_AdminTools_MW1.setVisible(false);
+        ModificarPane_AdminTools_MW.setVisible(false);
+    }
+
+    public void TodoVfalse() {
+        Crud_Usuarios_AP.setVisible(false);
+        CrearPane_AdminTools_MW1.setVisible(false);
+        ModificarPane_AdminTools_MW.setVisible(false);
+        EliminarPane_AdminTools_MW.setVisible(false);
+        ListarPane_AdminTools_MW.setVisible(false);
+
+    }
+
+    //TODO DE LISTAR
+    public void modelocomboboxListar() {
+        CB_Listar.getModel();
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        for (String entidade : entidadesL) {
+            m.addElement(entidade);
+        }
+        CB_Listar.setModel(m);
+    }
+
+    public void modeloTABLEListar() {
+        String entidad = (String) CB_Listar.getSelectedItem();
+        DefaultTableModel m = new DefaultTableModel();
+        m = (TraerTabla(coso.Select(entidad)));
+        TablaListar.setModel(m);
+    }
+
+    //TODO ELIMINAR
+    public void modelocomboboxEliminar() {
+        CB_Eliminar.getModel();
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        for (String entidade : entidades) {
+            m.addElement(entidade);
+        }
+        CB_Eliminar.setModel(m);
+    }
+
+    public void modeloTABLEeliminar() {
+        String entidad = (String) CB_Eliminar.getSelectedItem();
+        DefaultTableModel m = new DefaultTableModel();
+        m = (TraerTabla(coso.Select(entidad)));
+        TABLAELIMINAR.setModel(m);
+    }
+//TODO DE CREAR
+
+    public void modelocomboboxCREATE() {
+        CB_Crear.getModel();
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        for (String entidade : entidadesCrear) {
+            m.addElement(entidade);
+        }
+        CB_Crear.setModel(m);
+    }
+
+    public void modelocomboboxModif() {
+        CB_MODIFICAR.getModel();
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        for (String entidade : entidadesCrear) {
+            m.addElement(entidade);
+        }
+        CB_MODIFICAR.setModel(m);
+    }
+
     public static ArrayList<Persona> ListUssers = new ArrayList();
+    public static ArrayList<String> entidades = new ArrayList<String>() {
+        {
+            add("Producto");
+  
+            add("Cliente");
+            add("Factura");
+        }
+    };
+    
+        public static ArrayList<String> entidadesL = new ArrayList<String>() {
+        {
+            add("Producto");
+            add("Vendedor");
+            add("Tienda");
+            add("Cliente");
+            add("Factura");
+        }
+    };
+
+    public static ArrayList<String> entidadesCrear = new ArrayList<String>() {
+        {
+            add("Producto");
+            add("Cliente");
+            add("Factura");
+        }
+    };
+
+    public DefaultTableModel TraerTabla(ResultSet rs) {
+        DefaultTableModel model = new DefaultTableModel();
+        try {
+            ResultSetMetaData metaData = rs.getMetaData();
+            for (int i = 1; i <= metaData.getColumnCount(); i++) {
+                model.addColumn(metaData.getColumnName(i));
+            }
+            while (rs.next()) {
+                Object[] row = new Object[metaData.getColumnCount()];
+                for (int i = 1; i <= metaData.getColumnCount(); i++) {
+                    row[i - 1] = rs.getObject(i);
+                }
+                model.addRow(row);
+            }
+            return model;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return model;
+    }
+
+    public static ArrayList<String> titulos = new ArrayList<String>() {
+        {
+            add("Inventario de productos");
+            add("Compras por cliente");
+            add("Historial de ventas por tienda");
+            add("Los 20 productos más vendidos en cada tienda");
+            add("Los 20 productos más vendidos en cada país");
+            add("Las 5 tiendas con más ventas en lo que va de año");
+            add("Las tiendas se venden Coca-Cola más que Pepsi");
+            add("Los 3 principales tipos de productos que los clientes compran además de la leche");
+        }
+    };
+
+    //TODO DE VISTAS
+    public void modelocomboboxSlcVista() {
+        CB_Listar.getModel();
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        for (String entidade : titulos) {
+            m.addElement(entidade);
+        }
+        CB_Listar.setModel(m);
+    }
+
+    DbCon coso = new DbCon("master");
+    
+    public static void guardarEnArchivo() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("./personas.bin"))) {
+            oos.writeObject(ListUssers);
+            System.out.println("Datos guardados en el archivo binario.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error al guardar en el archivo binario.");
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CorreoInfo;
-    private javax.swing.JLabel EdadInfo;
+    private javax.swing.JButton Agregarintegrante;
+    private javax.swing.JButton Agregarintegrante1;
+    private javax.swing.JButton Agregarintegrante10;
+    private javax.swing.JButton Agregarintegrante2;
+    private javax.swing.JButton Agregarintegrante3;
+    private javax.swing.JButton Agregarintegrante4;
+    private javax.swing.JButton Agregarintegrante6;
+    private javax.swing.JButton Agregarintegrante7;
+    private javax.swing.JButton Agregarintegrante8;
+    private javax.swing.JButton Agregarintegrante9;
+    private javax.swing.JComboBox<String> CBCrearFacturaIDCLIENT;
+    private javax.swing.JComboBox<String> CBCrearFacturaIDTIENDA;
+    private javax.swing.JComboBox<String> CB_Crear;
+    private javax.swing.JComboBox<String> CB_Eliminar;
+    private javax.swing.JComboBox<String> CB_ID;
+    private javax.swing.JComboBox<String> CB_Listar;
+    private javax.swing.JComboBox<String> CB_MODIFICAR;
+    private javax.swing.JComboBox<String> CB_Modificar;
+    private javax.swing.JComboBox<String> CB_Modificar1;
+    private javax.swing.JComboBox<String> CB_ModificarCliente;
+    private javax.swing.JComboBox<String> CB_ModificarTienda;
+    private javax.swing.JDialog CrearCliente;
+    private javax.swing.JTextField CrearClienteNombre;
+    private javax.swing.JTextField CrearCorreoCliente;
+    private javax.swing.JDialog CrearFactura;
+    private javax.swing.JPanel CrearPane_AdminTools_MW1;
+    private javax.swing.JDialog CrearProducto;
+    private javax.swing.JTextField CrearProductoEmbalaje;
+    private javax.swing.JTextField CrearProductoMarca;
+    private javax.swing.JTextField CrearProductoNombre;
+    private javax.swing.JTextField CrearProductoTamaño;
+    private javax.swing.JDialog CrearTienda;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre15;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre16;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre21;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre22;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre23;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre24;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre25;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre27;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre28;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre29;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre30;
+    private javax.swing.JTextField CrearUsuarioP_TF_Nombre39;
+    private javax.swing.JButton CrearUsuario_AdminTools_MW;
+    private javax.swing.JDialog CrearVendedor;
+    private javax.swing.JTextField CrearVendedorNombre;
+    private javax.swing.JPanel Crud_Usuarios_AP;
+    private javax.swing.JDialog DetalleFactura;
+    private javax.swing.JPanel EliminarPane_AdminTools_MW;
+    private javax.swing.JButton EliminarUsuario_AdminTools_MW;
     private javax.swing.JLabel FondoCloudy;
-    private javax.swing.JLabel GeneroInfo;
-    private javax.swing.JLabel IdInfo;
-    private javax.swing.JButton InfoCuenta_AdminTools_MW;
-    private javax.swing.JDialog InformacionUsuarioFra;
-    private javax.swing.JLabel NombreInfo;
+    private javax.swing.JLabel HEADERCOSO10;
+    private javax.swing.JLabel HEADERCOSO11;
+    private javax.swing.JLabel HEADERCOSO12;
+    private javax.swing.JLabel HEADERCOSO13;
+    private javax.swing.JLabel HEADERCOSO3;
+    private javax.swing.JLabel HEADERCOSO4;
+    private javax.swing.JLabel HEADERCOSO5;
+    private javax.swing.JLabel HEADERCOSO6;
+    private javax.swing.JLabel HEADERCOSO7;
+    private javax.swing.JLabel HEADERCOSO8;
+    private javax.swing.JPanel ListarPane_AdminTools_MW;
+    private javax.swing.JButton ListarUsuarios_AdminTools_MW;
+    private javax.swing.JDialog ModificarCliente;
+    private javax.swing.JPanel ModificarPane_AdminTools_MW;
+    private javax.swing.JDialog ModificarProducto;
+    private javax.swing.JDialog ModificarTienda;
+    private javax.swing.JButton ModificarUsuario_AdminTools_MW;
+    private javax.swing.JDialog ModificarVendedor;
+    private javax.swing.JLabel NombreLista1;
+    private javax.swing.JLabel NombreLista10;
+    private javax.swing.JLabel NombreLista11;
+    private javax.swing.JLabel NombreLista2;
+    private javax.swing.JLabel NombreLista3;
+    private javax.swing.JLabel NombreLista4;
+    private javax.swing.JLabel NombreLista5;
+    private javax.swing.JLabel NombreLista6;
+    private javax.swing.JLabel NombreLista8;
+    private javax.swing.JLabel NombreLista9;
     private javax.swing.JLabel Nombre_Usuario_Label;
     private javax.swing.JPanel PanelAdministrador;
     private javax.swing.JPanel Panel_Lateral;
-    private javax.swing.JLabel UsuarioInfo;
+    private javax.swing.JTable TABLAELIMINAR;
+    private javax.swing.JTable TablaListar;
     private javax.swing.JButton botonuniversal;
-    private javax.swing.JLabel jLabel21;
+    private javax.swing.JButton dETALLECOMPRA;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JTable tableDetalle;
     // End of variables declaration//GEN-END:variables
 }
