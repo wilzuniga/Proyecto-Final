@@ -25,19 +25,17 @@ public class DbCon {
 
     public DbCon(String bd) {
         connectionUrl
-                = "jdbc:sqlserver://localhost:1433;"
+                = "jdbc:sqlserver://proyectodb.cq2qae56bgqw.us-east-1.rds.amazonaws.com:1433;"
                 + "databaseName=" + bd + ";"
-                + "user=abc;"
-                + "password=abcde;"
+                + "user=admin;"
+                + "password=cosacosa;"
                 + "encrypt=true;"
                 + "trustServerCertificate=true;"
                 + "loginTimeout=30;";
         try {
             con = DriverManager.getConnection(connectionUrl);
-            System.out.println("Connection Established");
         } catch (Exception ex) {
             System.out.println("Error");
-            ex.printStackTrace();
         }
     }
 
@@ -272,6 +270,20 @@ public class DbCon {
         return rs;
     }
 
+    public ResultSet Top3TiposProductosCompradosExceptLacteo() {
+        ResultSet rs = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT TOP 3 id_tipo, nombre_tipo, total_compras "
+                    + "FROM Top3TiposProductosCompradosExceptLacteo "
+                    + "ORDER BY total_compras DESC");
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
     public void insertarDetalleFactura(int numero, int UPC) {
         PreparedStatement stmt = null;
         try {
@@ -291,20 +303,6 @@ public class DbCon {
                 e.printStackTrace();
             }
         }
-    }
-
-    public ResultSet Top3TiposProductosCompradosExceptLacteo() {
-        ResultSet rs = null;
-        try {
-            PreparedStatement ps = con.prepareStatement(
-                    "SELECT TOP 3 id_tipo, nombre_tipo, total_compras "
-                    + "FROM Top3TiposProductosCompradosExceptLacteo "
-                    + "ORDER BY total_compras DESC");
-            rs = ps.executeQuery();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return rs;
     }
 
     public ResultSet Top20ProductosVendidosPorTienda(int id_tienda) {

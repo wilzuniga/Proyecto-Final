@@ -164,6 +164,15 @@ public class Main extends javax.swing.JFrame {
         Agregarintegrante6 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableDetalle = new javax.swing.JTable();
+        ProductoAB = new javax.swing.JDialog();
+        jPanel20 = new javax.swing.JPanel();
+        NombreLista12 = new javax.swing.JLabel();
+        HEADERCOSO14 = new javax.swing.JLabel();
+        Agregarintegrante11 = new javax.swing.JButton();
+        jLabel46 = new javax.swing.JLabel();
+        a = new javax.swing.JTextField();
+        jLabel57 = new javax.swing.JLabel();
+        b = new javax.swing.JTextField();
         PanelAdministrador = new javax.swing.JPanel();
         Panel_Lateral = new javax.swing.JPanel();
         FondoCloudy = new javax.swing.JLabel();
@@ -1110,6 +1119,75 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        ProductoAB.setMinimumSize(new java.awt.Dimension(720, 520));
+
+        jPanel20.setBackground(new java.awt.Color(247, 246, 220));
+        jPanel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NombreLista12.setBackground(new java.awt.Color(247, 246, 220));
+        NombreLista12.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        NombreLista12.setForeground(new java.awt.Color(78, 148, 79));
+        jPanel20.add(NombreLista12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        HEADERCOSO14.setFont(new java.awt.Font("Roboto Medium", 1, 30)); // NOI18N
+        HEADERCOSO14.setForeground(new java.awt.Color(78, 148, 79));
+        HEADERCOSO14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HEADERCOSO14.setText("Producto A y Producto B");
+        HEADERCOSO14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HEADERCOSO14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel20.add(HEADERCOSO14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 360, 40));
+
+        Agregarintegrante11.setBackground(new java.awt.Color(78, 148, 79));
+        Agregarintegrante11.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        Agregarintegrante11.setForeground(new java.awt.Color(233, 239, 192));
+        Agregarintegrante11.setText("           Buscar");
+        Agregarintegrante11.setBorder(null);
+        Agregarintegrante11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Agregarintegrante11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Agregarintegrante11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregarintegrante11ActionPerformed(evt);
+            }
+        });
+        jPanel20.add(Agregarintegrante11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 120, 40));
+
+        jLabel46.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel46.setText("Producto A");
+        jPanel20.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+
+        a.setBackground(new java.awt.Color(180, 225, 151));
+        a.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        a.setForeground(new java.awt.Color(78, 148, 79));
+        a.setBorder(null);
+        jPanel20.add(a, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 220, 30));
+
+        jLabel57.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        jLabel57.setForeground(new java.awt.Color(78, 148, 79));
+        jLabel57.setText("Producto B");
+        jPanel20.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+
+        b.setBackground(new java.awt.Color(180, 225, 151));
+        b.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        b.setForeground(new java.awt.Color(78, 148, 79));
+        b.setBorder(null);
+        jPanel20.add(b, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 220, 30));
+
+        javax.swing.GroupLayout ProductoABLayout = new javax.swing.GroupLayout(ProductoAB.getContentPane());
+        ProductoAB.getContentPane().setLayout(ProductoABLayout);
+        ProductoABLayout.setHorizontalGroup(
+            ProductoABLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProductoABLayout.createSequentialGroup()
+                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+        ProductoABLayout.setVerticalGroup(
+            ProductoABLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProductoABLayout.createSequentialGroup()
+                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(250, 50));
         setResizable(false);
@@ -1714,8 +1792,14 @@ public class Main extends javax.swing.JFrame {
         FondoCloudy.setVisible(false);
         EliminarPane_AdminTools_MW.setVisible(false);
 
+        String bitac = (String) CB_Listar.getSelectedItem();
+        ResultSet idrs = null;
+        DefaultTableModel m = new DefaultTableModel();
+
+        m = (TraerTabla(coso.bitacora_producto()));
+        TablaListar.setModel(m);
+
         ModificarPane_AdminTools_MW.setVisible(false);
-        modeloTABLEListar();
     }//GEN-LAST:event_InfoCuenta_AdminTools_MW1ActionPerformed
 
     private void CB_ListarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_ListarItemStateChanged
@@ -1824,20 +1908,18 @@ public class Main extends javax.swing.JFrame {
                     TablaListar.setModel(T);
                 }
                 break;
-                case "Las tiendas se venden Coca-Cola más que Pepsi":
-                    // Realizar acciones relacionadas con "Las tiendas se venden Coca-Cola más que Pepsi"
-                    System.out.println("Acciones para Las tiendas se venden Coca-Cola más que Pepsi");
+                case "Las tiendas se venden a más que b":
+                    ProductoAB.setVisible(true);
                     break;
                 case "Los 3 principales tipos de productos que los clientes compran además de la leche": {
                     CB_ID.setVisible(Boolean.FALSE);
                     DefaultTableModel T = new DefaultTableModel();
-                    //T = (TraerTabla(coso.Top5TiendasConMasVentas()));
+                    T = (TraerTabla(coso.Top3TiposProductosCompradosExceptLacteo()));
                     TablaListar.setModel(T);
                     CB_ID.setVisible(Boolean.FALSE);
                 }
                 break;
                 default:
-                    System.out.println("Título no reconocido");
                     // Acciones para un título no reconocido
                     break;
             }
@@ -1945,7 +2027,6 @@ public class Main extends javax.swing.JFrame {
                 CrearTienda.setVisible(true);
                 break;
             default:
-                System.out.println("Entidad no reconocida");
                 // Si el valor del String no coincide con ninguna de las opciones anteriores
                 break;
         }
@@ -2195,18 +2276,7 @@ public class Main extends javax.swing.JFrame {
             ModificarCliente.setVisible(true);
             break;
             case "Factura":
-                try {
-                while (idrs.next()) {
-                    Object valorPrimeraCelda = idrs.getObject(1); // El índice 1 representa la primera columna
-                    valores.add(valorPrimeraCelda);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            for (Object valor : valores) {
-                m.addElement(valor);
-            }
-            CrearFactura.setVisible(true);
+
             break;
             case "Tienda":          
                 try {
@@ -2224,7 +2294,7 @@ public class Main extends javax.swing.JFrame {
             ModificarTienda.setVisible(true);
             break;
             default:
-                System.out.println("Entidad no reconocida");
+
                 // Si el valor del String no coincide con ninguna de las opciones anteriores
                 break;
         }
@@ -2250,7 +2320,24 @@ public class Main extends javax.swing.JFrame {
         Crud_Usuarios_AP.setVisible(true);
         FondoCloudy.setVisible(false);
         EliminarPane_AdminTools_MW.setVisible(false);
-
+        String Reporte = (String) CB_Listar.getSelectedItem();
+        ResultSet idrs = null;
+        ArrayList<Object> valores = new ArrayList<>();
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        idrs = coso.Select("Tienda");
+        try {
+            while (idrs.next()) {
+                Object valorPrimeraCelda = idrs.getObject(1); // El índice 1 representa la primera columna
+                valores.add(valorPrimeraCelda);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (Object valor : valores) {
+            m.addElement(valor);
+        }
+        CB_ID.setModel(m);
+        CB_ID.setVisible(Boolean.TRUE);
         ModificarPane_AdminTools_MW.setVisible(false);    }//GEN-LAST:event_ListarUsuarios_AdminTools_MW1ActionPerformed
 
     private void CB_IDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_IDItemStateChanged
@@ -2296,7 +2383,6 @@ public class Main extends javax.swing.JFrame {
             break;
 
             default:
-                System.out.println("Título no reconocido");
                 // Acciones para un título no reconocido
                 break;
         }    }//GEN-LAST:event_CB_IDActionPerformed
@@ -2441,6 +2527,16 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ListarUsuarios_AdminTools_MW4ActionPerformed
 
+    private void Agregarintegrante11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregarintegrante11ActionPerformed
+        CB_ID.setVisible(Boolean.FALSE);
+        DefaultTableModel T = new DefaultTableModel();
+        T = (TraerTabla(coso.Prod1MasQueProd2(a.getText(), b.getText())));
+        TablaListar.setModel(T);
+        a.setText("");
+        b.setText("");
+        ProductoAB.setVisible(false);
+    }//GEN-LAST:event_Agregarintegrante11ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2535,7 +2631,7 @@ public class Main extends javax.swing.JFrame {
     public void modelocomboboxModif() {
         CB_MODIFICAR.getModel();
         DefaultComboBoxModel m = new DefaultComboBoxModel();
-        for (String entidade : entidadesCrear) {
+        for (String entidade : entidadesModif) {
             m.addElement(entidade);
         }
         CB_MODIFICAR.setModel(m);
@@ -2548,6 +2644,15 @@ public class Main extends javax.swing.JFrame {
             add("Vendedor");
             add("Cliente");
             add("Factura");
+            add("Tienda");
+        }
+    };
+    
+        public static ArrayList<String> entidadesModif = new ArrayList<String>() {
+        {
+            add("Producto");
+            add("Vendedor");
+            add("Cliente");
             add("Tienda");
         }
     };
@@ -2606,7 +2711,7 @@ public class Main extends javax.swing.JFrame {
         CB_Listar.setModel(m);
     }
 
-    DbCon coso = new DbCon("master");
+    DbCon coso = new DbCon("proyecto");
 
     public static void guardarEnArchivo() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("./personas.bin"))) {
@@ -2619,6 +2724,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton Agregarintegrante;
     private javax.swing.JButton Agregarintegrante1;
     private javax.swing.JButton Agregarintegrante10;
+    private javax.swing.JButton Agregarintegrante11;
     private javax.swing.JButton Agregarintegrante2;
     private javax.swing.JButton Agregarintegrante3;
     private javax.swing.JButton Agregarintegrante4;
@@ -2672,6 +2778,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel HEADERCOSO11;
     private javax.swing.JLabel HEADERCOSO12;
     private javax.swing.JLabel HEADERCOSO13;
+    private javax.swing.JLabel HEADERCOSO14;
     private javax.swing.JLabel HEADERCOSO3;
     private javax.swing.JLabel HEADERCOSO4;
     private javax.swing.JLabel HEADERCOSO5;
@@ -2694,6 +2801,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel NombreLista1;
     private javax.swing.JLabel NombreLista10;
     private javax.swing.JLabel NombreLista11;
+    private javax.swing.JLabel NombreLista12;
     private javax.swing.JLabel NombreLista2;
     private javax.swing.JLabel NombreLista3;
     private javax.swing.JLabel NombreLista4;
@@ -2704,8 +2812,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel Nombre_Usuario_Label;
     private javax.swing.JPanel PanelAdministrador;
     private javax.swing.JPanel Panel_Lateral;
+    private javax.swing.JDialog ProductoAB;
     private javax.swing.JTable TABLAELIMINAR;
     private javax.swing.JTable TablaListar;
+    private javax.swing.JTextField a;
+    private javax.swing.JTextField b;
     private javax.swing.JButton botonuniversal;
     private javax.swing.JButton dETALLECOMPRA;
     private javax.swing.JButton jButton2;
@@ -2746,10 +2857,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
@@ -2761,6 +2874,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
