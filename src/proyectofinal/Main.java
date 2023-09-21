@@ -1864,7 +1864,7 @@ public class Main extends javax.swing.JFrame {
                     TablaListar.setModel(m);
                     break;
                 case "Tienda":
-                    m = (TraerTabla(coso.bitacora_cliente()));
+                    m = (TraerTabla(coso.bitacora_tienda()));
                     TablaListar.setModel(m);
                     break;
                 default:
@@ -2324,6 +2324,35 @@ public class Main extends javax.swing.JFrame {
         atributes.add(ISV);
         atributes.add(total);
 
+        CrearUsuarioP_TF_Nombre30.setText("");
+        jLabel24.setText("");
+        jLabel34.setText("");
+        CBCrearFacturaIDCLIENT.setSelectedIndex(0);
+        CBCrearFacturaIDTIENDA.setSelectedIndex(0);
+        jDateChooser1.setDate(null);
+
+        int[] selectedRows = tableDetalle.getSelectedRows();
+        double subtotaLl = 0.0; // Inicializamos el subtotal como un valor double
+
+        for (int row : selectedRows) {
+            // Obtiene el valor como BigDecimal desde la columna 1
+            BigDecimal bigDecimalValue = (BigDecimal) tableDetalle.getValueAt(row, 2);
+
+            // Convierte el valor BigDecimal a String
+            String stringValue = bigDecimalValue.toString();
+
+            // Convierte el valor String a double
+            try {
+                double doubleValue = Double.parseDouble(stringValue);
+                subtotaLl += doubleValue;
+            } catch (NumberFormatException e) {
+                // Manejar el caso en el que la conversión no sea exitosa
+            }
+            coso.insertarDetalleFactura(coso.cosoMierdoso(), (Integer) tableDetalle.getValueAt(row, 0));
+        }
+
+        CrearFactura.setVisible(false);
+
         coso.Insert((String) CB_Crear.getSelectedItem(), atributes);
     }//GEN-LAST:event_Agregarintegrante4ActionPerformed
 
@@ -2370,7 +2399,6 @@ public class Main extends javax.swing.JFrame {
             } catch (NumberFormatException e) {
                 // Manejar el caso en el que la conversión no sea exitosa
             }
-            coso.insertarDetalleFactura((Integer) CBCrearFacturaIDTIENDA.getSelectedItem(), (Integer) tableDetalle.getValueAt(row, 0));
         }
 
 // Ahora, subtotal contiene la suma de los valores convertidos de la columna 1
@@ -2400,9 +2428,12 @@ public class Main extends javax.swing.JFrame {
         String administrador = JOptionPane.showInputDialog("¿Es administrador? (Sí/No):");
 
         // Crea una nueva persona con los datos ingresados
-        Persona nuevaPersona = new Persona(usuario, contraseña, edad, id, nombre, "", genero, administrador);
-        ListUssers.add(nuevaPersona);
-        guardarEnArchivo();
+        try {
+            Persona nuevaPersona = new Persona(usuario, contraseña, edad, id, nombre, "", genero, administrador);
+            ListUssers.add(nuevaPersona);
+            guardarEnArchivo();
+        } catch (Exception e) {
+        }
 
     }//GEN-LAST:event_ListarUsuarios_AdminTools_MW3ActionPerformed
 
@@ -2576,7 +2607,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     DbCon coso = new DbCon("master");
-    
+
     public static void guardarEnArchivo() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("./personas.bin"))) {
             oos.writeObject(ListUssers);

@@ -395,4 +395,45 @@ public class DbCon {
         return rs;
     }
 
+    public int cosoMierdoso() {
+        ResultSet rs = null;
+        PreparedStatement ps = null; // Declarar la variable fuera del bloque try
+
+        try {
+            ps = con.prepareStatement(
+                    "SELECT numero FROM ("
+                    + "  SELECT numero, ROW_NUMBER() OVER (ORDER BY numero DESC) AS rn FROM Factura"
+                    + ") AS subquery"
+                    + " WHERE rn = 1");
+            rs = ps.executeQuery();
+
+            if (rs.next()) { // Mover el cursor a la primera fila
+                int coso = rs.getInt("numero");
+                return coso;
+            } else {
+                // No se encontraron filas
+                return 0; // O un valor predeterminado adecuado
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0; // O un valor predeterminado adecuado en caso de error
+        } finally {
+            // Asegúrate de cerrar el ResultSet y la PreparedStatement
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 }
