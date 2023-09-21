@@ -152,7 +152,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Botonl_Ingresar_LoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Botonl_Ingresar_LoginMouseEntered
-        //Botonl_Ingresar_Login.setBackground(Color.getHSBColor(131, 189, 117));
+        //Botonl_Ingresar_Login.setBackground(Color.getHSBColor(131, 189, 117));..
     }//GEN-LAST:event_Botonl_Ingresar_LoginMouseEntered
 
     private void Botonl_Ingresar_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Botonl_Ingresar_LoginActionPerformed
