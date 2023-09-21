@@ -42,7 +42,7 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         iniciarVA();
         CB_ID.setVisible(Boolean.FALSE);
-        Nombre_Usuario_Label.setText("Bienvenido " + NewJFrame.Uactual.getNombre());
+        //Nombre_Usuario_Label.setText("Bienvenido " + NewJFrame.Uactual.getNombre());
     }
 
     /**
@@ -177,7 +177,6 @@ public class Main extends javax.swing.JFrame {
         Panel_Lateral = new javax.swing.JPanel();
         FondoCloudy = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        Nombre_Usuario_Label = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         EliminarUsuario_AdminTools_MW = new javax.swing.JButton();
@@ -1202,14 +1201,6 @@ public class Main extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(180, 225, 151));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Nombre_Usuario_Label.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
-        Nombre_Usuario_Label.setForeground(new java.awt.Color(78, 148, 79));
-        Nombre_Usuario_Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Nombre_Usuario_Label.setText("Bienvenido Avelardo");
-        Nombre_Usuario_Label.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Nombre_Usuario_Label.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel4.add(Nombre_Usuario_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 230, -1));
 
         jLabel1.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(78, 148, 79));
@@ -2696,7 +2687,7 @@ public class Main extends javax.swing.JFrame {
             add("Los 20 productos más vendidos en cada tienda");
             add("Los 20 productos más vendidos en cada país");
             add("Las 5 tiendas con más ventas en lo que va de año");
-            add("Las tiendas se venden Coca-Cola más que Pepsi");
+            add("Las tiendas se venden a más que b");
             add("Los 3 principales tipos de productos que los clientes compran además de la leche");
         }
     };
@@ -2809,7 +2800,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel NombreLista6;
     private javax.swing.JLabel NombreLista8;
     private javax.swing.JLabel NombreLista9;
-    private javax.swing.JLabel Nombre_Usuario_Label;
     private javax.swing.JPanel PanelAdministrador;
     private javax.swing.JPanel Panel_Lateral;
     private javax.swing.JDialog ProductoAB;

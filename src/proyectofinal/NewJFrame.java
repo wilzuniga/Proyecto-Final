@@ -2,24 +2,11 @@ package proyectofinal;
 
 import Clases.Persona;
 
-import java.awt.Color;
 import proyectofinal.Main;
-import java.awt.*;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 
 /**
@@ -174,6 +161,7 @@ public class NewJFrame extends javax.swing.JFrame {
             boolean bandera = true;
             int i = 0;
             while (bandera) {
+
                 if (TF_Usuario_Login.getText().equals(Main.ListUssers.get(i).getUsuario()) && TF_Contraseña_Login.getText().equals(Main.ListUssers.get(i).getContraseña()) && Main.ListUssers.get(i).getAdministrador().equals("Sí") || Main.ListUssers.get(i).getAdministrador().equals("SI") || Main.ListUssers.get(i).getAdministrador().equals("si") || Main.ListUssers.get(i).getAdministrador().equals("S")) {
                     Uactual = Main.ListUssers.get(i);
                     //CLAVALA, CLAVALA, CLAVALA
@@ -202,6 +190,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (Exception e) {
+
         }
 
     }//GEN-LAST:event_Botonl_Ingresar_LoginActionPerformed
@@ -260,8 +249,6 @@ public class NewJFrame extends javax.swing.JFrame {
             System.out.println("Lectura del archivo binario completa.");
         }
     }
-
-
 
     public static Persona Uactual;
 
